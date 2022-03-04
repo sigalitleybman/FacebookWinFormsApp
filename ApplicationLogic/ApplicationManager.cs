@@ -7,13 +7,14 @@ namespace ApplicationLogic
 {
     public class ApplicationManager
     {
-        private User m_LoggedInUser { get; set; }
+        public User LoggedInUser { get; set; }
         private TriviaManager m_TriviaManager;
         //private List<string> m_ListOfQuestions;
-        public ApplicationManager(User i_LoggedInUser) 
+
+        public ApplicationManager() 
         {
-            m_LoggedInUser = i_LoggedInUser;
-            m_TriviaManager = new TriviaManager(m_LoggedInUser);
+            //m_LoggedInUser = i_LoggedInUser;
+            m_TriviaManager = new TriviaManager();
         }
 
         public List<string> GetListOfQuestions()
@@ -21,9 +22,41 @@ namespace ApplicationLogic
             return m_TriviaManager.GetListOfQuestions();
         }
 
-/*        public void ManagerTheQuestions(int i_IndexOfQuestions)
+        public List<string> GetListOfAnswers(int i_IndexOfSpecificQuestion)
         {
-            m_TriviaManager.ManagerTheQuestions(i_IndexOfQuestions);
-        }*/
+            switch (i_IndexOfSpecificQuestion)
+            {
+                case 0:
+                    return m_TriviaManager.getListOfCitiesAnswers();
+                case 1:
+                    return m_TriviaManager.getListOfAgesAnswers();
+                case 2:
+                    return m_TriviaManager.getListOfMonthsAnswers();
+            }
+
+            return null;
+        }
+
+        public bool CheckIfAnswerIsCorrect(eKeyQuestions currentQuestion, string chosenAnswer)
+        {
+
+        }
+
+
+
+        //public Dictionary<string, string> InitTrivia(User i_ChosenFriend)
+        //{
+
+        //    m_TriviaManager = new TriviaManager(){ChosenFriend = i_ChosenFriend};
+        //    return m_TriviaManager.InitTriviaQuestionsAndAnswers();
+        //}
+
+
+
+
+        /*        public void ManagerTheQuestions(int i_IndexOfQuestions)
+                {
+                    m_TriviaManager.ManagerTheQuestions(i_IndexOfQuestions);
+                }*/
     }
 }

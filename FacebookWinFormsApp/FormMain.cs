@@ -61,9 +61,10 @@ namespace BasicFacebookFeatures
 {
     public partial class FormMain : Form
     {
-        private User m_LoggedInUser;
-        private static ApplicationManager m_ApplicationManager;
+        internal User LoggedInUser { get; set; }
+        //private static ApplicationManager m_ApplicationManager;
        // private LoginResult m_LoginResult;
+       internal ApplicationManager ApplicationManager { get; set; }
 
         public FormMain()
         {
@@ -98,7 +99,7 @@ namespace BasicFacebookFeatures
             buttonLogin.Text = "Logged in";
             if (!string.IsNullOrEmpty(m_LoginResult.AccessToken))
             {
-                m_LoggedInUser = m_LoginResult.LoggedInUser;
+                LoggedInUser = m_LoginResult.LoggedInUser;
 
                 fetchUserInfo();
             }
@@ -127,9 +128,9 @@ namespace BasicFacebookFeatures
 
         private void fetchUserInfo()
         {
-            pictureBoxProfile.LoadAsync(m_LoggedInUser.PictureNormalURL);
+            pictureBoxProfile.LoadAsync(LoggedInUser.PictureNormalURL);
             labelProfileName.Visible = true;
-            labelProfileName.Text = m_LoggedInUser.Name;
+            labelProfileName.Text = LoggedInUser.Name;
         }
 
         private void checkBoxFriends_CheckedChanged(object sender, EventArgs e)
@@ -163,7 +164,7 @@ namespace BasicFacebookFeatures
 
             listBoxFriends.Items.Clear();
             listBoxFriends.DisplayMember = "Name";
-            FacebookObjectCollection<User> userFriends = m_LoggedInUser.Friends;
+            FacebookObjectCollection<User> userFriends = LoggedInUser.Friends;
             foreach (User friend in userFriends)
             {
                 listBoxFriends.Items.Add(friend);
@@ -196,10 +197,10 @@ namespace BasicFacebookFeatures
             }
         }
 
-        private void checkBoxAlbums_CheckedChanged_1(object sender, EventArgs e)
-        {
+        //private void checkBoxAlbums_CheckedChanged_1(object sender, EventArgs e)
+        //{
 
-        }
+        //}
         //private void checkBoxAlbums_CheckedChanged(object sender, EventArgs e)
         //{
 
@@ -222,7 +223,7 @@ namespace BasicFacebookFeatures
         private void showAlbums()
         {
             listBoxAlbums.DisplayMember = "Name";
-            FacebookObjectCollection<Album> userAlbums = m_LoggedInUser.Albums;
+            FacebookObjectCollection<Album> userAlbums = LoggedInUser.Albums;
             foreach (Album album in userAlbums)
             {
                 listBoxAlbums.Items.Add(album);
@@ -274,7 +275,7 @@ namespace BasicFacebookFeatures
 
         private void fetchPosts()
         {
-            foreach (Post post in m_LoggedInUser.Posts)
+            foreach (Post post in LoggedInUser.Posts)
             {
                 if (post.Message != null)
                 {
@@ -298,12 +299,10 @@ namespace BasicFacebookFeatures
 
         private void buttonTrivia_Click(object sender, EventArgs e)
         {
-            m_ApplicationManager = new ApplicationManager(m_LoggedInUser);
+            ApplicationManager = new ApplicationManager(){LoggedInUser = LoggedInUser};
             this.Hide();
-            TriviaFriendsForm triviaFriendsForm = new TriviaFriendsForm(m_LoggedInUser);
+            TriviaFriendsForm triviaFriendsForm = new TriviaFriendsForm(this);
             triviaFriendsForm.ShowDialog();
-
-            
         }
     }
 }

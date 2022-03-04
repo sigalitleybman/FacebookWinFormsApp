@@ -7,20 +7,21 @@ using FacebookWrapper.ObjectModel;
 namespace ApplicationLogic
 {
     //check git !!!
-    class TriviaManager
+    internal class TriviaManager
     {
         private readonly Dictionary<string, string> r_TriviaQuestionsAndAnswers;
-        private List<string> m_ListOfQuestions;
+        private readonly List<string> m_ListOfQuestions;
         private DateTime m_BirthDateOfTheFriend;
 
-        private User m_ChosenFriend { get; set; }
-        private User m_LoggedInUser { get; set; }
-        public TriviaManager(User i_ChosenFriend)
+        internal User ChosenFriend { get; set; }
+       // internal User LoggedInUser { get; set; }
+        
+        public TriviaManager()
         {
-            m_ChosenFriend = i_ChosenFriend;
+            //ChosenFriend = i_ChosenFriend;
             m_ListOfQuestions = new List<string>();
             r_TriviaQuestionsAndAnswers = new Dictionary<string, string>();
-            m_BirthDateOfTheFriend = Convert.ToDateTime(m_ChosenFriend.Birthday);
+            m_BirthDateOfTheFriend = Convert.ToDateTime(ChosenFriend.Birthday);
         }
 
         private void initializeQuestions(User m_ChosenFriend)
@@ -47,7 +48,7 @@ namespace ApplicationLogic
             switch (i_KeyQuestion)
             {
                 case eKeyQuestions.City:
-                    specificAnswer = m_ChosenFriend.Location.Location.City;
+                    specificAnswer = ChosenFriend.Location.Location.City;
                     break;
                 case eKeyQuestions.Age:
                     specificAnswer = calculateTheAgeOfTheFriend();
@@ -67,12 +68,13 @@ namespace ApplicationLogic
 
             return currentFriendAge.ToString();
         }
+
         internal List<string> GetListOfQuestions ()
         {
             return m_ListOfQuestions;
         }
 
-        private List<string> getListOfAgesAnswers()
+        internal List<string> getListOfAgesAnswers()
         {
            // TODO: check about negetive age 
 
@@ -97,10 +99,14 @@ namespace ApplicationLogic
                 }
             }
 
+            listOfOptionalAgesAnswers.Add(firstAgeOptional);
+            listOfOptionalAgesAnswers.Add(secondAgeOptional);
+            listOfOptionalAgesAnswers.Add(friendAge);
+
             return listOfOptionalAgesAnswers;
         }
 
-        private List<string> getListOfCitiesAnswers()
+        internal List<string> getListOfCitiesAnswers()
         {
             List<string> listOfOptionalCitiesAnswers = new List<string>();
             string correctAnswer = GetSpecificAnswer(eKeyQuestions.City);
@@ -128,7 +134,7 @@ namespace ApplicationLogic
             return listOfOptionalCitiesAnswers;
         }
 
-        private List<string> getListOfMonthsAnswers()
+        internal List<string> getListOfMonthsAnswers()
         {
             List<string> listOfOptionalMonthsAnswers = new List<string>();
             string correctAnswer = GetSpecificAnswer(eKeyQuestions.BirthMonth);
@@ -156,12 +162,12 @@ namespace ApplicationLogic
             return listOfOptionalMonthsAnswers;
         }
 
-        private enum eKeyQuestions
-        {
-            City = 0,
-            Age,
-            BirthMonth
-        }
+        //private enum eKeyQuestions
+        //{
+        //    City = 0,
+        //    Age,
+        //    BirthMonth
+        //}
 
         private enum eCitiesAnswers
         {

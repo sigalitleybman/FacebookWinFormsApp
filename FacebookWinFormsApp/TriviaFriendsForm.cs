@@ -9,33 +9,43 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using FacebookWrapper.ObjectModel;
 using ApplicationLogic;
+using eKeyQuestions = ApplicationLogic.eKeyQuestions;
 
 namespace BasicFacebookFeatures
 {
     public partial class TriviaFriendsForm : Form
     {
         private readonly User r_LoggedInUser;
-        private List<string> m_TriviaQuestions;
-        private ApplicationManager m_ApplicationManager;
+        private readonly List<string> m_TriviaQuestions;
+        //private readonly List<string> m_TriviaAnswersToSpecificQuestion;
         private int m_IndexOfQuestions = 0;
         private const int k_NumOfQuestions = 3;
+        private string m_currentQuestion;
+        //private ApplicationManager m_ApplicationManager;
 
-        public TriviaFriendsForm()
+        internal ApplicationManager ApplicationManager { get; set; }
+
+        //public TriviaFriendsForm()
+        //{
+        //    InitializeComponent();
+        //}
+
+        public TriviaFriendsForm(FormMain i_FormMain)
         {
             InitializeComponent();
-        }
-
-        public TriviaFriendsForm(User iLoggedInUser)
-        {
-            InitializeComponent();
-            r_LoggedInUser = iLoggedInUser;
-            //m_TriviaQuestions = new List<string>();
+            r_LoggedInUser = i_FormMain.LoggedInUser;
+            ApplicationManager = i_FormMain.ApplicationManager;
+            m_TriviaQuestions = ApplicationManager.GetListOfQuestions();
             InitializeListBoxOfFriends();
-           //InitializeListOfQuestions();
+            
+            //m_TriviaQuestions = new List<string>();
+            //InitializeListOfQuestions();
         }
+       
         private void InitializeListBoxOfFriends()
         {
             //listBoxFriend.Items.Clear();
+
             listBoxFriend.DisplayMember = "Name";
             FacebookObjectCollection<User> userFriends = r_LoggedInUser.Friends;
             foreach (User friend in userFriends)
@@ -46,14 +56,22 @@ namespace BasicFacebookFeatures
 
         private void listBoxFriends_SelectedIndexChanged(object sender, EventArgs e)
         {
-            displaySelectedFriendImageAndQuestions();
+            displaySelectedFriendImageAndQuestions(sender);
         }
 
-        private void displaySelectedFriendImageAndQuestions()
+        private void displaySelectedFriendImageAndQuestions(object i_Sender)
         {
             displayImageOfFriend();
-            displayQuestions();
+            displayQuestionsAndAnswers();
+            //displayQuestions();
+            //initTriviaQuestions(i_Sender as User);
         }
+
+        //private void initTriviaQuestions(User i_ChosenFriend)
+        //{
+        //    Dictionary<string, string> questionAndAnswers = ApplicationManager.InitTrivia(i_ChosenFriend);
+        //    startTriviaGame();
+        //}
 
         private void displayImageOfFriend()
         {
@@ -71,17 +89,25 @@ namespace BasicFacebookFeatures
             }
         }
 
+        private void displayQuestionsAndAnswers()
+        {
+            displayQuestions();
+            //displayAnswers();
+        }
         private void displayQuestions()
         {
-            if (m_TriviaQuestions == null)
-            {
-                m_TriviaQuestions = m_ApplicationManager.GetListOfQuestions();
-            }
-
+            //if (m_TriviaQuestions == null)
+            //{
+            //    m_TriviaQuestions = ApplicationManager.GetListOfQuestions();
+            //}
+            pictureBoxNextQuestion.Enabled = false;
             
             // TODO: add randomalic questions to the listboxfriend
           
             labelDescriptionQuestion.Text = m_TriviaQuestions[m_IndexOfQuestions];
+            displayAnswers(m_IndexOfQuestions);
+            m_currentQuestion = Enum.GetName(typeof(eKeyQuestions), m_IndexOfQuestions);
+
             if (m_IndexOfQuestions < 3)
             {
                 m_IndexOfQuestions++;
@@ -91,12 +117,46 @@ namespace BasicFacebookFeatures
             {
                 pictureBoxNextQuestion.Enabled = false;
             }
-            
+
+
         }
 
         private void pictureBoxNextQuestion_Click(object sender, EventArgs e)
         {
             displayQuestions();
+        }
+
+        //this method should recieve the current question
+        private void displayAnswers(int i_IndexOfCurrentQuestion)
+        {
+            List<string> answersToSpecificQuestion = ApplicationManager.GetListOfAnswers(i_IndexOfCurrentQuestion);
+
+            radioButtonFirstAnswer.Text = answersToSpecificQuestion[0];
+            radioButtonSecondAnswer.Text = answersToSpecificQuestion[1];
+            radioButtonThirdAnswer.Text = answersToSpecificQuestion[2];
+        }
+
+        private void CheckIfTheAnswerIsCorrect(object sender, EventArgs e)
+        {
+            string currentQuestion = labelDescriptionQuestion.Text;
+            string chosenAnswer = null;
+            bool isCorrectAnswer;
+
+            if (radioButtonFirstAnswer.Checked)
+            {
+                chosenAnswer = radioButtonFirstAnswer.Text;
+            }
+            else if (radioButtonSecondAnswer.Checked)
+            {
+                chosenAnswer = radioButtonSecondAnswer.Text;
+            }
+            else if(radioButtonThirdAnswer.Checked)
+            {
+                chosenAnswer = radioButtonThirdAnswer.Text;
+            }
+
+            isCorrectAnswer = ApplicationManager.CheckIfAnswerIsCorrect(currentQuestion, chosenAnswer);
+            pictureBoxNextQuestion.Enabled = true;
         }
     }
 }
