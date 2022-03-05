@@ -46,6 +46,7 @@
             this.listBoxPosts = new System.Windows.Forms.ListBox();
             this.pictureBoxLogoFacebook = new System.Windows.Forms.PictureBox();
             this.buttonTrivia = new System.Windows.Forms.Button();
+            this.checkBoxRememberMe = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFriends)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAlbum)).BeginInit();
@@ -57,10 +58,10 @@
             this.buttonLogin.BackColor = System.Drawing.Color.DarkBlue;
             this.buttonLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
             this.buttonLogin.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonLogin.Location = new System.Drawing.Point(16, 14);
-            this.buttonLogin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonLogin.Location = new System.Drawing.Point(18, 18);
+            this.buttonLogin.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.buttonLogin.Name = "buttonLogin";
-            this.buttonLogin.Size = new System.Drawing.Size(238, 42);
+            this.buttonLogin.Size = new System.Drawing.Size(268, 52);
             this.buttonLogin.TabIndex = 36;
             this.buttonLogin.Text = "Login";
             this.buttonLogin.UseVisualStyleBackColor = false;
@@ -71,10 +72,10 @@
             this.buttonLogout.BackColor = System.Drawing.Color.DarkBlue;
             this.buttonLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
             this.buttonLogout.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonLogout.Location = new System.Drawing.Point(16, 58);
-            this.buttonLogout.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonLogout.Location = new System.Drawing.Point(18, 72);
+            this.buttonLogout.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.buttonLogout.Name = "buttonLogout";
-            this.buttonLogout.Size = new System.Drawing.Size(238, 40);
+            this.buttonLogout.Size = new System.Drawing.Size(268, 50);
             this.buttonLogout.TabIndex = 52;
             this.buttonLogout.Text = "Logout";
             this.buttonLogout.UseVisualStyleBackColor = false;
@@ -82,10 +83,10 @@
             // 
             // pictureBoxProfile
             // 
-            this.pictureBoxProfile.Location = new System.Drawing.Point(28, 105);
+            this.pictureBoxProfile.Location = new System.Drawing.Point(32, 131);
             this.pictureBoxProfile.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBoxProfile.Name = "pictureBoxProfile";
-            this.pictureBoxProfile.Size = new System.Drawing.Size(226, 198);
+            this.pictureBoxProfile.Size = new System.Drawing.Size(254, 248);
             this.pictureBoxProfile.TabIndex = 53;
             this.pictureBoxProfile.TabStop = false;
             // 
@@ -93,9 +94,9 @@
             // 
             this.labelProfileName.AutoSize = true;
             this.labelProfileName.Font = new System.Drawing.Font("Sitka Small", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelProfileName.Location = new System.Drawing.Point(294, 22);
+            this.labelProfileName.Location = new System.Drawing.Point(331, 28);
             this.labelProfileName.Name = "labelProfileName";
-            this.labelProfileName.Size = new System.Drawing.Size(63, 25);
+            this.labelProfileName.Size = new System.Drawing.Size(73, 29);
             this.labelProfileName.TabIndex = 54;
             this.labelProfileName.Text = "label1";
             // 
@@ -103,19 +104,19 @@
             // 
             this.labelFriends.AutoSize = true;
             this.labelFriends.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.labelFriends.Location = new System.Drawing.Point(28, 367);
+            this.labelFriends.Location = new System.Drawing.Point(32, 459);
             this.labelFriends.Name = "labelFriends";
-            this.labelFriends.Size = new System.Drawing.Size(174, 29);
+            this.labelFriends.Size = new System.Drawing.Size(201, 32);
             this.labelFriends.TabIndex = 55;
             this.labelFriends.Text = "Fetch Friends";
             // 
             // checkBoxFriends
             // 
             this.checkBoxFriends.AutoSize = true;
-            this.checkBoxFriends.Location = new System.Drawing.Point(34, 404);
+            this.checkBoxFriends.Location = new System.Drawing.Point(38, 505);
             this.checkBoxFriends.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.checkBoxFriends.Name = "checkBoxFriends";
-            this.checkBoxFriends.Size = new System.Drawing.Size(109, 21);
+            this.checkBoxFriends.Size = new System.Drawing.Size(124, 24);
             this.checkBoxFriends.TabIndex = 56;
             this.checkBoxFriends.Text = "show friends";
             this.checkBoxFriends.UseVisualStyleBackColor = true;
@@ -125,20 +126,20 @@
             // listBoxFriends
             // 
             this.listBoxFriends.FormattingEnabled = true;
-            this.listBoxFriends.ItemHeight = 16;
-            this.listBoxFriends.Location = new System.Drawing.Point(34, 439);
+            this.listBoxFriends.ItemHeight = 20;
+            this.listBoxFriends.Location = new System.Drawing.Point(38, 549);
             this.listBoxFriends.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listBoxFriends.Name = "listBoxFriends";
-            this.listBoxFriends.Size = new System.Drawing.Size(229, 260);
+            this.listBoxFriends.Size = new System.Drawing.Size(257, 324);
             this.listBoxFriends.TabIndex = 57;
             this.listBoxFriends.Click += new System.EventHandler(this.listBoxFriends_SelectedIndexChanged);
             // 
             // pictureBoxFriends
             // 
-            this.pictureBoxFriends.Location = new System.Drawing.Point(280, 439);
+            this.pictureBoxFriends.Location = new System.Drawing.Point(315, 549);
             this.pictureBoxFriends.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBoxFriends.Name = "pictureBoxFriends";
-            this.pictureBoxFriends.Size = new System.Drawing.Size(171, 256);
+            this.pictureBoxFriends.Size = new System.Drawing.Size(192, 320);
             this.pictureBoxFriends.TabIndex = 58;
             this.pictureBoxFriends.TabStop = false;
             // 
@@ -146,19 +147,19 @@
             // 
             this.labelFetchAlbums.AutoSize = true;
             this.labelFetchAlbums.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.labelFetchAlbums.Location = new System.Drawing.Point(587, 367);
+            this.labelFetchAlbums.Location = new System.Drawing.Point(660, 459);
             this.labelFetchAlbums.Name = "labelFetchAlbums";
-            this.labelFetchAlbums.Size = new System.Drawing.Size(171, 29);
+            this.labelFetchAlbums.Size = new System.Drawing.Size(200, 32);
             this.labelFetchAlbums.TabIndex = 59;
             this.labelFetchAlbums.Text = "Fetch Albums";
             // 
             // checkBoxAlbums
             // 
             this.checkBoxAlbums.AutoSize = true;
-            this.checkBoxAlbums.Location = new System.Drawing.Point(592, 404);
+            this.checkBoxAlbums.Location = new System.Drawing.Point(666, 505);
             this.checkBoxAlbums.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.checkBoxAlbums.Name = "checkBoxAlbums";
-            this.checkBoxAlbums.Size = new System.Drawing.Size(111, 21);
+            this.checkBoxAlbums.Size = new System.Drawing.Size(127, 24);
             this.checkBoxAlbums.TabIndex = 60;
             this.checkBoxAlbums.Text = "show albums";
             this.checkBoxAlbums.UseVisualStyleBackColor = true;
@@ -168,20 +169,20 @@
             // listBoxAlbums
             // 
             this.listBoxAlbums.FormattingEnabled = true;
-            this.listBoxAlbums.ItemHeight = 16;
-            this.listBoxAlbums.Location = new System.Drawing.Point(592, 436);
+            this.listBoxAlbums.ItemHeight = 20;
+            this.listBoxAlbums.Location = new System.Drawing.Point(666, 545);
             this.listBoxAlbums.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listBoxAlbums.Name = "listBoxAlbums";
-            this.listBoxAlbums.Size = new System.Drawing.Size(230, 260);
+            this.listBoxAlbums.Size = new System.Drawing.Size(258, 324);
             this.listBoxAlbums.TabIndex = 61;
             this.listBoxAlbums.Click += new System.EventHandler(this.listBoxAlbums_SelectedIndexChanged);
             // 
             // pictureBoxAlbum
             // 
-            this.pictureBoxAlbum.Location = new System.Drawing.Point(851, 436);
+            this.pictureBoxAlbum.Location = new System.Drawing.Point(957, 545);
             this.pictureBoxAlbum.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBoxAlbum.Name = "pictureBoxAlbum";
-            this.pictureBoxAlbum.Size = new System.Drawing.Size(184, 259);
+            this.pictureBoxAlbum.Size = new System.Drawing.Size(207, 324);
             this.pictureBoxAlbum.TabIndex = 62;
             this.pictureBoxAlbum.TabStop = false;
             // 
@@ -189,19 +190,19 @@
             // 
             this.labelFetchPosts.AutoSize = true;
             this.labelFetchPosts.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.labelFetchPosts.Location = new System.Drawing.Point(275, 107);
+            this.labelFetchPosts.Location = new System.Drawing.Point(309, 134);
             this.labelFetchPosts.Name = "labelFetchPosts";
-            this.labelFetchPosts.Size = new System.Drawing.Size(150, 29);
+            this.labelFetchPosts.Size = new System.Drawing.Size(175, 32);
             this.labelFetchPosts.TabIndex = 63;
             this.labelFetchPosts.Text = "Fetch Posts";
             // 
             // checkBoxPosts
             // 
             this.checkBoxPosts.AutoSize = true;
-            this.checkBoxPosts.Location = new System.Drawing.Point(280, 135);
+            this.checkBoxPosts.Location = new System.Drawing.Point(315, 169);
             this.checkBoxPosts.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.checkBoxPosts.Name = "checkBoxPosts";
-            this.checkBoxPosts.Size = new System.Drawing.Size(100, 21);
+            this.checkBoxPosts.Size = new System.Drawing.Size(115, 24);
             this.checkBoxPosts.TabIndex = 64;
             this.checkBoxPosts.Text = "show posts";
             this.checkBoxPosts.UseVisualStyleBackColor = true;
@@ -211,20 +212,20 @@
             // listBoxPosts
             // 
             this.listBoxPosts.FormattingEnabled = true;
-            this.listBoxPosts.ItemHeight = 16;
-            this.listBoxPosts.Location = new System.Drawing.Point(280, 156);
+            this.listBoxPosts.ItemHeight = 20;
+            this.listBoxPosts.Location = new System.Drawing.Point(315, 195);
             this.listBoxPosts.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listBoxPosts.Name = "listBoxPosts";
-            this.listBoxPosts.Size = new System.Drawing.Size(331, 148);
+            this.listBoxPosts.Size = new System.Drawing.Size(372, 184);
             this.listBoxPosts.TabIndex = 65;
             // 
             // pictureBoxLogoFacebook
             // 
             this.pictureBoxLogoFacebook.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxLogoFacebook.Image")));
-            this.pictureBoxLogoFacebook.Location = new System.Drawing.Point(983, 14);
+            this.pictureBoxLogoFacebook.Location = new System.Drawing.Point(1106, 18);
             this.pictureBoxLogoFacebook.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBoxLogoFacebook.Name = "pictureBoxLogoFacebook";
-            this.pictureBoxLogoFacebook.Size = new System.Drawing.Size(118, 101);
+            this.pictureBoxLogoFacebook.Size = new System.Drawing.Size(133, 126);
             this.pictureBoxLogoFacebook.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxLogoFacebook.TabIndex = 66;
             this.pictureBoxLogoFacebook.TabStop = false;
@@ -234,19 +235,31 @@
             this.buttonTrivia.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonTrivia.BackgroundImage")));
             this.buttonTrivia.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.buttonTrivia.Cursor = System.Windows.Forms.Cursors.No;
-            this.buttonTrivia.Location = new System.Drawing.Point(762, 26);
+            this.buttonTrivia.Location = new System.Drawing.Point(857, 32);
+            this.buttonTrivia.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.buttonTrivia.Name = "buttonTrivia";
-            this.buttonTrivia.Size = new System.Drawing.Size(175, 182);
+            this.buttonTrivia.Size = new System.Drawing.Size(197, 228);
             this.buttonTrivia.TabIndex = 67;
             this.buttonTrivia.UseVisualStyleBackColor = true;
             this.buttonTrivia.Click += new System.EventHandler(this.buttonTrivia_Click);
             // 
+            // checkBoxRememberMe
+            // 
+            this.checkBoxRememberMe.AutoSize = true;
+            this.checkBoxRememberMe.Location = new System.Drawing.Point(336, 78);
+            this.checkBoxRememberMe.Name = "checkBoxRememberMe";
+            this.checkBoxRememberMe.Size = new System.Drawing.Size(113, 24);
+            this.checkBoxRememberMe.TabIndex = 68;
+            this.checkBoxRememberMe.Text = "checkBox1";
+            this.checkBoxRememberMe.UseVisualStyleBackColor = true;
+            // 
             // FormMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.AliceBlue;
-            this.ClientSize = new System.Drawing.Size(1123, 809);
+            this.ClientSize = new System.Drawing.Size(1263, 1011);
+            this.Controls.Add(this.checkBoxRememberMe);
             this.Controls.Add(this.buttonTrivia);
             this.Controls.Add(this.pictureBoxLogoFacebook);
             this.Controls.Add(this.listBoxPosts);
@@ -264,7 +277,7 @@
             this.Controls.Add(this.pictureBoxProfile);
             this.Controls.Add(this.buttonLogout);
             this.Controls.Add(this.buttonLogin);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Facebook";
@@ -296,6 +309,7 @@
         private System.Windows.Forms.ListBox listBoxPosts;
         private System.Windows.Forms.PictureBox pictureBoxLogoFacebook;
         private System.Windows.Forms.Button buttonTrivia;
+        private System.Windows.Forms.CheckBox checkBoxRememberMe;
     }
 }
 

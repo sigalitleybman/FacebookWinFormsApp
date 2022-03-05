@@ -37,10 +37,10 @@ namespace ApplicationLogic
             return null;
         }
 
-        public bool CheckIfAnswerIsCorrect(eKeyQuestions currentQuestion, string chosenAnswer)
-        {
+        //public bool CheckIfAnswerIsCorrect(eKeyQuestions currentQuestion, string chosenAnswer)
+        //{
 
-        }
+        //}
 
 
 

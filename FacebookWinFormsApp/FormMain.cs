@@ -55,12 +55,13 @@ using System.Windows.Forms;
 using FacebookWrapper.ObjectModel;
 using FacebookWrapper;
 using ApplicationLogic;
-//using FacebookWrapper.ObjectModel;
 
 namespace BasicFacebookFeatures
 {
     public partial class FormMain : Form
     {
+        private readonly AppSettings r_AppSettings;
+        private FacebookWrapper.LoginResult m_LoginResult;
         internal User LoggedInUser { get; set; }
         //private static ApplicationManager m_ApplicationManager;
        // private LoginResult m_LoginResult;
@@ -70,13 +71,22 @@ namespace BasicFacebookFeatures
         {
             InitializeComponent();
             FacebookWrapper.FacebookService.s_CollectionLimit = 100;
+            r_AppSettings = AppSettings.LoadFromFile();
+            fetchFormSettings();
+        }
+
+        private void fetchFormSettings()
+        {
+            this.StartPosition = FormStartPosition.Manual;
+            this.Location = r_AppSettings.LastWindowLocation;
+            this.Size = r_AppSettings.LastWindowSize;
         }
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
             Clipboard.SetText("design.patterns20cc");
 
-            FacebookWrapper.LoginResult m_LoginResult = FacebookService.Login(
+            m_LoginResult = FacebookService.Login(
                 "1303346456815400",
                     /// requested permissions:
                     "email",
@@ -94,21 +104,63 @@ namespace BasicFacebookFeatures
                     "user_posts",
                     "user_videos"
             );
+            ////buttonLogin.Text = $"Logged in as {m_LoginResult.LoggedInUser.Name}";
+            //buttonLogin.Text = "Logged in";
+            //if (!string.IsNullOrEmpty(m_LoginResult.AccessToken))
+            //{
+            //    LoggedInUser = m_LoginResult.LoggedInUser;
 
-            //buttonLogin.Text = $"Logged in as {m_LoginResult.LoggedInUser.Name}";
-            buttonLogin.Text = "Logged in";
-            if (!string.IsNullOrEmpty(m_LoginResult.AccessToken))
+            //    fetchUserInfo();
+            //}
+            //else
+            //{
+            //    MessageBox.Show(m_LoginResult.ErrorMessage, "Login Failed");
+            //}
+
+            //defineCheckBoxAsVisible();
+        }
+
+        protected override void OnShown(EventArgs e)
+        {
+            base.OnShown(e);
+
+            if (r_AppSettings.RememberUser && !string.IsNullOrEmpty(r_AppSettings.LastAccessToken))
             {
-                LoggedInUser = m_LoginResult.LoggedInUser;
+                //m_LoginResult = FacebookService.Connect(r_AppSettings.LastAccessToken);
+                //fetchLoggedInUser();
+                //buttonLogin.Text = "Logged In";
 
-                fetchUserInfo();
+
+
+                //buttonLogin.Text = $"Logged in as {m_LoginResult.LoggedInUser.Name}";
+                buttonLogin.Text = "Logged in";
+               // if (!string.IsNullOrEmpty(m_LoginResult.AccessToken))
+                //{
+                   //LoggedInUser = m_LoginResult.LoggedInUser;
+                    m_LoginResult = FacebookService.Connect(r_AppSettings.LastAccessToken);
+                    fetchUserInfo();
+                //}
+                //else
+                //{
+                  //  MessageBox.Show(m_LoginResult.ErrorMessage, "Login Failed");
+                //}
+
+                defineCheckBoxAsVisible();
             }
-            else
+        }
+
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            base.OnFormClosing(e);
+            r_AppSettings.LastWindowSize = this.Size;
+            r_AppSettings.LastWindowLocation = this.Location;
+            r_AppSettings.RememberUser = this.checkBoxRememberMe.Checked;
+            if (r_AppSettings.RememberUser)
             {
-                MessageBox.Show(m_LoginResult.ErrorMessage, "Login Failed");
+                r_AppSettings.LastAccessToken = m_LoginResult.AccessToken;
             }
 
-            defineCheckBoxAsVisible();
+            r_AppSettings.SaveToFile();
         }
 
         private void defineCheckBoxAsVisible()

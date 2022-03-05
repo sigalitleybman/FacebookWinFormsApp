@@ -155,7 +155,7 @@ namespace BasicFacebookFeatures
                 chosenAnswer = radioButtonThirdAnswer.Text;
             }
 
-            isCorrectAnswer = ApplicationManager.CheckIfAnswerIsCorrect(currentQuestion, chosenAnswer);
+        //  isCorrectAnswer = ApplicationManager.CheckIfAnswerIsCorrect(currentQuestion, chosenAnswer);
             pictureBoxNextQuestion.Enabled = true;
         }
     }
