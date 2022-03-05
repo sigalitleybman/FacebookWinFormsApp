@@ -37,13 +37,25 @@ namespace ApplicationLogic
             return null;
         }
 
-        //public bool CheckIfAnswerIsCorrect(eKeyQuestions currentQuestion, string chosenAnswer)
-        //{
+        public bool CheckIfAnswerIsCorrect(eKeyQuestions currentQuestion, string chosenAnswer)
+        {
+            return m_TriviaManager.checkIfAnswerIsCorrect(currentQuestion, chosenAnswer);
+        }
 
-        //}
+        public void updateResults(bool i_IsCorrectAnswer)
+        {
+            m_TriviaManager.updateResults(i_IsCorrectAnswer);
+        }
 
+        public int GetCorrectResults()
+        {
+            return m_TriviaManager.getCorrectResults();
+        }
 
-
+        public int GetWrongResults()
+        {
+            return m_TriviaManager.getWrongResults();
+        }
         //public Dictionary<string, string> InitTrivia(User i_ChosenFriend)
         //{
 

@@ -136,9 +136,11 @@ namespace BasicFacebookFeatures
             radioButtonThirdAnswer.Text = answersToSpecificQuestion[2];
         }
 
-        private void CheckIfTheAnswerIsCorrect(object sender, EventArgs e)
+        private void CheckIfTheAnswerIsCorrect(object sender, EventArgs e) 
         {
-            string currentQuestion = labelDescriptionQuestion.Text;
+            //TODO: check how convert the string(Age) to his name type in enum
+            //eKeyQuestions currentQuestion =  Enum.Parse(eKeyQuestions, m_currentQuestion);
+            eKeyQuestions currentQuestion = (eKeyQuestions)(m_IndexOfQuestions - 1);
             string chosenAnswer = null;
             bool isCorrectAnswer;
 
@@ -155,8 +157,26 @@ namespace BasicFacebookFeatures
                 chosenAnswer = radioButtonThirdAnswer.Text;
             }
 
-        //  isCorrectAnswer = ApplicationManager.CheckIfAnswerIsCorrect(currentQuestion, chosenAnswer);
+            isCorrectAnswer = ApplicationManager.CheckIfAnswerIsCorrect(currentQuestion, chosenAnswer);
+
+            updateResults(isCorrectAnswer);
             pictureBoxNextQuestion.Enabled = true;
+            checkIfItsTheLastQuestion(currentQuestion);
+        }
+
+        private void updateResults(bool i_IsCorrectAnswer)
+        {
+            ApplicationManager.updateResults(i_IsCorrectAnswer);
+        }
+
+        private void checkIfItsTheLastQuestion(eKeyQuestions i_CurrentQuestion)
+        {
+            if ((int) i_CurrentQuestion == 2)
+            {
+                labelFeedback.Text =
+                    $"You succeeded in {ApplicationManager.GetCorrectResults()} questions" +
+                    $" and failed in {ApplicationManager.GetWrongResults()} questions";
+            }
         }
     }
 }

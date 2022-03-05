@@ -72,6 +72,7 @@ namespace BasicFacebookFeatures
             InitializeComponent();
             FacebookWrapper.FacebookService.s_CollectionLimit = 100;
             r_AppSettings = AppSettings.LoadFromFile();
+            //r_AppSettings = new AppSettings();
             fetchFormSettings();
         }
 
@@ -104,12 +105,14 @@ namespace BasicFacebookFeatures
                     "user_posts",
                     "user_videos"
             );
+            
+
             ////buttonLogin.Text = $"Logged in as {m_LoginResult.LoggedInUser.Name}";
             //buttonLogin.Text = "Logged in";
             //if (!string.IsNullOrEmpty(m_LoginResult.AccessToken))
             //{
-            //    LoggedInUser = m_LoginResult.LoggedInUser;
-
+                LoggedInUser = m_LoginResult.LoggedInUser;
+                fetchUserInfo();
             //    fetchUserInfo();
             //}
             //else
@@ -136,9 +139,10 @@ namespace BasicFacebookFeatures
                 buttonLogin.Text = "Logged in";
                // if (!string.IsNullOrEmpty(m_LoginResult.AccessToken))
                 //{
-                   //LoggedInUser = m_LoginResult.LoggedInUser;
-                    m_LoginResult = FacebookService.Connect(r_AppSettings.LastAccessToken);
-                    fetchUserInfo();
+                   
+                  m_LoginResult = FacebookService.Connect(r_AppSettings.LastAccessToken);
+                  LoggedInUser = m_LoginResult.LoggedInUser;
+                fetchUserInfo();
                 //}
                 //else
                 //{
@@ -183,6 +187,14 @@ namespace BasicFacebookFeatures
             pictureBoxProfile.LoadAsync(LoggedInUser.PictureNormalURL);
             labelProfileName.Visible = true;
             labelProfileName.Text = LoggedInUser.Name;
+            if (r_AppSettings.RememberUser)
+            {
+                checkBoxRememberMe.Checked = true;
+            }
+            else
+            {
+                checkBoxRememberMe.Checked = false;
+            }
         }
 
         private void checkBoxFriends_CheckedChanged(object sender, EventArgs e)

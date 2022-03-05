@@ -12,6 +12,8 @@ namespace ApplicationLogic
         private readonly Dictionary<string, string> r_TriviaQuestionsAndAnswers;
         private readonly List<string> m_ListOfQuestions;
         private DateTime m_BirthDateOfTheFriend;
+        private int m_CorrectAnswers = 0;
+        private int m_WrongAnswers = 0;
 
         internal User ChosenFriend { get; set; }
        // internal User LoggedInUser { get; set; }
@@ -168,6 +170,40 @@ namespace ApplicationLogic
         //    Age,
         //    BirthMonth
         //}
+        internal bool checkIfAnswerIsCorrect(eKeyQuestions eCurrentQuestion, string chosenAnswer)
+        {
+            bool isCorrectAnswer = false;
+            string indexOfQuestion = m_ListOfQuestions[(int)eCurrentQuestion];
+
+            if (r_TriviaQuestionsAndAnswers[indexOfQuestion] == chosenAnswer)
+            {
+                isCorrectAnswer = true;
+            }
+
+            return isCorrectAnswer;
+        }
+
+        internal void updateResults(bool i_IsCorrectAnswer)
+        {
+            if (i_IsCorrectAnswer)
+            {
+                m_CorrectAnswers++;
+            }
+            else
+            {
+                m_WrongAnswers++;
+            }
+        }
+
+        internal int getCorrectResults()
+        {
+            return m_CorrectAnswers;
+        }
+
+        internal int getWrongResults()
+        {
+            return m_WrongAnswers;
+        }
 
         private enum eCitiesAnswers
         {
