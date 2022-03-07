@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using FacebookWrapper.ObjectModel;
+//using ApplicationLogic.FictionUsers;
 
 namespace ApplicationLogic
 {
@@ -14,8 +15,9 @@ namespace ApplicationLogic
         private DateTime m_BirthDateOfTheFriend;
         private int m_CorrectAnswers = 0;
         private int m_WrongAnswers = 0;
+        private readonly List<FictionUsers> m_ListOfFictionUsers;
 
-        internal User ChosenFriend { get; set; }
+        internal FictionUsers ChosenFriend { get; set; }
        // internal User LoggedInUser { get; set; }
         
         public TriviaManager()
@@ -23,20 +25,51 @@ namespace ApplicationLogic
             //ChosenFriend = i_ChosenFriend;
             m_ListOfQuestions = new List<string>();
             r_TriviaQuestionsAndAnswers = new Dictionary<string, string>();
-            m_BirthDateOfTheFriend = Convert.ToDateTime(ChosenFriend.Birthday);
+            // m_BirthDateOfTheFriend = Convert.ToDateTime(ChosenFriend.Birthday);
+            m_ListOfFictionUsers = new List<FictionUsers>();
+            initializeListOfFictionFriends();
         }
 
-        private void initializeQuestions(User m_ChosenFriend)
+        private void initializeListOfFictionFriends()
+        {
+            FictionUsers friend1 = new FictionUsers("25", "Holon", "Haim Levi", "January");
+            FictionUsers friend2 = new FictionUsers("20", "Ramle", "Dor Cohen", "August");
+            FictionUsers friend3 = new FictionUsers("22", "Karmiel", "Dana Ron", "September");
+
+            m_ListOfFictionUsers.Add(friend1);
+            m_ListOfFictionUsers.Add(friend2);
+            m_ListOfFictionUsers.Add(friend3);
+        }
+
+        public List<FictionUsers> GetListOfFictionUsers()
+        {
+            return m_ListOfFictionUsers;
+        }
+
+        public void initializeChosenFriend(FictionUsers i_ChosenFriend)
+        {
+            ChosenFriend = i_ChosenFriend;
+           // updateTheBirthDateOfTheChosenFriend();
+        }
+
+        private void updateTheBirthDateOfTheChosenFriend()
+        {
+            //m_BirthDateOfTheFriend = Convert.ToDateTime(ChosenFriend.Birthday);
+        }
+        internal void initializeQuestions(FictionUsers m_ChosenFriend)
         {
             m_ListOfQuestions.Add($"In which city {m_ChosenFriend.Name} lives?");
             m_ListOfQuestions.Add($"How old {m_ChosenFriend.Name} is?");
             m_ListOfQuestions.Add($"What is {m_ChosenFriend.Name}'s birthday month?");
         }
 
-        private void initializeDictionaryOfQuestionsAndAnswers()
+        internal void initializeDictionaryOfQuestionsAndAnswers()
         {
             //int[] values = Enum.GetValues(typeof(eKeyQuestions));
-            
+            if (r_TriviaQuestionsAndAnswers != null)
+            {
+                r_TriviaQuestionsAndAnswers.Clear();
+            }
             foreach (eKeyQuestions keyQuestion in Enum.GetValues(typeof(eKeyQuestions)))
             {
                 r_TriviaQuestionsAndAnswers.Add(m_ListOfQuestions[(int)keyQuestion], GetSpecificAnswer(keyQuestion));
@@ -50,26 +83,30 @@ namespace ApplicationLogic
             switch (i_KeyQuestion)
             {
                 case eKeyQuestions.City:
-                    specificAnswer = ChosenFriend.Location.Location.City;
+                   // specificAnswer = ChosenFriend.Location.Location.City;
+                   specificAnswer = ChosenFriend.City;
                     break;
                 case eKeyQuestions.Age:
-                    specificAnswer = calculateTheAgeOfTheFriend();
+                    //specificAnswer = calculateTheAgeOfTheFriend();
+                    specificAnswer = ChosenFriend.Age;
                     break;
                 case eKeyQuestions.BirthMonth:
-                    specificAnswer = m_BirthDateOfTheFriend.Month.ToString();
+                    //specificAnswer = m_BirthDateOfTheFriend.Month.ToString();
+                    specificAnswer = ChosenFriend.BirthMonth;
                     break;
             }
 
             return specificAnswer;
         }
 
-        private string calculateTheAgeOfTheFriend()
-        {
-            var todayTime = DateTime.Today;
-            int currentFriendAge = todayTime.Year - m_BirthDateOfTheFriend.Year - 1;
+        //private string calculateTheAgeOfTheFriend()
+        //{
+        //    var todayTime = DateTime.Today;
+        //    int currentFriendAge = todayTime.Year - m_BirthDateOfTheFriend.Year - 1;
 
-            return currentFriendAge.ToString();
-        }
+        //    return currentFriendAge.ToString();
+           
+        //}
 
         internal List<string> GetListOfQuestions ()
         {
@@ -80,13 +117,15 @@ namespace ApplicationLogic
         {
            // TODO: check about negetive age 
 
-            string friendAge = calculateTheAgeOfTheFriend();
+            //string friendAge = calculateTheAgeOfTheFriend();
+            string friendAge = ChosenFriend.Age;
             List<string> listOfOptionalAgesAnswers = new List<string>();
             Random random = new Random();
             string firstAgeOptional;
             string secondAgeOptional; 
             int minAgeOptional = Int32.Parse(friendAge) - 5;
             int maxAgeOptional = Int32.Parse(friendAge) + 5;
+            
 
             while (true)
             {
@@ -113,13 +152,17 @@ namespace ApplicationLogic
             List<string> listOfOptionalCitiesAnswers = new List<string>();
             string correctAnswer = GetSpecificAnswer(eKeyQuestions.City);
             Random random = new Random();
+            int randomForFirstCityOptional;
+            int randomForSecondCityOptional;
             string firstCityOptional;
             string secondCityOptional;
 
             while (true)
             {
-                firstCityOptional = random.Next(Enum.GetNames(typeof(eCitiesAnswers)).Length).ToString();
-                secondCityOptional = random.Next(Enum.GetNames(typeof(eCitiesAnswers)).Length).ToString();
+                randomForFirstCityOptional = random.Next(Enum.GetNames(typeof(eCitiesAnswers)).Length);
+                randomForSecondCityOptional = random.Next(Enum.GetNames(typeof(eCitiesAnswers)).Length);
+                firstCityOptional = ((eCitiesAnswers)randomForFirstCityOptional).ToString();
+                secondCityOptional = ((eCitiesAnswers)randomForSecondCityOptional).ToString();
 
                 if(!firstCityOptional.Equals(secondCityOptional) &&
                    !firstCityOptional.Equals(correctAnswer) &&
@@ -141,13 +184,17 @@ namespace ApplicationLogic
             List<string> listOfOptionalMonthsAnswers = new List<string>();
             string correctAnswer = GetSpecificAnswer(eKeyQuestions.BirthMonth);
             Random random = new Random();
+            int randomForFirstMonthOptional;
+            int randomForSecondMonthOptional;
             string firstMonthOptional;
             string secondMonthOptional;
 
             while (true)
             {
-                firstMonthOptional = random.Next(Enum.GetNames(typeof(eMonthAnswers)).Length).ToString();
-                secondMonthOptional = random.Next(Enum.GetNames(typeof(eMonthAnswers)).Length).ToString();
+                randomForFirstMonthOptional = random.Next(Enum.GetNames(typeof(eMonthAnswers)).Length);
+                randomForSecondMonthOptional = random.Next(Enum.GetNames(typeof(eMonthAnswers)).Length);
+                firstMonthOptional = ((eMonthAnswers)randomForFirstMonthOptional).ToString();
+                secondMonthOptional = ((eMonthAnswers)randomForSecondMonthOptional).ToString();
 
                 if (!firstMonthOptional.Equals(secondMonthOptional) &&
                     !firstMonthOptional.Equals(correctAnswer) &&
@@ -183,8 +230,14 @@ namespace ApplicationLogic
             return isCorrectAnswer;
         }
 
-        internal void updateResults(bool i_IsCorrectAnswer)
+        internal void updateResults(int i_IndexOfQuestion, bool i_IsCorrectAnswer)
         {
+            if (i_IndexOfQuestion == 0)
+            {
+                m_CorrectAnswers = 0;
+                m_WrongAnswers = 0;
+            }
+
             if (i_IsCorrectAnswer)
             {
                 m_CorrectAnswers++;

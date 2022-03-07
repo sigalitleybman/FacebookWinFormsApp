@@ -120,7 +120,7 @@ namespace BasicFacebookFeatures
             //    MessageBox.Show(m_LoginResult.ErrorMessage, "Login Failed");
             //}
 
-            //defineCheckBoxAsVisible();
+            defineCheckBoxAsVisible();
         }
 
         protected override void OnShown(EventArgs e)

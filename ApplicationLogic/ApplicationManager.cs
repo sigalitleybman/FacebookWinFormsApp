@@ -17,6 +17,11 @@ namespace ApplicationLogic
             m_TriviaManager = new TriviaManager();
         }
 
+        public void initializeQuestions(FictionUsers i_ChosenFriend)
+        {
+            m_TriviaManager.initializeQuestions(i_ChosenFriend);
+        }
+
         public List<string> GetListOfQuestions()
         {
             return m_TriviaManager.GetListOfQuestions();
@@ -42,9 +47,9 @@ namespace ApplicationLogic
             return m_TriviaManager.checkIfAnswerIsCorrect(currentQuestion, chosenAnswer);
         }
 
-        public void updateResults(bool i_IsCorrectAnswer)
+        public void updateResults(int i_IndexOfQuestion, bool i_IsCorrectAnswer)
         {
-            m_TriviaManager.updateResults(i_IsCorrectAnswer);
+            m_TriviaManager.updateResults(i_IndexOfQuestion, i_IsCorrectAnswer);
         }
 
         public int GetCorrectResults()
@@ -56,6 +61,25 @@ namespace ApplicationLogic
         {
             return m_TriviaManager.getWrongResults();
         }
+
+        public void initializeChosenFriend(FictionUsers i_ChosenFriend)
+        {
+            m_TriviaManager.initializeChosenFriend(i_ChosenFriend);
+        }
+
+        public List<FictionUsers> GetListOfFictionUsers()
+        {
+            return m_TriviaManager.GetListOfFictionUsers();
+        }
+
+        public void initializeDictionaryOfQuestionsAndAnswers()
+        {
+            m_TriviaManager.initializeDictionaryOfQuestionsAndAnswers();
+        }
+
+
+
+
         //public Dictionary<string, string> InitTrivia(User i_ChosenFriend)
         //{
 

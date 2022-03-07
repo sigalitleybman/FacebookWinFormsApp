@@ -41,6 +41,7 @@
     <Compile Include="ApplicationManager.cs" />
     <Compile Include="AppSettings.cs" />
     <Compile Include="eKeyQuestions.cs" />
+    <Compile Include="FictionUsers.cs" />
     <Compile Include="TriviaManager.cs" />
   </ItemGroup>
   <ItemGroup>

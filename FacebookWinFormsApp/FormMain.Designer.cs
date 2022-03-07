@@ -99,6 +99,7 @@
             this.labelProfileName.Size = new System.Drawing.Size(73, 29);
             this.labelProfileName.TabIndex = 54;
             this.labelProfileName.Text = "label1";
+            this.labelProfileName.Visible = false;
             // 
             // labelFriends
             // 
@@ -246,11 +247,13 @@
             // checkBoxRememberMe
             // 
             this.checkBoxRememberMe.AutoSize = true;
-            this.checkBoxRememberMe.Location = new System.Drawing.Point(336, 78);
+            this.checkBoxRememberMe.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.checkBoxRememberMe.ForeColor = System.Drawing.Color.Red;
+            this.checkBoxRememberMe.Location = new System.Drawing.Point(336, 60);
             this.checkBoxRememberMe.Name = "checkBoxRememberMe";
-            this.checkBoxRememberMe.Size = new System.Drawing.Size(113, 24);
+            this.checkBoxRememberMe.Size = new System.Drawing.Size(177, 29);
             this.checkBoxRememberMe.TabIndex = 68;
-            this.checkBoxRememberMe.Text = "checkBox1";
+            this.checkBoxRememberMe.Text = "Remember Me";
             this.checkBoxRememberMe.UseVisualStyleBackColor = true;
             // 
             // FormMain
