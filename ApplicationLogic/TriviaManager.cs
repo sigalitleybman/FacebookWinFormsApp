@@ -7,7 +7,6 @@ using FacebookWrapper.ObjectModel;
 
 namespace ApplicationLogic
 {
-    //check git !!!
     internal class TriviaManager
     {
         private readonly Dictionary<string, string> r_TriviaQuestionsAndAnswers;

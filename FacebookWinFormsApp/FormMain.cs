@@ -74,6 +74,7 @@ namespace BasicFacebookFeatures
             r_AppSettings = AppSettings.LoadFromFile();
             //r_AppSettings = new AppSettings();
             fetchFormSettings();
+            ApplicationManager = new ApplicationManager() { LoggedInUser = LoggedInUser };
         }
 
         private void fetchFormSettings()
@@ -363,10 +364,16 @@ namespace BasicFacebookFeatures
 
         private void buttonTrivia_Click(object sender, EventArgs e)
         {
-            ApplicationManager = new ApplicationManager(){LoggedInUser = LoggedInUser};
             this.Hide();
             TriviaFriendsForm triviaFriendsForm = new TriviaFriendsForm(this);
             triviaFriendsForm.ShowDialog();
+        }
+
+        private void buttonFindYourMatch_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            FindYourMatchForm findYourMatchForm = new FindYourMatchForm(this);
+            findYourMatchForm.ShowDialog();
         }
     }
 }

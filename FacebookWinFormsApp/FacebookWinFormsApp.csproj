@@ -92,6 +92,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FindYourMatchForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FindYourMatchForm.Designer.cs">
+      <DependentUpon>FindYourMatchForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -106,6 +112,9 @@
     <Compile Include="TriviaFriendsForm.Designer.cs">
       <DependentUpon>TriviaFriendsForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="FindYourMatchForm.resx">
+      <DependentUpon>FindYourMatchForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
