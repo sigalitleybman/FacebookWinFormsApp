@@ -62,6 +62,7 @@ namespace BasicFacebookFeatures
     {
         private readonly AppSettings r_AppSettings;
         private FacebookWrapper.LoginResult m_LoginResult;
+        private readonly List<FictionUsers> r_ListOfFictionUsers;
         internal User LoggedInUser { get; set; }
         //private static ApplicationManager m_ApplicationManager;
        // private LoginResult m_LoginResult;
@@ -75,6 +76,7 @@ namespace BasicFacebookFeatures
             //r_AppSettings = new AppSettings();
             fetchFormSettings();
             ApplicationManager = new ApplicationManager() { LoggedInUser = LoggedInUser };
+            r_ListOfFictionUsers = ApplicationManager.GetListOfFictionUsers();
         }
 
         private void fetchFormSettings()
@@ -226,20 +228,28 @@ namespace BasicFacebookFeatures
 
         private void showFriends()
         {
-
-            listBoxFriends.Items.Clear();
-            listBoxFriends.DisplayMember = "Name";
-            FacebookObjectCollection<User> userFriends = LoggedInUser.Friends;
-            foreach (User friend in userFriends)
+            foreach (var user in r_ListOfFictionUsers)
             {
-                listBoxFriends.Items.Add(friend);
-                //friend.ReFetch(DynamicWrapper.eLoadOptions.Full);
+                listBoxFriend.Items.Add(user.Name);
             }
 
-            if (listBoxFriends.Items.Count == 0)
-            {
-                MessageBox.Show("No Friends to retrieve :(");
-            }
+
+            /**
+             * In case we can access user's friend via fecebook
+             */
+            //listBoxFriends.Items.Clear();
+            //listBoxFriends.DisplayMember = "Name";
+            //FacebookObjectCollection<User> userFriends = LoggedInUser.Friends;
+            //foreach (User friend in userFriends)
+            //{
+            //    listBoxFriends.Items.Add(friend);
+            //    //friend.ReFetch(DynamicWrapper.eLoadOptions.Full);
+            //}
+
+            //if (listBoxFriends.Items.Count == 0)
+            //{
+            //    MessageBox.Show("No Friends to retrieve :(");
+            //}
         }
         private void listBoxFriends_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -367,6 +377,7 @@ namespace BasicFacebookFeatures
             this.Hide();
             TriviaFriendsForm triviaFriendsForm = new TriviaFriendsForm(this);
             triviaFriendsForm.ShowDialog();
+            this.Show();
         }
 
         private void buttonFindYourMatch_Click(object sender, EventArgs e)
@@ -374,6 +385,7 @@ namespace BasicFacebookFeatures
             this.Hide();
             FindYourMatchForm findYourMatchForm = new FindYourMatchForm(this);
             findYourMatchForm.ShowDialog();
+            this.Show();
         }
     }
 }

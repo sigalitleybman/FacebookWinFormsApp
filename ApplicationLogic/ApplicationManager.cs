@@ -10,18 +10,16 @@ namespace ApplicationLogic
         public User LoggedInUser { get; set; }
         private TriviaManager m_TriviaManager;
         private FindYourMatchManager m_FindYourMatchManager;
-        //private List<string> m_ListOfQuestions;
-
+        
         public ApplicationManager() 
         {
-            //m_LoggedInUser = i_LoggedInUser;
             m_TriviaManager = new TriviaManager();
             m_FindYourMatchManager = new FindYourMatchManager();
         }
 
         public void initializeQuestions(FictionUsers i_ChosenFriend)
         {
-            m_TriviaManager.initializeQuestions(i_ChosenFriend);
+             m_TriviaManager.initializeQuestions(i_ChosenFriend);
         }
 
         public List<string> GetListOfQuestions()
@@ -44,6 +42,10 @@ namespace ApplicationLogic
             return null;
         }
 
+        public void resetWrongAndCorrectAnswers()
+        {
+            m_TriviaManager.resetWrongAndCorrectAnswers();
+        }
         public bool CheckIfAnswerIsCorrect(eKeyQuestions currentQuestion, string chosenAnswer)
         {
             return m_TriviaManager.checkIfAnswerIsCorrect(currentQuestion, chosenAnswer);
@@ -79,9 +81,9 @@ namespace ApplicationLogic
             m_TriviaManager.initializeDictionaryOfQuestionsAndAnswers();
         }
 
-        public bool checkIfThereIsMatch(string i_Gender, string i_Age, string i_Area)
+        public bool checkIfThereIsMatch(string i_Gender, string i_Age, string i_City)
         {
-            return m_FindYourMatchManager.checkIfThereIsMatch(i_Gender, i_Age, i_Area);
+            return m_FindYourMatchManager.checkIfThereIsMatch(i_Gender, i_Age, i_City);
         }
 
         public FictionUsers GetPotentionalMatch()
@@ -89,19 +91,20 @@ namespace ApplicationLogic
             return m_FindYourMatchManager.GetPotentionalMatch();
         }
 
-        //public Dictionary<string, string> InitTrivia(User i_ChosenFriend)
+        /**
+         * In case we can access the user's friends via facebook
+         */
+        //public User GetPotentionalMatchUser()
         //{
-
-        //    m_TriviaManager = new TriviaManager(){ChosenFriend = i_ChosenFriend};
-        //    return m_TriviaManager.InitTriviaQuestionsAndAnswers();
+        //    return m_FindYourMatchManager.GetPotentionalMatchUser();
         //}
 
-
-
-
-        /*        public void ManagerTheQuestions(int i_IndexOfQuestions)
-                {
-                    m_TriviaManager.ManagerTheQuestions(i_IndexOfQuestions);
-                }*/
+        /**
+        * In case we can access the user's friends via facebook
+        */
+        //public int getUserAge()
+        //{
+        //    return m_FindYourMatchManager.calculateTheAgeOfTheUser();
+        //}
     }
 }

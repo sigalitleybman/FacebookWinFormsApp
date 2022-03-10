@@ -34,10 +34,13 @@
             this.labelGender = new System.Windows.Forms.Label();
             this.labelPreferences = new System.Windows.Forms.Label();
             this.labelAge = new System.Windows.Forms.Label();
-            this.labelArea = new System.Windows.Forms.Label();
             this.checkedListBoxGender = new System.Windows.Forms.CheckedListBox();
             this.checkedListBoxAge = new System.Windows.Forms.CheckedListBox();
-            this.checkedListBoxArea = new System.Windows.Forms.CheckedListBox();
+            this.buttonBack = new System.Windows.Forms.Button();
+            this.labelInstructionsFirstSection = new System.Windows.Forms.Label();
+            this.labelCity = new System.Windows.Forms.Label();
+            this.labelInstructionsSecondSection = new System.Windows.Forms.Label();
+            this.textBoxCity = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // labelTitle
@@ -47,7 +50,7 @@
             this.labelTitle.ForeColor = System.Drawing.Color.Teal;
             this.labelTitle.Location = new System.Drawing.Point(256, 19);
             this.labelTitle.Name = "labelTitle";
-            this.labelTitle.Size = new System.Drawing.Size(260, 32);
+            this.labelTitle.Size = new System.Drawing.Size(301, 40);
             this.labelTitle.TabIndex = 0;
             this.labelTitle.Text = "Find Your Match";
             // 
@@ -70,7 +73,7 @@
             this.labelGender.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelGender.Location = new System.Drawing.Point(73, 164);
             this.labelGender.Name = "labelGender";
-            this.labelGender.Size = new System.Drawing.Size(83, 25);
+            this.labelGender.Size = new System.Drawing.Size(100, 29);
             this.labelGender.TabIndex = 13;
             this.labelGender.Text = "Gender";
             // 
@@ -80,7 +83,7 @@
             this.labelPreferences.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelPreferences.Location = new System.Drawing.Point(238, 81);
             this.labelPreferences.Name = "labelPreferences";
-            this.labelPreferences.Size = new System.Drawing.Size(288, 25);
+            this.labelPreferences.Size = new System.Drawing.Size(342, 29);
             this.labelPreferences.TabIndex = 14;
             this.labelPreferences.Text = "What Are Your Preferences?";
             // 
@@ -90,19 +93,9 @@
             this.labelAge.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelAge.Location = new System.Drawing.Point(376, 164);
             this.labelAge.Name = "labelAge";
-            this.labelAge.Size = new System.Drawing.Size(51, 25);
+            this.labelAge.Size = new System.Drawing.Size(59, 29);
             this.labelAge.TabIndex = 15;
             this.labelAge.Text = "Age";
-            // 
-            // labelArea
-            // 
-            this.labelArea.AutoSize = true;
-            this.labelArea.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelArea.Location = new System.Drawing.Point(675, 164);
-            this.labelArea.Name = "labelArea";
-            this.labelArea.Size = new System.Drawing.Size(58, 25);
-            this.labelArea.TabIndex = 16;
-            this.labelArea.Text = "Area";
             // 
             // checkedListBoxGender
             // 
@@ -112,7 +105,7 @@
             "Male"});
             this.checkedListBoxGender.Location = new System.Drawing.Point(66, 202);
             this.checkedListBoxGender.Name = "checkedListBoxGender";
-            this.checkedListBoxGender.Size = new System.Drawing.Size(120, 55);
+            this.checkedListBoxGender.Size = new System.Drawing.Size(120, 50);
             this.checkedListBoxGender.TabIndex = 25;
             this.checkedListBoxGender.SelectedIndexChanged += new System.EventHandler(this.checkedListBoxGender_SelectedIndexChanged);
             // 
@@ -125,22 +118,59 @@
             "40 - 49"});
             this.checkedListBoxAge.Location = new System.Drawing.Point(345, 202);
             this.checkedListBoxAge.Name = "checkedListBoxAge";
-            this.checkedListBoxAge.Size = new System.Drawing.Size(120, 72);
+            this.checkedListBoxAge.Size = new System.Drawing.Size(120, 50);
             this.checkedListBoxAge.TabIndex = 26;
             this.checkedListBoxAge.SelectedIndexChanged += new System.EventHandler(this.checkedListBoxAge_SelectedIndexChanged_1);
             // 
-            // checkedListBoxArea
+            // buttonBack
             // 
-            this.checkedListBoxArea.FormattingEnabled = true;
-            this.checkedListBoxArea.Items.AddRange(new object[] {
-            "North",
-            "Center",
-            "South"});
-            this.checkedListBoxArea.Location = new System.Drawing.Point(640, 202);
-            this.checkedListBoxArea.Name = "checkedListBoxArea";
-            this.checkedListBoxArea.Size = new System.Drawing.Size(120, 72);
-            this.checkedListBoxArea.TabIndex = 27;
-            this.checkedListBoxArea.SelectedIndexChanged += new System.EventHandler(this.checkedListBoxArea_SelectedIndexChanged_1);
+            this.buttonBack.BackColor = System.Drawing.Color.Crimson;
+            this.buttonBack.Font = new System.Drawing.Font("Aharoni", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.buttonBack.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.buttonBack.Location = new System.Drawing.Point(733, 12);
+            this.buttonBack.Name = "buttonBack";
+            this.buttonBack.Size = new System.Drawing.Size(75, 50);
+            this.buttonBack.TabIndex = 28;
+            this.buttonBack.Text = "Back";
+            this.buttonBack.UseVisualStyleBackColor = false;
+            this.buttonBack.Click += new System.EventHandler(this.buttonBack_Click);
+            // 
+            // labelInstructionsFirstSection
+            // 
+            this.labelInstructionsFirstSection.AutoSize = true;
+            this.labelInstructionsFirstSection.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.labelInstructionsFirstSection.Location = new System.Drawing.Point(527, 202);
+            this.labelInstructionsFirstSection.Name = "labelInstructionsFirstSection";
+            this.labelInstructionsFirstSection.Size = new System.Drawing.Size(250, 22);
+            this.labelInstructionsFirstSection.TabIndex = 30;
+            this.labelInstructionsFirstSection.Text = "Use only low-case characters ";
+            // 
+            // labelCity
+            // 
+            this.labelCity.AutoSize = true;
+            this.labelCity.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.labelCity.Location = new System.Drawing.Point(668, 164);
+            this.labelCity.Name = "labelCity";
+            this.labelCity.Size = new System.Drawing.Size(57, 29);
+            this.labelCity.TabIndex = 31;
+            this.labelCity.Text = "City";
+            // 
+            // labelInstructionsSecondSection
+            // 
+            this.labelInstructionsSecondSection.AutoSize = true;
+            this.labelInstructionsSecondSection.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.labelInstructionsSecondSection.Location = new System.Drawing.Point(495, 224);
+            this.labelInstructionsSecondSection.Name = "labelInstructionsSecondSection";
+            this.labelInstructionsSecondSection.Size = new System.Drawing.Size(322, 22);
+            this.labelInstructionsSecondSection.TabIndex = 32;
+            this.labelInstructionsSecondSection.Text = "and avoid spaces and charecters like: -";
+            // 
+            // textBoxCity
+            // 
+            this.textBoxCity.Location = new System.Drawing.Point(597, 261);
+            this.textBoxCity.Name = "textBoxCity";
+            this.textBoxCity.Size = new System.Drawing.Size(155, 26);
+            this.textBoxCity.TabIndex = 33;
             // 
             // FindYourMatchForm
             // 
@@ -148,10 +178,13 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(820, 464);
-            this.Controls.Add(this.checkedListBoxArea);
+            this.Controls.Add(this.textBoxCity);
+            this.Controls.Add(this.labelInstructionsSecondSection);
+            this.Controls.Add(this.labelCity);
+            this.Controls.Add(this.labelInstructionsFirstSection);
+            this.Controls.Add(this.buttonBack);
             this.Controls.Add(this.checkedListBoxAge);
             this.Controls.Add(this.checkedListBoxGender);
-            this.Controls.Add(this.labelArea);
             this.Controls.Add(this.labelAge);
             this.Controls.Add(this.labelPreferences);
             this.Controls.Add(this.labelGender);
@@ -171,9 +204,12 @@
         private System.Windows.Forms.Label labelGender;
         private System.Windows.Forms.Label labelPreferences;
         private System.Windows.Forms.Label labelAge;
-        private System.Windows.Forms.Label labelArea;
         private System.Windows.Forms.CheckedListBox checkedListBoxGender;
         private System.Windows.Forms.CheckedListBox checkedListBoxAge;
-        private System.Windows.Forms.CheckedListBox checkedListBoxArea;
+        private System.Windows.Forms.Button buttonBack;
+        private System.Windows.Forms.Label labelInstructionsFirstSection;
+        private System.Windows.Forms.Label labelCity;
+        private System.Windows.Forms.Label labelInstructionsSecondSection;
+        private System.Windows.Forms.TextBox textBoxCity;
     }
 }

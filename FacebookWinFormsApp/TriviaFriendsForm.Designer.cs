@@ -42,6 +42,11 @@ namespace BasicFacebookFeatures
             this.labelFeedback = new System.Windows.Forms.Label();
             this.listBoxFriend = new System.Windows.Forms.ListBox();
             this.checkBoxChangeFriend = new System.Windows.Forms.CheckBox();
+            this.buttonBack = new System.Windows.Forms.Button();
+            this.labelInstructions = new System.Windows.Forms.Label();
+            this.labelinstructionsDescriptionFirstSection = new System.Windows.Forms.Label();
+            this.labelinstructionsDescriptionSecondSection = new System.Windows.Forms.Label();
+            this.labelInstructionSecondDescription = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTriviaLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxNextQuestion)).BeginInit();
             this.SuspendLayout();
@@ -154,11 +159,10 @@ namespace BasicFacebookFeatures
             this.labelFeedback.AutoSize = true;
             this.labelFeedback.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(177)));
             this.labelFeedback.ForeColor = System.Drawing.Color.Red;
-            this.labelFeedback.Location = new System.Drawing.Point(755, 270);
+            this.labelFeedback.Location = new System.Drawing.Point(606, 267);
             this.labelFeedback.Name = "labelFeedback";
-            this.labelFeedback.Size = new System.Drawing.Size(70, 25);
+            this.labelFeedback.Size = new System.Drawing.Size(0, 25);
             this.labelFeedback.TabIndex = 12;
-            this.labelFeedback.Text = "label1";
             this.labelFeedback.Visible = false;
             // 
             // listBoxFriend
@@ -184,12 +188,71 @@ namespace BasicFacebookFeatures
             this.checkBoxChangeFriend.UseVisualStyleBackColor = true;
             this.checkBoxChangeFriend.CheckedChanged += new System.EventHandler(this.checkBoxChangeFriend_CheckedChanged);
             // 
+            // buttonBack
+            // 
+            this.buttonBack.BackColor = System.Drawing.Color.Indigo;
+            this.buttonBack.Font = new System.Drawing.Font("Aharoni", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.buttonBack.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.buttonBack.Location = new System.Drawing.Point(875, 12);
+            this.buttonBack.Name = "buttonBack";
+            this.buttonBack.Size = new System.Drawing.Size(119, 67);
+            this.buttonBack.TabIndex = 15;
+            this.buttonBack.Text = "Back";
+            this.buttonBack.UseVisualStyleBackColor = false;
+            this.buttonBack.Click += new System.EventHandler(this.buttonBack_Click);
+            // 
+            // labelInstructions
+            // 
+            this.labelInstructions.AutoSize = true;
+            this.labelInstructions.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelInstructions.ForeColor = System.Drawing.Color.GhostWhite;
+            this.labelInstructions.Location = new System.Drawing.Point(725, 82);
+            this.labelInstructions.Name = "labelInstructions";
+            this.labelInstructions.Size = new System.Drawing.Size(156, 28);
+            this.labelInstructions.TabIndex = 16;
+            this.labelInstructions.Text = "Instructions:";
+            // 
+            // labelinstructionsDescriptionFirstSection
+            // 
+            this.labelinstructionsDescriptionFirstSection.AutoSize = true;
+            this.labelinstructionsDescriptionFirstSection.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.labelinstructionsDescriptionFirstSection.ForeColor = System.Drawing.Color.Green;
+            this.labelinstructionsDescriptionFirstSection.Location = new System.Drawing.Point(524, 107);
+            this.labelinstructionsDescriptionFirstSection.Name = "labelinstructionsDescriptionFirstSection";
+            this.labelinstructionsDescriptionFirstSection.Size = new System.Drawing.Size(515, 25);
+            this.labelinstructionsDescriptionFirstSection.TabIndex = 17;
+            this.labelinstructionsDescriptionFirstSection.Text = "Choose a friend and click submit after each question";
+            // 
+            // labelinstructionsDescriptionSecondSection
+            // 
+            this.labelinstructionsDescriptionSecondSection.AutoSize = true;
+            this.labelinstructionsDescriptionSecondSection.Location = new System.Drawing.Point(725, 194);
+            this.labelinstructionsDescriptionSecondSection.Name = "labelinstructionsDescriptionSecondSection";
+            this.labelinstructionsDescriptionSecondSection.Size = new System.Drawing.Size(0, 20);
+            this.labelinstructionsDescriptionSecondSection.TabIndex = 18;
+            // 
+            // labelInstructionSecondDescription
+            // 
+            this.labelInstructionSecondDescription.AutoSize = true;
+            this.labelInstructionSecondDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.labelInstructionSecondDescription.ForeColor = System.Drawing.Color.Green;
+            this.labelInstructionSecondDescription.Location = new System.Drawing.Point(676, 132);
+            this.labelInstructionSecondDescription.Name = "labelInstructionSecondDescription";
+            this.labelInstructionSecondDescription.Size = new System.Drawing.Size(297, 25);
+            this.labelInstructionSecondDescription.TabIndex = 19;
+            this.labelInstructionSecondDescription.Text = "click next to the next question";
+            // 
             // TriviaFriendsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.GhostWhite;
+            this.BackColor = System.Drawing.Color.Thistle;
             this.ClientSize = new System.Drawing.Size(1034, 652);
+            this.Controls.Add(this.labelInstructionSecondDescription);
+            this.Controls.Add(this.labelinstructionsDescriptionSecondSection);
+            this.Controls.Add(this.labelinstructionsDescriptionFirstSection);
+            this.Controls.Add(this.labelInstructions);
+            this.Controls.Add(this.buttonBack);
             this.Controls.Add(this.checkBoxChangeFriend);
             this.Controls.Add(this.listBoxFriend);
             this.Controls.Add(this.labelFeedback);
@@ -226,5 +289,10 @@ namespace BasicFacebookFeatures
         private System.Windows.Forms.Label labelFeedback;
         private System.Windows.Forms.ListBox listBoxFriend;
         private System.Windows.Forms.CheckBox checkBoxChangeFriend;
+        private System.Windows.Forms.Button buttonBack;
+        private System.Windows.Forms.Label labelInstructions;
+        private System.Windows.Forms.Label labelinstructionsDescriptionFirstSection;
+        private System.Windows.Forms.Label labelinstructionsDescriptionSecondSection;
+        private System.Windows.Forms.Label labelInstructionSecondDescription;
     }
 }

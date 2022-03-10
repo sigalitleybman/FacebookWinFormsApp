@@ -11,20 +11,25 @@ namespace ApplicationLogic
     {
         private readonly Dictionary<string, string> r_TriviaQuestionsAndAnswers;
         private readonly List<string> m_ListOfQuestions;
-        private DateTime m_BirthDateOfTheFriend;
         private int m_CorrectAnswers = 0;
         private int m_WrongAnswers = 0;
         private readonly List<FictionUsers> m_ListOfFictionUsers;
-
         internal FictionUsers ChosenFriend { get; set; }
-       // internal User LoggedInUser { get; set; }
-        
+
+        /**
+         * In case we can access the user's friends via facebook
+         * //internal User ChosenFriend;
+         * //private DateTime m_BirthDateOfTheFriend;
+         */
+
+
+        // internal User LoggedInUser { get; set; }
+
         public TriviaManager()
         {
-            //ChosenFriend = i_ChosenFriend;
+            //LoggedInUser = i_LoggedInUser
             m_ListOfQuestions = new List<string>();
             r_TriviaQuestionsAndAnswers = new Dictionary<string, string>();
-            // m_BirthDateOfTheFriend = Convert.ToDateTime(ChosenFriend.Birthday);
             m_ListOfFictionUsers = new List<FictionUsers>();
             initializeListOfFictionFriends();
         }
@@ -48,15 +53,23 @@ namespace ApplicationLogic
         public void initializeChosenFriend(FictionUsers i_ChosenFriend)
         {
             ChosenFriend = i_ChosenFriend;
-           // updateTheBirthDateOfTheChosenFriend();
+            //updateTheBirthDateOfTheChosenFriend();
         }
 
-        private void updateTheBirthDateOfTheChosenFriend()
-        {
-            //m_BirthDateOfTheFriend = Convert.ToDateTime(ChosenFriend.Birthday);
-        }
+        /**
+         * In case we can access the user's friends via facebook
+         */
+        //private void updateTheBirthDateOfTheChosenFriend()
+        //{
+        //    m_BirthDateOfTheFriend = Convert.ToDateTime(ChosenFriend.Birthday);
+        //}
+
         internal void initializeQuestions(FictionUsers m_ChosenFriend)
         {
+            if (m_ListOfQuestions != null)
+            {
+                m_ListOfQuestions.Clear();
+            }
             m_ListOfQuestions.Add($"In which city {m_ChosenFriend.Name} lives?");
             m_ListOfQuestions.Add($"How old {m_ChosenFriend.Name} is?");
             m_ListOfQuestions.Add($"What is {m_ChosenFriend.Name}'s birthday month?");
@@ -64,7 +77,6 @@ namespace ApplicationLogic
 
         internal void initializeDictionaryOfQuestionsAndAnswers()
         {
-            //int[] values = Enum.GetValues(typeof(eKeyQuestions));
             if (r_TriviaQuestionsAndAnswers != null)
             {
                 r_TriviaQuestionsAndAnswers.Clear();
@@ -82,7 +94,7 @@ namespace ApplicationLogic
             switch (i_KeyQuestion)
             {
                 case eKeyQuestions.City:
-                   // specificAnswer = ChosenFriend.Location.Location.City;
+                    //specificAnswer = ChosenFriend.Location.Location.City;
                    specificAnswer = ChosenFriend.City;
                     break;
                 case eKeyQuestions.Age:
@@ -98,13 +110,20 @@ namespace ApplicationLogic
             return specificAnswer;
         }
 
+        internal void resetWrongAndCorrectAnswers()
+        {
+            m_WrongAnswers = 0;
+            m_CorrectAnswers = 0;
+        }
+
+        /**
+         * In case we can access the user's friends via facebook
+         */
         //private string calculateTheAgeOfTheFriend()
         //{
         //    var todayTime = DateTime.Today;
         //    int currentFriendAge = todayTime.Year - m_BirthDateOfTheFriend.Year - 1;
-
         //    return currentFriendAge.ToString();
-           
         //}
 
         internal List<string> GetListOfQuestions ()
@@ -114,9 +133,11 @@ namespace ApplicationLogic
 
         internal List<string> getListOfAgesAnswers()
         {
-           // TODO: check about negetive age 
+            /**
+             * In case we can access the user's friends via facebook
+             * //string friendAge = calculateTheAgeOfTheFriend();
+             */
 
-            //string friendAge = calculateTheAgeOfTheFriend();
             string friendAge = ChosenFriend.Age;
             List<string> listOfOptionalAgesAnswers = new List<string>();
             Random random = new Random();
@@ -125,7 +146,6 @@ namespace ApplicationLogic
             int minAgeOptional = Int32.Parse(friendAge) - 5;
             int maxAgeOptional = Int32.Parse(friendAge) + 5;
             
-
             while (true)
             {
                 firstAgeOptional = random.Next(minAgeOptional, maxAgeOptional).ToString();
@@ -210,12 +230,6 @@ namespace ApplicationLogic
             return listOfOptionalMonthsAnswers;
         }
 
-        //private enum eKeyQuestions
-        //{
-        //    City = 0,
-        //    Age,
-        //    BirthMonth
-        //}
         internal bool checkIfAnswerIsCorrect(eKeyQuestions eCurrentQuestion, string chosenAnswer)
         {
             bool isCorrectAnswer = false;
@@ -286,8 +300,5 @@ namespace ApplicationLogic
             November,
             December
         }
-
-        
-
     }
 }

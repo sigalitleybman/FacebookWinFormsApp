@@ -16,9 +16,11 @@ namespace BasicFacebookFeatures
     {
         private readonly User r_LoggedInUser;
         private FictionUsers m_PotentialMatch;
+        private User m_PotentionalMatchUser;
         private string m_Gender;
         private string m_Age;
         private string m_Area;
+        private string m_City;
         internal ApplicationManager ApplicationManager { get; set; }
 
 
@@ -31,35 +33,31 @@ namespace BasicFacebookFeatures
 
         private void buttonCheckAnswers_Click(object sender, EventArgs e)
         {
-            /*string gender;
-            string age;
-            string area;
-            bool isMatchExist;*/
-
-            if (checkedListBoxGender.CheckedItems.Count != 0 && checkedListBoxAge.CheckedItems.Count != 0
-                && checkedListBoxArea.CheckedItems.Count != 0)
+            if(checkedListBoxGender.CheckedItems.Count != 0 && checkedListBoxAge.CheckedItems.Count != 0 &&
+               !textBoxCity.Text.Equals(""))
             {
-                /*m_Gender = checkedListBoxGender.SelectedItem.ToString();
-                m_Age = checkedListBoxAge.SelectedItem.ToString();
-                m_Area = checkedListBoxArea.SelectedItem.ToString();*/
-
-                bool isMatchExist = ApplicationManager.checkIfThereIsMatch(m_Gender, m_Age, m_Area);
+                m_City = textBoxCity.Text.ToLower();
+                bool isMatchExist = ApplicationManager.checkIfThereIsMatch(m_Gender, m_Age, m_City);
+                
                 if (isMatchExist)
                 {
                     m_PotentialMatch = ApplicationManager.GetPotentionalMatch();
-                    /*MessageBox.Show("Your Potentional Match Is:" + System.Environment.NewLine + String.Format("Name: {0} Age: {1} Gender: {2} City: {3}",
-                        m_PotentialMatch.Name,
-                        System.Environment.NewLine,
-                        m_PotentialMatch.Age,
-                        System.Environment.NewLine,
-                        m_PotentialMatch.Gender,
-                        System.Environment.NewLine,
-                        m_PotentialMatch.City));*/
                     MessageBox.Show("Your Potentional Match Is:" + Environment.NewLine +
-                        $"Name: {m_PotentialMatch.Name}" + Environment.NewLine +
-                        $"Age: {m_PotentialMatch.Age}" + Environment.NewLine +
-                        $"Gender: {m_PotentialMatch.Gender}" + Environment.NewLine +
-                        $"City: {m_PotentialMatch.City}");
+                                    $"Name: {m_PotentialMatch.Name}" + Environment.NewLine +
+                                    $"Age: {m_PotentialMatch.Age}" + Environment.NewLine +
+                                    $"Gender: {m_PotentialMatch.Gender}" + Environment.NewLine +
+                                    $"City: {m_PotentialMatch.City}");
+
+                    /**
+                     * In case we can get the user's friends via facebook
+                     */
+                    //m_PotentionalMatchUser = ApplicationManager.GetPotentionalMatchUser();
+                    //int userAge = ApplicationManager.getUserAge();
+                    //MessageBox.Show("Your Potentional Match Is:" + Environment.NewLine +
+                    //                $"Name: {m_PotentionalMatchUser.Name}" + Environment.NewLine +
+                    //                $"Age: {userAge}" + Environment.NewLine +
+                    //                $"Gender: {m_PotentionalMatchUser.Gender}" + Environment.NewLine +
+                    //                $"City: {m_PotentionalMatchUser.Location}");
                 }
                 else
                 {
@@ -85,12 +83,6 @@ namespace BasicFacebookFeatures
             makeTheOtherCheckBoxOptionsEnabled(sender);
         }
 
-        private void checkedListBoxArea_SelectedIndexChanged_1(object sender, EventArgs e)
-        {
-            m_Area = (sender as CheckedListBox).SelectedItem.ToString();
-            makeTheOtherCheckBoxOptionsEnabled(sender);
-        }
-
         private void makeTheOtherCheckBoxOptionsEnabled(object i_Sender)
         {
             CheckedListBox currentCheckedListBox = i_Sender as CheckedListBox;
@@ -110,6 +102,15 @@ namespace BasicFacebookFeatures
             }
         }
 
+        private void buttonBack_Click(object sender, EventArgs e)
+        {
+            BackToMainForm(); 
+        }
+
+        private void BackToMainForm()
+        {
+            this.Close();
+        }
     }
 }
 
