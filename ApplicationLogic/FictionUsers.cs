@@ -29,5 +29,10 @@ namespace ApplicationLogic
             Age = i_Age;
             City = i_City;
         }
+        
+        public FictionUsers(string i_Name)
+        {
+            Name = i_Name;
+        }
     }
 }

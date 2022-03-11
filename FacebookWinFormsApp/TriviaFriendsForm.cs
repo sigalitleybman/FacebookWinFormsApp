@@ -37,7 +37,7 @@ namespace BasicFacebookFeatures
             r_LoggedInUser = i_FormMain.LoggedInUser;
             ApplicationManager = i_FormMain.ApplicationManager;
             r_TriviaQuestions = ApplicationManager.GetListOfQuestions();
-            r_ListOfFictionUsers = ApplicationManager.GetListOfFictionUsers();
+            r_ListOfFictionUsers = ApplicationManager.GetListOfFictionUsersToTriviaForm();
             InitializeListBoxOfFriends();
         }
        

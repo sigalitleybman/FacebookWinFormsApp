@@ -7,7 +7,7 @@ using FacebookWrapper.ObjectModel;
 
 namespace ApplicationLogic
 {
-    class FindYourMatchManager
+    internal class FindYourMatchManager
     {
         private readonly List<FictionUsers> r_ListOfFictionUsers;
         private readonly List<string> r_NorthArea;

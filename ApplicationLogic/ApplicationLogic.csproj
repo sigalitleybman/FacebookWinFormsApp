@@ -44,6 +44,7 @@
     <Compile Include="eKeyQuestions.cs" />
     <Compile Include="FictionUsers.cs" />
     <Compile Include="FindYourMatchManager.cs" />
+    <Compile Include="MainFormManager.cs" />
     <Compile Include="TriviaManager.cs" />
   </ItemGroup>
   <ItemGroup>

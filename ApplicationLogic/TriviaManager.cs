@@ -13,7 +13,7 @@ namespace ApplicationLogic
         private readonly List<string> m_ListOfQuestions;
         private int m_CorrectAnswers = 0;
         private int m_WrongAnswers = 0;
-        private readonly List<FictionUsers> m_ListOfFictionUsers;
+        private readonly List<FictionUsers> r_ListOfFictionUsers;
         internal FictionUsers ChosenFriend { get; set; }
 
         /**
@@ -30,7 +30,7 @@ namespace ApplicationLogic
             //LoggedInUser = i_LoggedInUser
             m_ListOfQuestions = new List<string>();
             r_TriviaQuestionsAndAnswers = new Dictionary<string, string>();
-            m_ListOfFictionUsers = new List<FictionUsers>();
+            r_ListOfFictionUsers = new List<FictionUsers>();
             initializeListOfFictionFriends();
         }
 
@@ -40,14 +40,14 @@ namespace ApplicationLogic
             FictionUsers friend2 = new FictionUsers("20", "Ramle", "Dor Cohen", "August");
             FictionUsers friend3 = new FictionUsers("22", "Karmiel", "Dana Ron", "September");
 
-            m_ListOfFictionUsers.Add(friend1);
-            m_ListOfFictionUsers.Add(friend2);
-            m_ListOfFictionUsers.Add(friend3);
+            r_ListOfFictionUsers.Add(friend1);
+            r_ListOfFictionUsers.Add(friend2);
+            r_ListOfFictionUsers.Add(friend3);
         }
 
         public List<FictionUsers> GetListOfFictionUsers()
         {
-            return m_ListOfFictionUsers;
+            return r_ListOfFictionUsers;
         }
 
         public void initializeChosenFriend(FictionUsers i_ChosenFriend)

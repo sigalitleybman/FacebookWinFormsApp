@@ -1,49 +1,4 @@
-﻿//using System;
-//using System.Collections.Generic;
-//using System.ComponentModel;
-//using System.Data;
-//using System.Drawing;
-//using System.Linq;
-//using System.Text;
-//using System.Windows.Forms;
-//using FacebookWrapper.ObjectModel;
-//using FacebookWrapper;
-
-//namespace BasicFacebookFeatures
-//{
-//    public partial class FormMain : Form
-//    {
-//        public FormMain()
-//        {
-//            InitializeComponent();
-//            FacebookWrapper.FacebookService.s_CollectionLimit = 100;
-//        }
-
-//        private void buttonLogin_Click(object sender, EventArgs e)
-//        {
-//            Clipboard.SetText("design.patterns20cc"); /// the current password for Desig Patter
-
-//            FacebookWrapper.LoginResult loginResult = FacebookService.Login(
-//                    /// (This is Desig Patter's App ID. replace it with your own)
-//                    "1450160541956417", 
-//                    /// requested permissions:
-//					"email",
-//                    "public_profile"
-//                    /// add any relevant permissions
-//                    );
-
-//            buttonLogin.Text = $"Logged in as {loginResult.LoggedInUser.Name}";
-//        }
-
-//        private void buttonLogout_Click(object sender, EventArgs e)
-//        {
-//			FacebookService.LogoutWithUI();
-//			buttonLogin.Text = "Login";
-//		}
-//	}
-//}
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -64,8 +19,6 @@ namespace BasicFacebookFeatures
         private FacebookWrapper.LoginResult m_LoginResult;
         private readonly List<FictionUsers> r_ListOfFictionUsers;
         internal User LoggedInUser { get; set; }
-        //private static ApplicationManager m_ApplicationManager;
-       // private LoginResult m_LoginResult;
        internal ApplicationManager ApplicationManager { get; set; }
 
         public FormMain()
@@ -73,10 +26,9 @@ namespace BasicFacebookFeatures
             InitializeComponent();
             FacebookWrapper.FacebookService.s_CollectionLimit = 100;
             r_AppSettings = AppSettings.LoadFromFile();
-            //r_AppSettings = new AppSettings();
             fetchFormSettings();
             ApplicationManager = new ApplicationManager() { LoggedInUser = LoggedInUser };
-            r_ListOfFictionUsers = ApplicationManager.GetListOfFictionUsers();
+            r_ListOfFictionUsers = ApplicationManager.GetListOfFictionUsersToMainForm();
         }
 
         private void fetchFormSettings()
@@ -109,20 +61,8 @@ namespace BasicFacebookFeatures
                     "user_videos"
             );
             
-
-            ////buttonLogin.Text = $"Logged in as {m_LoginResult.LoggedInUser.Name}";
-            //buttonLogin.Text = "Logged in";
-            //if (!string.IsNullOrEmpty(m_LoginResult.AccessToken))
-            //{
-                LoggedInUser = m_LoginResult.LoggedInUser;
-                fetchUserInfo();
-            //    fetchUserInfo();
-            //}
-            //else
-            //{
-            //    MessageBox.Show(m_LoginResult.ErrorMessage, "Login Failed");
-            //}
-
+            LoggedInUser = m_LoginResult.LoggedInUser;
+            fetchUserInfo();
             defineCheckBoxAsVisible();
         }
 
@@ -132,26 +72,10 @@ namespace BasicFacebookFeatures
 
             if (r_AppSettings.RememberUser && !string.IsNullOrEmpty(r_AppSettings.LastAccessToken))
             {
-                //m_LoginResult = FacebookService.Connect(r_AppSettings.LastAccessToken);
-                //fetchLoggedInUser();
-                //buttonLogin.Text = "Logged In";
-
-
-
-                //buttonLogin.Text = $"Logged in as {m_LoginResult.LoggedInUser.Name}";
                 buttonLogin.Text = "Logged in";
-               // if (!string.IsNullOrEmpty(m_LoginResult.AccessToken))
-                //{
-                   
-                  m_LoginResult = FacebookService.Connect(r_AppSettings.LastAccessToken);
-                  LoggedInUser = m_LoginResult.LoggedInUser;
+                m_LoginResult = FacebookService.Connect(r_AppSettings.LastAccessToken);
+                LoggedInUser = m_LoginResult.LoggedInUser;
                 fetchUserInfo();
-                //}
-                //else
-                //{
-                  //  MessageBox.Show(m_LoginResult.ErrorMessage, "Login Failed");
-                //}
-
                 defineCheckBoxAsVisible();
             }
         }
@@ -205,32 +129,18 @@ namespace BasicFacebookFeatures
             if (checkBoxFriends.Checked)
             {
                 showFriends();
-                //new Thread(showFriends).Start();
             }
             else
             {
                 listBoxFriends.Items.Clear();
             }
         }
-        //private void checkBoxShowFriends_CheckedChanged(object sender, EventArgs e)
-        //{
-        //    if (checkBoxFriends.Checked)
-        //    {
-        //        showFriends();
-        //        //new Thread(showFriends).Start();
-        //    }
-        //    else
-        //    {
-        //        listBoxFriends.Items.Clear();
-        //    }
-        //}
-
-
+        
         private void showFriends()
         {
-            foreach (var user in r_ListOfFictionUsers)
+            foreach (FictionUsers fictionUser in r_ListOfFictionUsers)
             {
-                listBoxFriend.Items.Add(user.Name);
+                listBoxFriends.Items.Add(fictionUser.Name);
             }
 
 
@@ -251,12 +161,16 @@ namespace BasicFacebookFeatures
             //    MessageBox.Show("No Friends to retrieve :(");
             //}
         }
-        private void listBoxFriends_SelectedIndexChanged(object sender, EventArgs e)
+
+        /**
+        * In case we can access user's friend via fecebook
+        */
+        /*private void listBoxFriends_SelectedIndexChanged(object sender, EventArgs e)
         {
             displaySelectedFriend();
-        }
+        }*/
 
-        private void displaySelectedFriend()
+        /*private void displaySelectedFriend()
         {
             if (listBoxFriends.SelectedItems.Count == 1)
             {
@@ -270,30 +184,20 @@ namespace BasicFacebookFeatures
                     pictureBoxFriends.Image = pictureBoxProfile.ErrorImage;
                 }
             }
-        }
+        }*/
 
-        //private void checkBoxAlbums_CheckedChanged_1(object sender, EventArgs e)
-        //{
-
-        //}
-        //private void checkBoxAlbums_CheckedChanged(object sender, EventArgs e)
-        //{
-
-        //}
         private void checkBoxAlbums_CheckedChanged(object sender, EventArgs e)
         {
             listBoxAlbums.Items.Clear();
             if (checkBoxAlbums.Checked)
             {
                 showAlbums();
-                //new Thread(showAlbums).Start();
             }
             else
             {
                 pictureBoxAlbum.Image = null;
             }
         }
-
 
         private void showAlbums()
         {
@@ -302,7 +206,6 @@ namespace BasicFacebookFeatures
             foreach (Album album in userAlbums)
             {
                 listBoxAlbums.Items.Add(album);
-                //friend.ReFetch(DynamicWrapper.eLoadOptions.Full);
             }
 
             if (listBoxAlbums.Items.Count == 0)
@@ -331,22 +234,20 @@ namespace BasicFacebookFeatures
                 }
             }
         }
-        //private void checkBoxPosts_CheckedChanged(object sender, EventArgs e)
-        //{
-
-        //}
 
         private void checkBoxShowPosts_CheckedChanged(object sender, EventArgs e)
         {
             listBoxPosts.Items.Clear();
+
             if (checkBoxPosts.Checked)
             {
                 fetchPosts();
-                //new Thread(fetchPosts).Start();
-
+            }
+            else 
+            {
+                    listBoxComments.DataSource = null;
             }
         }
-
 
         private void fetchPosts()
         {
@@ -356,7 +257,7 @@ namespace BasicFacebookFeatures
                 {
                     listBoxPosts.Items.Add(post.Message);
                 }
-                /*else if (post.Caption != null)
+               /* else if (post.Caption != null)
                 {
                     listBoxPosts.Items.Add(post.Caption);
                 }
@@ -386,6 +287,58 @@ namespace BasicFacebookFeatures
             FindYourMatchForm findYourMatchForm = new FindYourMatchForm(this);
             findYourMatchForm.ShowDialog();
             this.Show();
+        }
+
+        private void listBoxPosts_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Post selected = LoggedInUser.Posts[listBoxPosts.SelectedIndex];
+            listBoxComments.DisplayMember = "Message";
+            listBoxComments.DataSource = selected.Comments;
+        }
+
+        private void checkBoxLikedPages_CheckedChanged(object sender, EventArgs e)
+        {
+            listBoxLikedPages.Items.Clear();
+            if(checkBoxLikedPages.Checked)
+            {
+                fetchLikedPages();
+            }
+            else
+            {
+                pictureBoxLikedPages.Image = null;
+            }
+        }
+
+        private void fetchLikedPages()
+        {
+            listBoxLikedPages.Items.Clear();
+            listBoxLikedPages.DisplayMember = "Name";
+
+            try
+            {
+                foreach (Page page in LoggedInUser.LikedPages)
+                {
+                    listBoxLikedPages.Items.Add(page);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            if (listBoxLikedPages.Items.Count == 0)
+            {
+                MessageBox.Show("No liked pages to retrieve :(");
+            }
+        }
+
+        private void listBoxLikedPages_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            if (listBoxLikedPages.SelectedItems.Count == 1)
+            {
+                Page selectedPage = listBoxLikedPages.SelectedItem as Page;
+                pictureBoxLikedPages.LoadAsync(selectedPage.PictureNormalURL);
+            }
         }
     }
 }

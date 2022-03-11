@@ -10,11 +10,13 @@ namespace ApplicationLogic
         public User LoggedInUser { get; set; }
         private TriviaManager m_TriviaManager;
         private FindYourMatchManager m_FindYourMatchManager;
+        private MainFormManager m_MainFormManager;
         
         public ApplicationManager() 
         {
             m_TriviaManager = new TriviaManager();
             m_FindYourMatchManager = new FindYourMatchManager();
+            m_MainFormManager = new MainFormManager();
         }
 
         public void initializeQuestions(FictionUsers i_ChosenFriend)
@@ -71,7 +73,7 @@ namespace ApplicationLogic
             m_TriviaManager.initializeChosenFriend(i_ChosenFriend);
         }
 
-        public List<FictionUsers> GetListOfFictionUsers()
+        public List<FictionUsers> GetListOfFictionUsersToTriviaForm()
         {
             return m_TriviaManager.GetListOfFictionUsers();
         }
@@ -89,6 +91,11 @@ namespace ApplicationLogic
         public FictionUsers GetPotentionalMatch()
         {
             return m_FindYourMatchManager.GetPotentionalMatch();
+        }
+
+        public List<FictionUsers> GetListOfFictionUsersToMainForm()
+        {
+            return m_MainFormManager.GetListOfFictionUsersToMainForm();
         }
 
         /**
