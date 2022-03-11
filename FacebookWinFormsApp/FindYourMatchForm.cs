@@ -19,10 +19,8 @@ namespace BasicFacebookFeatures
         private User m_PotentionalMatchUser;
         private string m_Gender;
         private string m_Age;
-        private string m_Area;
         private string m_City;
         internal ApplicationManager ApplicationManager { get; set; }
-
 
         public FindYourMatchForm(FormMain i_FormMain)
         {
@@ -33,12 +31,14 @@ namespace BasicFacebookFeatures
 
         private void buttonCheckAnswers_Click(object sender, EventArgs e)
         {
-            if(checkedListBoxGender.CheckedItems.Count != 0 && checkedListBoxAge.CheckedItems.Count != 0 &&
+            bool isMatchExist;
+
+            if (checkedListBoxGender.CheckedItems.Count != 0 &&
+               checkedListBoxAge.CheckedItems.Count != 0 &&
                !textBoxCity.Text.Equals(""))
             {
                 m_City = textBoxCity.Text.ToLower();
-                bool isMatchExist = ApplicationManager.checkIfThereIsMatch(m_Gender, m_Age, m_City);
-                
+                isMatchExist = ApplicationManager.checkIfThereIsMatch(m_Gender, m_Age, m_City);              
                 if (isMatchExist)
                 {
                     m_PotentialMatch = ApplicationManager.GetPotentionalMatch();
@@ -63,7 +63,6 @@ namespace BasicFacebookFeatures
                 {
                     MessageBox.Show("Sorry, we can't find a match for you");
                 }
-
             }
             else
             {
@@ -85,14 +84,15 @@ namespace BasicFacebookFeatures
 
         private void makeTheOtherCheckBoxOptionsEnabled(object i_Sender)
         {
+            int indexOfChosenCheckBox;
+            int countCheckBox;
             CheckedListBox currentCheckedListBox = i_Sender as CheckedListBox;
 
             if (currentCheckedListBox != null)
             {
-                int indexOfChosenCheckBox = currentCheckedListBox.SelectedIndex;
-                int countCheckBox = currentCheckedListBox.Items.Count;
-
-                for (int i = 0; i < countCheckBox; i++)
+                indexOfChosenCheckBox = currentCheckedListBox.SelectedIndex;
+                countCheckBox = currentCheckedListBox.Items.Count;
+                for (int i = 0 ; i < countCheckBox ; i++)
                 {
                     if (indexOfChosenCheckBox != i)
                     {

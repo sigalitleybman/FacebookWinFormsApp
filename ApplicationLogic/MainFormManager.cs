@@ -23,6 +23,7 @@ namespace ApplicationLogic
             FictionUsers friend3 = new FictionUsers("Shalom Asayag");
             FictionUsers friend4 = new FictionUsers("Tal Avital");
             FictionUsers friend5 = new FictionUsers("Rona Grinberg");
+
             r_ListOfFictionUsers.Add(friend1);
             r_ListOfFictionUsers.Add(friend2);
             r_ListOfFictionUsers.Add(friend3);

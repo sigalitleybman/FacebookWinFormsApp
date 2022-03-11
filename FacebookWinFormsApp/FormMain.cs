@@ -41,7 +41,6 @@ namespace BasicFacebookFeatures
         private void buttonLogin_Click(object sender, EventArgs e)
         {
             Clipboard.SetText("design.patterns20cc");
-
             m_LoginResult = FacebookService.Login(
                 "1303346456815400",
                     /// requested permissions:
@@ -59,8 +58,7 @@ namespace BasicFacebookFeatures
                     "user_photos",
                     "user_posts",
                     "user_videos"
-            );
-            
+            );           
             LoggedInUser = m_LoginResult.LoggedInUser;
             fetchUserInfo();
             defineCheckBoxAsVisible();
@@ -69,7 +67,6 @@ namespace BasicFacebookFeatures
         protected override void OnShown(EventArgs e)
         {
             base.OnShown(e);
-
             if (r_AppSettings.RememberUser && !string.IsNullOrEmpty(r_AppSettings.LastAccessToken))
             {
                 buttonLogin.Text = "Logged in";
@@ -143,7 +140,6 @@ namespace BasicFacebookFeatures
                 listBoxFriends.Items.Add(fictionUser.Name);
             }
 
-
             /**
              * In case we can access user's friend via fecebook
              */
@@ -155,7 +151,6 @@ namespace BasicFacebookFeatures
             //    listBoxFriends.Items.Add(friend);
             //    //friend.ReFetch(DynamicWrapper.eLoadOptions.Full);
             //}
-
             //if (listBoxFriends.Items.Count == 0)
             //{
             //    MessageBox.Show("No Friends to retrieve :(");
@@ -238,7 +233,6 @@ namespace BasicFacebookFeatures
         private void checkBoxShowPosts_CheckedChanged(object sender, EventArgs e)
         {
             listBoxPosts.Items.Clear();
-
             if (checkBoxPosts.Checked)
             {
                 fetchPosts();
@@ -257,14 +251,6 @@ namespace BasicFacebookFeatures
                 {
                     listBoxPosts.Items.Add(post.Message);
                 }
-               /* else if (post.Caption != null)
-                {
-                    listBoxPosts.Items.Add(post.Caption);
-                }
-                else
-                {
-                    listBoxPosts.Items.Add(string.Format("[{0}]", post.Type));
-                }*/
             }
 
             if (listBoxPosts.Items.Count == 0)
@@ -313,7 +299,6 @@ namespace BasicFacebookFeatures
         {
             listBoxLikedPages.Items.Clear();
             listBoxLikedPages.DisplayMember = "Name";
-
             try
             {
                 foreach (Page page in LoggedInUser.LikedPages)

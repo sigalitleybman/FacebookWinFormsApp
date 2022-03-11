@@ -19,8 +19,6 @@ namespace BasicFacebookFeatures
         private readonly User r_LoggedInUser;
         private readonly List<string> r_TriviaQuestions;
         private int m_IndexOfQuestions = 0;
-        //private const int k_NumOfQuestions = 3;
-        private string m_currentQuestion;
         private readonly List<FictionUsers> r_ListOfFictionUsers;
         private FictionUsers m_ChosenFriend;
         internal ApplicationManager ApplicationManager { get; set; }
@@ -29,7 +27,6 @@ namespace BasicFacebookFeatures
          * In the case we can access the login user's chosen friend via facebook
          * // private User m_ChosenFriend;
          */
-
 
         public TriviaFriendsForm(FormMain i_FormMain)
         {
@@ -65,8 +62,7 @@ namespace BasicFacebookFeatures
             /**
              * In case we can access the user's friend via facebook
              */
-            //ApplicationManager.initializeChosenFriend(sender as User);
-            
+            //ApplicationManager.initializeChosenFriend(sender as User);          
             
             if (listBoxFriend.SelectedItem == "Haim Levi")
             {
@@ -81,7 +77,6 @@ namespace BasicFacebookFeatures
                 m_ChosenFriend = r_ListOfFictionUsers[2];
             }
            
-
             listBoxFriend.Enabled = false;
             ApplicationManager.initializeChosenFriend(m_ChosenFriend);
             ApplicationManager.resetWrongAndCorrectAnswers();
@@ -101,6 +96,7 @@ namespace BasicFacebookFeatures
         {
             displayQuestions();
         }
+
         private void displayQuestions()
         {
             ApplicationManager.GetListOfQuestions();
@@ -108,8 +104,6 @@ namespace BasicFacebookFeatures
             labelDescriptionQuestion.Text = r_TriviaQuestions[m_IndexOfQuestions];
             labelDescriptionQuestion.Show();
             displayAnswers(m_IndexOfQuestions);
-            m_currentQuestion = Enum.GetName(typeof(eKeyQuestions), m_IndexOfQuestions);
-
             if (m_IndexOfQuestions < 3)
             {
                 m_IndexOfQuestions++;
@@ -125,8 +119,7 @@ namespace BasicFacebookFeatures
         {
             displayQuestions();
         }
-
-        
+     
         private void displayAnswers(int i_IndexOfCurrentQuestion)
         {
             List<string> answersToSpecificQuestion = ApplicationManager.GetListOfAnswers(i_IndexOfCurrentQuestion);
@@ -156,7 +149,6 @@ namespace BasicFacebookFeatures
             }
 
             isCorrectAnswer = ApplicationManager.CheckIfAnswerIsCorrect(currentQuestion, chosenAnswer);
-
             updateResults((int)currentQuestion, isCorrectAnswer);
             pictureBoxNextQuestion.Visible = true;
             pictureBoxNextQuestion.Enabled = true;
@@ -193,6 +185,7 @@ namespace BasicFacebookFeatures
             {
                 listBoxFriend.Enabled = false;
             }
+
             m_IndexOfQuestions = 0;
         }
 

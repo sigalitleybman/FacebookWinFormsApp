@@ -48,9 +48,10 @@ namespace ApplicationLogic
         {
             m_TriviaManager.resetWrongAndCorrectAnswers();
         }
-        public bool CheckIfAnswerIsCorrect(eKeyQuestions currentQuestion, string chosenAnswer)
+
+        public bool CheckIfAnswerIsCorrect(eKeyQuestions i_CurrentQuestion, string i_ChosenAnswer)
         {
-            return m_TriviaManager.checkIfAnswerIsCorrect(currentQuestion, chosenAnswer);
+            return m_TriviaManager.checkIfAnswerIsCorrect(i_CurrentQuestion, i_ChosenAnswer);
         }
 
         public void updateResults(int i_IndexOfQuestion, bool i_IsCorrectAnswer)

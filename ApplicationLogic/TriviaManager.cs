@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using FacebookWrapper.ObjectModel;
-//using ApplicationLogic.FictionUsers;
 
 namespace ApplicationLogic
 {
     internal class TriviaManager
     {
         private readonly Dictionary<string, string> r_TriviaQuestionsAndAnswers;
-        private readonly List<string> m_ListOfQuestions;
+        private readonly List<string> r_ListOfQuestions;
         private int m_CorrectAnswers = 0;
         private int m_WrongAnswers = 0;
         private readonly List<FictionUsers> r_ListOfFictionUsers;
@@ -20,15 +19,13 @@ namespace ApplicationLogic
          * In case we can access the user's friends via facebook
          * //internal User ChosenFriend;
          * //private DateTime m_BirthDateOfTheFriend;
+         * // internal User LoggedInUser { get; set; }
          */
-
-
-        // internal User LoggedInUser { get; set; }
 
         public TriviaManager()
         {
             //LoggedInUser = i_LoggedInUser
-            m_ListOfQuestions = new List<string>();
+            r_ListOfQuestions = new List<string>();
             r_TriviaQuestionsAndAnswers = new Dictionary<string, string>();
             r_ListOfFictionUsers = new List<FictionUsers>();
             initializeListOfFictionFriends();
@@ -64,15 +61,16 @@ namespace ApplicationLogic
         //    m_BirthDateOfTheFriend = Convert.ToDateTime(ChosenFriend.Birthday);
         //}
 
-        internal void initializeQuestions(FictionUsers m_ChosenFriend)
+        internal void initializeQuestions(FictionUsers i_ChosenFriend)
         {
-            if (m_ListOfQuestions != null)
+            if (r_ListOfQuestions != null)
             {
-                m_ListOfQuestions.Clear();
+                r_ListOfQuestions.Clear();
             }
-            m_ListOfQuestions.Add($"In which city {m_ChosenFriend.Name} lives?");
-            m_ListOfQuestions.Add($"How old {m_ChosenFriend.Name} is?");
-            m_ListOfQuestions.Add($"What is {m_ChosenFriend.Name}'s birthday month?");
+
+            r_ListOfQuestions.Add($"In which city {i_ChosenFriend.Name} lives?");
+            r_ListOfQuestions.Add($"How old {i_ChosenFriend.Name} is?");
+            r_ListOfQuestions.Add($"What is {i_ChosenFriend.Name}'s birthday month?");
         }
 
         internal void initializeDictionaryOfQuestionsAndAnswers()
@@ -81,9 +79,10 @@ namespace ApplicationLogic
             {
                 r_TriviaQuestionsAndAnswers.Clear();
             }
+
             foreach (eKeyQuestions keyQuestion in Enum.GetValues(typeof(eKeyQuestions)))
             {
-                r_TriviaQuestionsAndAnswers.Add(m_ListOfQuestions[(int)keyQuestion], GetSpecificAnswer(keyQuestion));
+                r_TriviaQuestionsAndAnswers.Add(r_ListOfQuestions[(int)keyQuestion], GetSpecificAnswer(keyQuestion));
             }
         }
 
@@ -128,7 +127,7 @@ namespace ApplicationLogic
 
         internal List<string> GetListOfQuestions ()
         {
-            return m_ListOfQuestions;
+            return r_ListOfQuestions;
         }
 
         internal List<string> getListOfAgesAnswers()
@@ -150,7 +149,6 @@ namespace ApplicationLogic
             {
                 firstAgeOptional = random.Next(minAgeOptional, maxAgeOptional).ToString();
                 secondAgeOptional = random.Next(minAgeOptional, maxAgeOptional).ToString();
-
                 if (!firstAgeOptional.Equals(secondAgeOptional) &&
                     !firstAgeOptional.Equals(friendAge) &&
                     !secondAgeOptional.Equals(friendAge))
@@ -182,7 +180,6 @@ namespace ApplicationLogic
                 randomForSecondCityOptional = random.Next(Enum.GetNames(typeof(eCitiesAnswers)).Length);
                 firstCityOptional = ((eCitiesAnswers)randomForFirstCityOptional).ToString();
                 secondCityOptional = ((eCitiesAnswers)randomForSecondCityOptional).ToString();
-
                 if(!firstCityOptional.Equals(secondCityOptional) &&
                    !firstCityOptional.Equals(correctAnswer) &&
                    !secondCityOptional.Equals(correctAnswer))
@@ -214,7 +211,6 @@ namespace ApplicationLogic
                 randomForSecondMonthOptional = random.Next(Enum.GetNames(typeof(eMonthAnswers)).Length);
                 firstMonthOptional = ((eMonthAnswers)randomForFirstMonthOptional).ToString();
                 secondMonthOptional = ((eMonthAnswers)randomForSecondMonthOptional).ToString();
-
                 if (!firstMonthOptional.Equals(secondMonthOptional) &&
                     !firstMonthOptional.Equals(correctAnswer) &&
                     !secondMonthOptional.Equals(correctAnswer))
@@ -233,7 +229,7 @@ namespace ApplicationLogic
         internal bool checkIfAnswerIsCorrect(eKeyQuestions eCurrentQuestion, string chosenAnswer)
         {
             bool isCorrectAnswer = false;
-            string indexOfQuestion = m_ListOfQuestions[(int)eCurrentQuestion];
+            string indexOfQuestion = r_ListOfQuestions[(int)eCurrentQuestion];
 
             if (r_TriviaQuestionsAndAnswers[indexOfQuestion] == chosenAnswer)
             {
