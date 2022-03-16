@@ -139,7 +139,7 @@
             // 
             this.labelInstructionsFirstSection.AutoSize = true;
             this.labelInstructionsFirstSection.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.labelInstructionsFirstSection.Location = new System.Drawing.Point(527, 202);
+            this.labelInstructionsFirstSection.Location = new System.Drawing.Point(577, 202);
             this.labelInstructionsFirstSection.Name = "labelInstructionsFirstSection";
             this.labelInstructionsFirstSection.Size = new System.Drawing.Size(250, 22);
             this.labelInstructionsFirstSection.TabIndex = 30;
@@ -159,7 +159,7 @@
             // 
             this.labelInstructionsSecondSection.AutoSize = true;
             this.labelInstructionsSecondSection.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.labelInstructionsSecondSection.Location = new System.Drawing.Point(495, 224);
+            this.labelInstructionsSecondSection.Location = new System.Drawing.Point(531, 224);
             this.labelInstructionsSecondSection.Name = "labelInstructionsSecondSection";
             this.labelInstructionsSecondSection.Size = new System.Drawing.Size(322, 22);
             this.labelInstructionsSecondSection.TabIndex = 32;
@@ -177,7 +177,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(820, 464);
+            this.ClientSize = new System.Drawing.Size(876, 464);
             this.Controls.Add(this.textBoxCity);
             this.Controls.Add(this.labelInstructionsSecondSection);
             this.Controls.Add(this.labelCity);

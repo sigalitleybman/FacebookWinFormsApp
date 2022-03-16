@@ -14,19 +14,23 @@ namespace BasicFacebookFeatures
 {
     public partial class FindYourMatchForm : Form
     {
-        private readonly User r_LoggedInUser;
         private FictionUsers m_PotentialMatch;
-        private User m_PotentionalMatchUser;
         private string m_Gender;
         private string m_Age;
         private string m_City;
         internal ApplicationManager ApplicationManager { get; set; }
 
+        /**
+         * In case we can get the user's friends via facebook
+         */
+        ////private readonly User r_LoggedInUser;
+        ////private User m_PotentionalMatchUser;
+
         public FindYourMatchForm(FormMain i_FormMain)
         {
             InitializeComponent();
-            r_LoggedInUser = i_FormMain.LoggedInUser;
             ApplicationManager = i_FormMain.ApplicationManager;
+            ////r_LoggedInUser = i_FormMain.LoggedInUser;
         }
 
         private void buttonCheckAnswers_Click(object sender, EventArgs e)
@@ -35,10 +39,10 @@ namespace BasicFacebookFeatures
 
             if (checkedListBoxGender.CheckedItems.Count != 0 &&
                checkedListBoxAge.CheckedItems.Count != 0 &&
-               !textBoxCity.Text.Equals(""))
+               !textBoxCity.Text.Equals(string.Empty))
             {
                 m_City = textBoxCity.Text.ToLower();
-                isMatchExist = ApplicationManager.checkIfThereIsMatch(m_Gender, m_Age, m_City);              
+                isMatchExist = ApplicationManager.CheckIfThereIsMatch(m_Gender, m_Age, m_City);              
                 if (isMatchExist)
                 {
                     m_PotentialMatch = ApplicationManager.GetPotentionalMatch();
@@ -51,13 +55,13 @@ namespace BasicFacebookFeatures
                     /**
                      * In case we can get the user's friends via facebook
                      */
-                    //m_PotentionalMatchUser = ApplicationManager.GetPotentionalMatchUser();
-                    //int userAge = ApplicationManager.getUserAge();
-                    //MessageBox.Show("Your Potentional Match Is:" + Environment.NewLine +
-                    //                $"Name: {m_PotentionalMatchUser.Name}" + Environment.NewLine +
-                    //                $"Age: {userAge}" + Environment.NewLine +
-                    //                $"Gender: {m_PotentionalMatchUser.Gender}" + Environment.NewLine +
-                    //                $"City: {m_PotentionalMatchUser.Location}");
+                    ////m_PotentionalMatchUser = ApplicationManager.GetPotentionalMatchUser();
+                    ////int userAge = ApplicationManager.getUserAge();
+                    ////MessageBox.Show("Your Potentional Match Is:" + Environment.NewLine +
+                    ////                $"Name: {m_PotentionalMatchUser.Name}" + Environment.NewLine +
+                    ////                $"Age: {userAge}" + Environment.NewLine +
+                    ////                $"Gender: {m_PotentionalMatchUser.Gender}" + Environment.NewLine +
+                    ////                $"City: {m_PotentionalMatchUser.Location}");
                 }
                 else
                 {
@@ -92,7 +96,7 @@ namespace BasicFacebookFeatures
             {
                 indexOfChosenCheckBox = currentCheckedListBox.SelectedIndex;
                 countCheckBox = currentCheckedListBox.Items.Count;
-                for (int i = 0 ; i < countCheckBox ; i++)
+                for (int i = 0; i < countCheckBox; i++)
                 {
                     if (indexOfChosenCheckBox != i)
                     {
@@ -113,4 +117,3 @@ namespace BasicFacebookFeatures
         }
     }
 }
-

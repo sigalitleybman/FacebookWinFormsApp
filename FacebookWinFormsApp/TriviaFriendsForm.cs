@@ -16,40 +16,40 @@ namespace BasicFacebookFeatures
 {
     public partial class TriviaFriendsForm : Form
     {
-        private readonly User r_LoggedInUser;
+        private readonly List<FictionUsers> r_ListOfFictionUsers;
         private readonly List<string> r_TriviaQuestions;
         private int m_IndexOfQuestions = 0;
-        private readonly List<FictionUsers> r_ListOfFictionUsers;
         private FictionUsers m_ChosenFriend;
         internal ApplicationManager ApplicationManager { get; set; }
 
         /**
          * In the case we can access the login user's chosen friend via facebook
-         * // private User m_ChosenFriend;
+         * //// private User m_ChosenFriend;
+         * //// private readonly User r_LoggedInUser;
          */
 
         public TriviaFriendsForm(FormMain i_FormMain)
         {
             InitializeComponent();
-            r_LoggedInUser = i_FormMain.LoggedInUser;
             ApplicationManager = i_FormMain.ApplicationManager;
             r_TriviaQuestions = ApplicationManager.GetListOfQuestions();
             r_ListOfFictionUsers = ApplicationManager.GetListOfFictionUsersToTriviaForm();
             InitializeListBoxOfFriends();
+            ////r_LoggedInUser = i_FormMain.LoggedInUser;
         }
-       
+
         private void InitializeListBoxOfFriends()
         {
             /**
              * This section is in comment because we cant get user's friends via facebook
              */
-            //listBoxFriend.Items.Clear();
-            //listBoxFriend.DisplayMember = "Name";
-            //FacebookObjectCollection<User> userFriends = r_LoggedInUser.Friends;
-            //foreach (User friend in userFriends)
-            //{
-            //    listBoxFriend.Items.Add(friend);
-            //}
+            ////listBoxFriend.Items.Clear();
+            ////listBoxFriend.DisplayMember = "Name";
+            ////FacebookObjectCollection<User> userFriends = r_LoggedInUser.Friends;
+            ////foreach (User friend in userFriends)
+            ////{
+            ////    listBoxFriend.Items.Add(friend);
+            ////}
 
             foreach (var user in r_ListOfFictionUsers)
             {
@@ -62,24 +62,24 @@ namespace BasicFacebookFeatures
             /**
              * In case we can access the user's friend via facebook
              */
-            //ApplicationManager.initializeChosenFriend(sender as User);          
+            ////ApplicationManager.InitializeChosenFriend(sender as User);          
             
-            if (listBoxFriend.SelectedItem == "Haim Levi")
+            if (listBoxFriend.SelectedItem.ToString() == "Haim Levi")
             {
                 m_ChosenFriend = r_ListOfFictionUsers[0];
             }
-            if (listBoxFriend.SelectedItem == "Dor Cohen")
+            else if (listBoxFriend.SelectedItem.ToString() == "Dor Cohen")
             {
                 m_ChosenFriend = r_ListOfFictionUsers[1];
             }
-            if (listBoxFriend.SelectedItem == "Dana Ron")
+            else if (listBoxFriend.SelectedItem.ToString() == "Dana Ron")
             {
                 m_ChosenFriend = r_ListOfFictionUsers[2];
             }
            
             listBoxFriend.Enabled = false;
-            ApplicationManager.initializeChosenFriend(m_ChosenFriend);
-            ApplicationManager.resetWrongAndCorrectAnswers();
+            ApplicationManager.InitializeChosenFriend(m_ChosenFriend);
+            ApplicationManager.ResetWrongAndCorrectAnswers();
             displaySelectedFriendQuestions();
             checkBoxChangeFriend.Enabled = true;
             buttonSubmit.Enabled = true;
@@ -87,8 +87,8 @@ namespace BasicFacebookFeatures
 
         private void displaySelectedFriendQuestions()
         {
-            ApplicationManager.initializeQuestions(m_ChosenFriend);
-            ApplicationManager.initializeDictionaryOfQuestionsAndAnswers();
+            ApplicationManager.InitializeQuestions(m_ChosenFriend);
+            ApplicationManager.InitializeDictionaryOfQuestionsAndAnswers();
             displayQuestionsAndAnswers();
         }
 
@@ -157,7 +157,7 @@ namespace BasicFacebookFeatures
 
         private void updateResults(int i_IndexOfQuestion, bool i_IsCorrectAnswer)
         {
-            ApplicationManager.updateResults(i_IndexOfQuestion, i_IsCorrectAnswer);
+            ApplicationManager.UpdateResults(i_IndexOfQuestion, i_IsCorrectAnswer);
         }
 
         private void checkIfItsTheLastQuestion(eKeyQuestions i_CurrentQuestion)
@@ -176,7 +176,7 @@ namespace BasicFacebookFeatures
 
         private void checkBoxChangeFriend_CheckedChanged(object sender, EventArgs e)
         {
-            labelFeedback.Text = "";
+            labelFeedback.Text = string.Empty;
             if (checkBoxChangeFriend.Checked)
             {
                 listBoxFriend.Enabled = true;

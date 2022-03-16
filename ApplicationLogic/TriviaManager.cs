@@ -8,11 +8,11 @@ namespace ApplicationLogic
 {
     internal class TriviaManager
     {
+        private readonly List<FictionUsers> r_ListOfFictionUsers;
         private readonly Dictionary<string, string> r_TriviaQuestionsAndAnswers;
         private readonly List<string> r_ListOfQuestions;
         private int m_CorrectAnswers = 0;
         private int m_WrongAnswers = 0;
-        private readonly List<FictionUsers> r_ListOfFictionUsers;
         internal FictionUsers ChosenFriend { get; set; }
 
         /**
@@ -24,7 +24,7 @@ namespace ApplicationLogic
 
         public TriviaManager()
         {
-            //LoggedInUser = i_LoggedInUser
+            ////LoggedInUser = i_LoggedInUser
             r_ListOfQuestions = new List<string>();
             r_TriviaQuestionsAndAnswers = new Dictionary<string, string>();
             r_ListOfFictionUsers = new List<FictionUsers>();
@@ -47,19 +47,19 @@ namespace ApplicationLogic
             return r_ListOfFictionUsers;
         }
 
-        public void initializeChosenFriend(FictionUsers i_ChosenFriend)
+        public void InitializeChosenFriend(FictionUsers i_ChosenFriend)
         {
             ChosenFriend = i_ChosenFriend;
-            //updateTheBirthDateOfTheChosenFriend();
+            ////updateTheBirthDateOfTheChosenFriend();
         }
 
         /**
          * In case we can access the user's friends via facebook
          */
-        //private void updateTheBirthDateOfTheChosenFriend()
-        //{
-        //    m_BirthDateOfTheFriend = Convert.ToDateTime(ChosenFriend.Birthday);
-        //}
+        ////private void updateTheBirthDateOfTheChosenFriend()
+        ////{
+        ////    m_BirthDateOfTheFriend = Convert.ToDateTime(ChosenFriend.Birthday);
+        ////}
 
         internal void initializeQuestions(FictionUsers i_ChosenFriend)
         {
@@ -93,15 +93,15 @@ namespace ApplicationLogic
             switch (i_KeyQuestion)
             {
                 case eKeyQuestions.City:
-                    //specificAnswer = ChosenFriend.Location.Location.City;
+                    ////specificAnswer = ChosenFriend.Location.Location.City;
                    specificAnswer = ChosenFriend.City;
                     break;
                 case eKeyQuestions.Age:
-                    //specificAnswer = calculateTheAgeOfTheFriend();
+                    ////specificAnswer = calculateTheAgeOfTheFriend();
                     specificAnswer = ChosenFriend.Age;
                     break;
                 case eKeyQuestions.BirthMonth:
-                    //specificAnswer = m_BirthDateOfTheFriend.Month.ToString();
+                    ////specificAnswer = m_BirthDateOfTheFriend.Month.ToString();
                     specificAnswer = ChosenFriend.BirthMonth;
                     break;
             }
@@ -118,14 +118,14 @@ namespace ApplicationLogic
         /**
          * In case we can access the user's friends via facebook
          */
-        //private string calculateTheAgeOfTheFriend()
-        //{
-        //    var todayTime = DateTime.Today;
-        //    int currentFriendAge = todayTime.Year - m_BirthDateOfTheFriend.Year - 1;
-        //    return currentFriendAge.ToString();
-        //}
+        ////private string calculateTheAgeOfTheFriend()
+        ////{
+        ////    var todayTime = DateTime.Today;
+        ////    int currentFriendAge = todayTime.Year - m_BirthDateOfTheFriend.Year - 1;
+        ////    return currentFriendAge.ToString();
+        ////}
 
-        internal List<string> GetListOfQuestions ()
+        internal List<string> getListOfQuestions()
         {
             return r_ListOfQuestions;
         }
@@ -142,8 +142,8 @@ namespace ApplicationLogic
             Random random = new Random();
             string firstAgeOptional;
             string secondAgeOptional; 
-            int minAgeOptional = Int32.Parse(friendAge) - 5;
-            int maxAgeOptional = Int32.Parse(friendAge) + 5;
+            int minAgeOptional = int.Parse(friendAge) - 5;
+            int maxAgeOptional = int.Parse(friendAge) + 5;
             
             while (true)
             {

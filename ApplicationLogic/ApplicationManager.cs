@@ -7,26 +7,26 @@ namespace ApplicationLogic
 {
     public class ApplicationManager
     {
+        private readonly TriviaManager r_TriviaManager;
+        private readonly FindYourMatchManager r_FindYourMatchManager;
+        private readonly MainFormManager r_MainFormManager;
         public User LoggedInUser { get; set; }
-        private TriviaManager m_TriviaManager;
-        private FindYourMatchManager m_FindYourMatchManager;
-        private MainFormManager m_MainFormManager;
-        
+
         public ApplicationManager() 
         {
-            m_TriviaManager = new TriviaManager();
-            m_FindYourMatchManager = new FindYourMatchManager();
-            m_MainFormManager = new MainFormManager();
+            r_TriviaManager = new TriviaManager();
+            r_FindYourMatchManager = new FindYourMatchManager();
+            r_MainFormManager = new MainFormManager();
         }
 
-        public void initializeQuestions(FictionUsers i_ChosenFriend)
+        public void InitializeQuestions(FictionUsers i_ChosenFriend)
         {
-             m_TriviaManager.initializeQuestions(i_ChosenFriend);
+             r_TriviaManager.initializeQuestions(i_ChosenFriend);
         }
 
         public List<string> GetListOfQuestions()
         {
-            return m_TriviaManager.GetListOfQuestions();
+            return r_TriviaManager.getListOfQuestions();
         }
 
         public List<string> GetListOfAnswers(int i_IndexOfSpecificQuestion)
@@ -34,85 +34,82 @@ namespace ApplicationLogic
             switch (i_IndexOfSpecificQuestion)
             {
                 case 0:
-                    return m_TriviaManager.getListOfCitiesAnswers();
+                    return r_TriviaManager.getListOfCitiesAnswers();
                 case 1:
-                    return m_TriviaManager.getListOfAgesAnswers();
+                    return r_TriviaManager.getListOfAgesAnswers();
                 case 2:
-                    return m_TriviaManager.getListOfMonthsAnswers();
+                    return r_TriviaManager.getListOfMonthsAnswers();
             }
 
             return null;
         }
 
-        public void resetWrongAndCorrectAnswers()
+        public void ResetWrongAndCorrectAnswers()
         {
-            m_TriviaManager.resetWrongAndCorrectAnswers();
+            r_TriviaManager.resetWrongAndCorrectAnswers();
         }
 
         public bool CheckIfAnswerIsCorrect(eKeyQuestions i_CurrentQuestion, string i_ChosenAnswer)
         {
-            return m_TriviaManager.checkIfAnswerIsCorrect(i_CurrentQuestion, i_ChosenAnswer);
+            return r_TriviaManager.checkIfAnswerIsCorrect(i_CurrentQuestion, i_ChosenAnswer);
         }
 
-        public void updateResults(int i_IndexOfQuestion, bool i_IsCorrectAnswer)
+        public void UpdateResults(int i_IndexOfQuestion, bool i_IsCorrectAnswer)
         {
-            m_TriviaManager.updateResults(i_IndexOfQuestion, i_IsCorrectAnswer);
+            r_TriviaManager.updateResults(i_IndexOfQuestion, i_IsCorrectAnswer);
         }
 
         public int GetCorrectResults()
         {
-            return m_TriviaManager.getCorrectResults();
+            return r_TriviaManager.getCorrectResults();
         }
 
         public int GetWrongResults()
         {
-            return m_TriviaManager.getWrongResults();
+            return r_TriviaManager.getWrongResults();
         }
 
-        public void initializeChosenFriend(FictionUsers i_ChosenFriend)
+        public void InitializeChosenFriend(FictionUsers i_ChosenFriend)
         {
-            m_TriviaManager.initializeChosenFriend(i_ChosenFriend);
+            r_TriviaManager.InitializeChosenFriend(i_ChosenFriend);
         }
 
         public List<FictionUsers> GetListOfFictionUsersToTriviaForm()
         {
-            return m_TriviaManager.GetListOfFictionUsers();
+            return r_TriviaManager.GetListOfFictionUsers();
         }
 
-        public void initializeDictionaryOfQuestionsAndAnswers()
+        public void InitializeDictionaryOfQuestionsAndAnswers()
         {
-            m_TriviaManager.initializeDictionaryOfQuestionsAndAnswers();
+            r_TriviaManager.initializeDictionaryOfQuestionsAndAnswers();
         }
 
-        public bool checkIfThereIsMatch(string i_Gender, string i_Age, string i_City)
+        public bool CheckIfThereIsMatch(string i_Gender, string i_Age, string i_City)
         {
-            return m_FindYourMatchManager.checkIfThereIsMatch(i_Gender, i_Age, i_City);
+            return r_FindYourMatchManager.checkIfThereIsMatch(i_Gender, i_Age, i_City);
         }
 
         public FictionUsers GetPotentionalMatch()
         {
-            return m_FindYourMatchManager.GetPotentionalMatch();
+            return r_FindYourMatchManager.GetPotentionalMatch();
         }
 
         public List<FictionUsers> GetListOfFictionUsersToMainForm()
         {
-            return m_MainFormManager.GetListOfFictionUsersToMainForm();
+            return r_MainFormManager.GetListOfFictionUsersToMainForm();
         }
 
         /**
          * In case we can access the user's friends via facebook
          */
-        //public User GetPotentionalMatchUser()
-        //{
-        //    return m_FindYourMatchManager.GetPotentionalMatchUser();
-        //}
+        ////public User GetPotentionalMatchUser()
+        ////{
+        ////return r_FindYourMatchManager.GetPotentionalMatchUser();
+        ////}
 
-        /**
-        * In case we can access the user's friends via facebook
-        */
-        //public int getUserAge()
-        //{
-        //    return m_FindYourMatchManager.calculateTheAgeOfTheUser();
-        //}
+        ////public int getUserAge()
+        ////{
+        ////    return r_FindYourMatchManager.calculateTheAgeOfTheUser();
+        ////}
     }
 }

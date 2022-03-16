@@ -15,9 +15,9 @@ namespace BasicFacebookFeatures
 {
     public partial class FormMain : Form
     {
+        private readonly List<FictionUsers> r_ListOfFictionUsers;
         private readonly AppSettings r_AppSettings;
         private FacebookWrapper.LoginResult m_LoginResult;
-        private readonly List<FictionUsers> r_ListOfFictionUsers;
         internal User LoggedInUser { get; set; }
        internal ApplicationManager ApplicationManager { get; set; }
 
@@ -43,7 +43,7 @@ namespace BasicFacebookFeatures
             Clipboard.SetText("design.patterns20cc");
             m_LoginResult = FacebookService.Login(
                 "1303346456815400",
-                    /// requested permissions:
+                    //// requested permissions:
                     "email",
                     "public_profile",
                     "user_age_range",   
@@ -57,8 +57,7 @@ namespace BasicFacebookFeatures
                     "user_location",
                     "user_photos",
                     "user_posts",
-                    "user_videos"
-            );           
+                    "user_videos");           
             LoggedInUser = m_LoginResult.LoggedInUser;
             fetchUserInfo();
             defineCheckBoxAsVisible();
@@ -143,18 +142,18 @@ namespace BasicFacebookFeatures
             /**
              * In case we can access user's friend via fecebook
              */
-            //listBoxFriends.Items.Clear();
-            //listBoxFriends.DisplayMember = "Name";
-            //FacebookObjectCollection<User> userFriends = LoggedInUser.Friends;
-            //foreach (User friend in userFriends)
-            //{
-            //    listBoxFriends.Items.Add(friend);
-            //    //friend.ReFetch(DynamicWrapper.eLoadOptions.Full);
-            //}
-            //if (listBoxFriends.Items.Count == 0)
-            //{
-            //    MessageBox.Show("No Friends to retrieve :(");
-            //}
+            ////listBoxFriends.Items.Clear();
+            ////listBoxFriends.DisplayMember = "Name";
+            ////FacebookObjectCollection<User> userFriends = LoggedInUser.Friends;
+            ////foreach (User friend in userFriends)
+            ////{
+            ////    listBoxFriends.Items.Add(friend);
+            ////    //friend.ReFetch(DynamicWrapper.eLoadOptions.Full);
+            ////}
+            ////if (listBoxFriends.Items.Count == 0)
+            ////{
+            ////    MessageBox.Show("No Friends to retrieve :(");
+            ////}
         }
 
         /**
@@ -327,4 +326,3 @@ namespace BasicFacebookFeatures
         }
     }
 }
-
