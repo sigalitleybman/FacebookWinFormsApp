@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using FacebookWrapper.ObjectModel;
 
 namespace ApplicationLogic
@@ -82,14 +83,21 @@ namespace ApplicationLogic
 
             foreach (eKeyQuestions keyQuestion in Enum.GetValues(typeof(eKeyQuestions)))
             {
-                r_TriviaQuestionsAndAnswers.Add(r_ListOfQuestions[(int)keyQuestion], GetSpecificAnswer(keyQuestion));
+                r_TriviaQuestionsAndAnswers.Add(r_ListOfQuestions[(int)keyQuestion], getSpecificAnswer(keyQuestion));
+               //new Thread(() => addQuestionAndItsAnswerToDictionary(keyQuestion));
             }
         }
 
-        private string GetSpecificAnswer(eKeyQuestions i_KeyQuestion)
+        //private void addQuestionAndItsAnswerToDictionary(eKeyQuestions i_KeyQuestion)
+        //{
+        //    Thread specificAnswer = new Thread(() => getSpecificAnswer(i_KeyQuestion));
+        //    r_TriviaQuestionsAndAnswers.Add(r_ListOfQuestions[(int)i_KeyQuestion], specificAnswer.ToString());
+        //}
+
+        private string getSpecificAnswer(eKeyQuestions i_KeyQuestion)
         {
             string specificAnswer = null;
-
+            
             switch (i_KeyQuestion)
             {
                 case eKeyQuestions.City:
@@ -167,7 +175,7 @@ namespace ApplicationLogic
         internal List<string> getListOfCitiesAnswers()
         {
             List<string> listOfOptionalCitiesAnswers = new List<string>();
-            string correctAnswer = GetSpecificAnswer(eKeyQuestions.City);
+            string correctAnswer = getSpecificAnswer(eKeyQuestions.City);
             Random random = new Random();
             int randomForFirstCityOptional;
             int randomForSecondCityOptional;
@@ -198,7 +206,7 @@ namespace ApplicationLogic
         internal List<string> getListOfMonthsAnswers()
         {
             List<string> listOfOptionalMonthsAnswers = new List<string>();
-            string correctAnswer = GetSpecificAnswer(eKeyQuestions.BirthMonth);
+            string correctAnswer = getSpecificAnswer(eKeyQuestions.BirthMonth);
             Random random = new Random();
             int randomForFirstMonthOptional;
             int randomForSecondMonthOptional;

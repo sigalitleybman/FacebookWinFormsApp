@@ -59,7 +59,7 @@ namespace BasicFacebookFeatures
                     "user_posts",
                     "user_videos");           
             LoggedInUser = m_LoginResult.LoggedInUser;
-            fetchUserInfo();
+            new Thread(fetchUserInfo).Start();
             defineCheckBoxAsVisible();
         }
 
@@ -67,7 +67,7 @@ namespace BasicFacebookFeatures
         {
             base.OnShown(e);
             if (r_AppSettings.RememberUser && !string.IsNullOrEmpty(r_AppSettings.LastAccessToken))
-            {
+            { 
                 buttonLogin.Text = "Logged in";
                 m_LoginResult = FacebookService.Connect(r_AppSettings.LastAccessToken);
                 LoggedInUser = m_LoginResult.LoggedInUser;
@@ -124,7 +124,7 @@ namespace BasicFacebookFeatures
         {
             if (checkBoxFriends.Checked)
             {
-                showFriends();
+                new Thread(showFriends).Start();
             }
             else
             {
@@ -136,7 +136,7 @@ namespace BasicFacebookFeatures
         {
             foreach (FictionUsers fictionUser in r_ListOfFictionUsers)
             {
-                listBoxFriends.Items.Add(fictionUser.Name);
+                listBoxFriends.Invoke(new Action(() => listBoxFriends.Items.Add(fictionUser.Name)));
             }
 
             /**
@@ -147,7 +147,7 @@ namespace BasicFacebookFeatures
             ////FacebookObjectCollection<User> userFriends = LoggedInUser.Friends;
             ////foreach (User friend in userFriends)
             ////{
-            ////    listBoxFriends.Items.Add(friend);
+            ////    listBoxFriends.Invoke(new Action(() => listBoxFriends.Items.Add(friend)));
             ////    //friend.ReFetch(DynamicWrapper.eLoadOptions.Full);
             ////}
             ////if (listBoxFriends.Items.Count == 0)
@@ -161,7 +161,7 @@ namespace BasicFacebookFeatures
         */
         /*private void listBoxFriends_SelectedIndexChanged(object sender, EventArgs e)
         {
-            displaySelectedFriend();
+            new Thread(displaySelectedFriend).Start();
         }*/
 
         /*private void displaySelectedFriend()
@@ -185,7 +185,7 @@ namespace BasicFacebookFeatures
             listBoxAlbums.Items.Clear();
             if (checkBoxAlbums.Checked)
             {
-                showAlbums();
+                new Thread(showAlbums).Start();
             }
             else
             {
@@ -195,38 +195,46 @@ namespace BasicFacebookFeatures
 
         private void showAlbums()
         {
-            listBoxAlbums.DisplayMember = "Name";
-            FacebookObjectCollection<Album> userAlbums = LoggedInUser.Albums;
-            foreach (Album album in userAlbums)
+            listBoxAlbums.Invoke(new Action(() => listBoxAlbums.DisplayMember = "Name"));
+            Invoke(new Action(() =>
             {
-                listBoxAlbums.Items.Add(album);
-            }
+                
+                FacebookObjectCollection<Album> userAlbums = LoggedInUser.Albums;
+                foreach (Album album in userAlbums)
+                {
+                    listBoxAlbums.Items.Add(album);
+                }
 
-            if (listBoxAlbums.Items.Count == 0)
-            {
-                MessageBox.Show("No Albums to retrieve :(");
-            }
+                if (listBoxAlbums.Items.Count == 0)
+                {
+                    MessageBox.Show("No Albums to retrieve :(");
+                }
+            }));
+
         }
 
         private void listBoxAlbums_SelectedIndexChanged(object sender, EventArgs e)
         {
-            displaySelectedAlbum();
+            new Thread(displaySelectedAlbum).Start();
         }
 
         private void displaySelectedAlbum()
         {
-            if (listBoxAlbums.SelectedItems.Count == 1)
+            Invoke(new Action(() =>
             {
-                Album selectedAlbum = listBoxAlbums.SelectedItem as Album;
-                if (selectedAlbum.PictureAlbumURL != null)
+                if (listBoxAlbums.SelectedItems.Count == 1)
                 {
-                    pictureBoxAlbum.LoadAsync(selectedAlbum.PictureAlbumURL);
+                    Album selectedAlbum = listBoxAlbums.SelectedItem as Album;
+                    if (selectedAlbum.PictureAlbumURL != null)
+                    {
+                        pictureBoxAlbum.LoadAsync(selectedAlbum.PictureAlbumURL);
+                    }
+                    else
+                    {
+                        pictureBoxProfile.Image = pictureBoxProfile.ErrorImage;
+                    }
                 }
-                else
-                {
-                    pictureBoxProfile.Image = pictureBoxProfile.ErrorImage;
-                }
-            }
+            }));
         }
 
         private void checkBoxShowPosts_CheckedChanged(object sender, EventArgs e)
@@ -234,28 +242,31 @@ namespace BasicFacebookFeatures
             listBoxPosts.Items.Clear();
             if (checkBoxPosts.Checked)
             {
-                fetchPosts();
+                new Thread(fetchPosts).Start();
             }
             else 
             {
-                    listBoxComments.DataSource = null;
+                listBoxComments.DataSource = null;
             }
         }
 
         private void fetchPosts()
         {
-            foreach (Post post in LoggedInUser.Posts)
+            Invoke(new Action(() =>
             {
-                if (post.Message != null)
+                foreach (Post post in LoggedInUser.Posts)
                 {
-                    listBoxPosts.Items.Add(post.Message);
+                    if (post.Message != null)
+                    {
+                        listBoxPosts.Invoke(new Action(() => listBoxPosts.Items.Add(post.Message)));
+                    }
                 }
-            }
 
-            if (listBoxPosts.Items.Count == 0)
-            {
-                MessageBox.Show("No Posts to retrieve :(");
-            }
+                if (listBoxPosts.Items.Count == 0)
+                {
+                    MessageBox.Show("No Posts to retrieve :(");
+                }
+            }));
         }
 
         private void buttonTrivia_Click(object sender, EventArgs e)
@@ -276,17 +287,20 @@ namespace BasicFacebookFeatures
 
         private void listBoxPosts_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Post selected = LoggedInUser.Posts[listBoxPosts.SelectedIndex];
-            listBoxComments.DisplayMember = "Message";
-            listBoxComments.DataSource = selected.Comments;
+            Invoke(new Action(() =>
+            {
+                Post selected = LoggedInUser.Posts[listBoxPosts.SelectedIndex];
+                listBoxComments.DisplayMember = "Message";
+                listBoxComments.DataSource = selected.Comments;
+            }));
         }
 
         private void checkBoxLikedPages_CheckedChanged(object sender, EventArgs e)
         {
             listBoxLikedPages.Items.Clear();
-            if(checkBoxLikedPages.Checked)
+            if (checkBoxLikedPages.Checked)
             {
-                fetchLikedPages();
+                new Thread(fetchLikedPages).Start();
             }
             else
             {
@@ -296,33 +310,51 @@ namespace BasicFacebookFeatures
 
         private void fetchLikedPages()
         {
-            listBoxLikedPages.Items.Clear();
-            listBoxLikedPages.DisplayMember = "Name";
-            try
+            Invoke(new Action(() =>
             {
-                foreach (Page page in LoggedInUser.LikedPages)
+                listBoxLikedPages.Items.Clear();
+                listBoxLikedPages.Invoke(new Action(() => listBoxLikedPages.DisplayMember = "Name"));
+                try
                 {
-                    listBoxLikedPages.Items.Add(page);
+                    foreach (Page page in LoggedInUser.LikedPages)
+                    {
+                        listBoxLikedPages.Invoke(new Action(() => listBoxLikedPages.Items.Add(page)));
+                    }
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
 
-            if (listBoxLikedPages.Items.Count == 0)
-            {
-                MessageBox.Show("No liked pages to retrieve :(");
-            }
+                if (listBoxLikedPages.Items.Count == 0)
+                {
+                    MessageBox.Show("No liked pages to retrieve :(");
+                }
+            }));
         }
 
-        private void listBoxLikedPages_SelectedIndexChanged_1(object sender, EventArgs e)
+        //private void listBoxLikedPages_SelectedIndexChanged_1(object sender, EventArgs e)
+        //{
+        //    Invoke(new Action(() =>
+        //    {
+        //        if (listBoxLikedPages.SelectedItems.Count == 1)
+        //        {
+        //            Page selectedPage = listBoxLikedPages.SelectedItem as Page;
+        //            pictureBoxLikedPages.LoadAsync(selectedPage.PictureNormalURL);
+        //        }
+        //    }));
+        //}
+
+        private void listBoxLikedPages_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (listBoxLikedPages.SelectedItems.Count == 1)
+            Invoke(new Action(() =>
             {
-                Page selectedPage = listBoxLikedPages.SelectedItem as Page;
-                pictureBoxLikedPages.LoadAsync(selectedPage.PictureNormalURL);
-            }
+                if (listBoxLikedPages.SelectedItems.Count == 1)
+                {
+                    Page selectedPage = listBoxLikedPages.SelectedItem as Page;
+                    pictureBoxLikedPages.LoadAsync(selectedPage.PictureNormalURL);
+                }
+            }));
         }
     }
 }

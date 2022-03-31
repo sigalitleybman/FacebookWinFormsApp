@@ -298,7 +298,7 @@
             this.listBoxLikedPages.Name = "listBoxLikedPages";
             this.listBoxLikedPages.Size = new System.Drawing.Size(224, 184);
             this.listBoxLikedPages.TabIndex = 71;
-            this.listBoxLikedPages.SelectedIndexChanged += new System.EventHandler(this.listBoxLikedPages_SelectedIndexChanged_1);
+            this.listBoxLikedPages.SelectedIndexChanged += new System.EventHandler(this.listBoxLikedPages_SelectedIndexChanged);
             // 
             // pictureBoxLikedPages
             // 
