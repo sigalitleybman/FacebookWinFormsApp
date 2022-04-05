@@ -256,13 +256,15 @@ namespace BasicFacebookFeatures
         {
             Invoke(new Action(() =>
             {
-                foreach (Post post in LoggedInUser.Posts)
-                {
-                    if (post.Message != null)
-                    {
-                        listBoxPosts.Invoke(new Action(() => listBoxPosts.Items.Add(post.Message)));
-                    }
-                }
+                //foreach (Post post in LoggedInUser.Posts)
+                //{
+                //    if (post.Message != null)
+                //    {
+                //        listBoxPosts.Invoke(new Action(() => listBoxPosts.Items.Add(post.Message)));
+                //    }
+                //}
+
+                //commentBindingSource.DataSource = LoggedInUser.Posts;
 
                 if (listBoxPosts.Items.Count == 0)
                 {
@@ -299,7 +301,7 @@ namespace BasicFacebookFeatures
 
         private void checkBoxLikedPages_CheckedChanged(object sender, EventArgs e)
         {
-            listBoxLikedPages.Items.Clear();
+            //listBoxLikedPages.Items.Clear();
             if (checkBoxLikedPages.Checked)
             {
                 new Thread(fetchLikedPages).Start();
@@ -312,21 +314,22 @@ namespace BasicFacebookFeatures
 
         private void fetchLikedPages()
         {
-            Invoke(new Action(() =>
+           listBoxLikedPages.Invoke(new Action(() =>
             {
-                listBoxLikedPages.Items.Clear();
-                listBoxLikedPages.Invoke(new Action(() => listBoxLikedPages.DisplayMember = "Name"));
-                try
-                {
-                    foreach (Page page in LoggedInUser.LikedPages)
-                    {
-                        listBoxLikedPages.Invoke(new Action(() => listBoxLikedPages.Items.Add(page)));
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
+                //listBoxLikedPages.Items.Clear();
+                //listBoxLikedPages.Invoke(new Action(() => listBoxLikedPages.DisplayMember = "Name"));
+                //try
+                //{
+                    //foreach (Page page in LoggedInUser.LikedPages)
+                    //{
+                        //listBoxLikedPages.Invoke(new Action(() => listBoxLikedPages.Items.Add(page)));
+                        pageBindingSource.DataSource = LoggedInUser.LikedPages;
+                    //}
+                //}
+                //catch (Exception ex)
+                //{
+                  //  MessageBox.Show(ex.Message);
+                //}
 
                 if (listBoxLikedPages.Items.Count == 0)
                 {
@@ -358,5 +361,15 @@ namespace BasicFacebookFeatures
                 }
             }));
         }
+
+        //private void likesCountLabel_Click(object sender, EventArgs e)
+        //{
+
+        //}
+
+        //private void countryLabel_Click(object sender, EventArgs e)
+        //{
+
+        //}
     }
 }

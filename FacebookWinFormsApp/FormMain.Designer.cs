@@ -28,7 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
+            System.Windows.Forms.Label descriptionLabel;
+            System.Windows.Forms.Label imageSquareLabel;
+            System.Windows.Forms.Label uRLLabel;
+            System.Windows.Forms.Label cityLabel;
+            System.Windows.Forms.Label countryLabel;
             this.buttonLogin = new System.Windows.Forms.Button();
             this.buttonLogout = new System.Windows.Forms.Button();
             this.pictureBoxProfile = new System.Windows.Forms.PictureBox();
@@ -50,14 +56,32 @@
             this.buttonFindYourMatch = new System.Windows.Forms.Button();
             this.listBoxComments = new System.Windows.Forms.ListBox();
             this.listBoxLikedPages = new System.Windows.Forms.ListBox();
+            this.pageBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.pictureBoxLikedPages = new System.Windows.Forms.PictureBox();
             this.checkBoxLikedPages = new System.Windows.Forms.CheckBox();
             this.labelFetchLikedPages = new System.Windows.Forms.Label();
+            this.panelPosts = new System.Windows.Forms.Panel();
+            this.postBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.panelLikedPages = new System.Windows.Forms.Panel();
+            this.descriptionLabel1 = new System.Windows.Forms.Label();
+            this.imageSquarePictureBox = new System.Windows.Forms.PictureBox();
+            this.uRLLinkLabel = new System.Windows.Forms.LinkLabel();
+            this.cityLabel1 = new System.Windows.Forms.Label();
+            this.countryLabel1 = new System.Windows.Forms.Label();
+            descriptionLabel = new System.Windows.Forms.Label();
+            imageSquareLabel = new System.Windows.Forms.Label();
+            uRLLabel = new System.Windows.Forms.Label();
+            cityLabel = new System.Windows.Forms.Label();
+            countryLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFriends)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAlbum)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogoFacebook)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pageBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLikedPages)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.postBindingSource)).BeginInit();
+            this.panelLikedPages.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imageSquarePictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonLogin
@@ -230,7 +254,7 @@
             // pictureBoxLogoFacebook
             // 
             this.pictureBoxLogoFacebook.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxLogoFacebook.Image")));
-            this.pictureBoxLogoFacebook.Location = new System.Drawing.Point(1126, 6);
+            this.pictureBoxLogoFacebook.Location = new System.Drawing.Point(1241, 11);
             this.pictureBoxLogoFacebook.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBoxLogoFacebook.Name = "pictureBoxLogoFacebook";
             this.pictureBoxLogoFacebook.Size = new System.Drawing.Size(133, 126);
@@ -243,7 +267,7 @@
             this.buttonTrivia.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonTrivia.BackgroundImage")));
             this.buttonTrivia.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.buttonTrivia.Cursor = System.Windows.Forms.Cursors.No;
-            this.buttonTrivia.Location = new System.Drawing.Point(1062, 152);
+            this.buttonTrivia.Location = new System.Drawing.Point(1177, 151);
             this.buttonTrivia.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.buttonTrivia.Name = "buttonTrivia";
             this.buttonTrivia.Size = new System.Drawing.Size(197, 228);
@@ -269,7 +293,7 @@
             this.buttonFindYourMatch.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonFindYourMatch.BackgroundImage")));
             this.buttonFindYourMatch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.buttonFindYourMatch.Font = new System.Drawing.Font("Aharoni", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonFindYourMatch.Location = new System.Drawing.Point(1053, 404);
+            this.buttonFindYourMatch.Location = new System.Drawing.Point(1168, 399);
             this.buttonFindYourMatch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.buttonFindYourMatch.Name = "buttonFindYourMatch";
             this.buttonFindYourMatch.Size = new System.Drawing.Size(206, 228);
@@ -283,7 +307,7 @@
             this.listBoxComments.DisplayMember = "Name";
             this.listBoxComments.FormattingEnabled = true;
             this.listBoxComments.ItemHeight = 20;
-            this.listBoxComments.Location = new System.Drawing.Point(357, 328);
+            this.listBoxComments.Location = new System.Drawing.Point(566, 13);
             this.listBoxComments.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.listBoxComments.Name = "listBoxComments";
             this.listBoxComments.Size = new System.Drawing.Size(290, 104);
@@ -291,6 +315,8 @@
             // 
             // listBoxLikedPages
             // 
+            this.listBoxLikedPages.DataSource = this.pageBindingSource;
+            this.listBoxLikedPages.DisplayMember = "Name";
             this.listBoxLikedPages.FormattingEnabled = true;
             this.listBoxLikedPages.ItemHeight = 20;
             this.listBoxLikedPages.Location = new System.Drawing.Point(746, 195);
@@ -300,11 +326,15 @@
             this.listBoxLikedPages.TabIndex = 71;
             this.listBoxLikedPages.SelectedIndexChanged += new System.EventHandler(this.listBoxLikedPages_SelectedIndexChanged);
             // 
+            // pageBindingSource
+            // 
+            this.pageBindingSource.DataSource = typeof(FacebookWrapper.ObjectModel.Page);
+            // 
             // pictureBoxLikedPages
             // 
             this.pictureBoxLikedPages.BackColor = System.Drawing.Color.White;
             this.pictureBoxLikedPages.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBoxLikedPages.Location = new System.Drawing.Point(861, 311);
+            this.pictureBoxLikedPages.Location = new System.Drawing.Point(929, -8);
             this.pictureBoxLikedPages.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBoxLikedPages.Name = "pictureBoxLikedPages";
             this.pictureBoxLikedPages.Size = new System.Drawing.Size(146, 152);
@@ -333,12 +363,135 @@
             this.labelFetchLikedPages.TabIndex = 75;
             this.labelFetchLikedPages.Text = "Fetch Liked Pages";
             // 
+            // panelPosts
+            // 
+            this.panelPosts.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.panelPosts.Location = new System.Drawing.Point(417, 270);
+            this.panelPosts.Name = "panelPosts";
+            this.panelPosts.Size = new System.Drawing.Size(239, 123);
+            this.panelPosts.TabIndex = 78;
+            // 
+            // postBindingSource
+            // 
+            this.postBindingSource.DataSource = typeof(FacebookWrapper.ObjectModel.Post);
+            // 
+            // panelLikedPages
+            // 
+            this.panelLikedPages.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.panelLikedPages.Controls.Add(cityLabel);
+            this.panelLikedPages.Controls.Add(this.cityLabel1);
+            this.panelLikedPages.Controls.Add(countryLabel);
+            this.panelLikedPages.Controls.Add(this.countryLabel1);
+            this.panelLikedPages.Controls.Add(descriptionLabel);
+            this.panelLikedPages.Controls.Add(this.descriptionLabel1);
+            this.panelLikedPages.Controls.Add(imageSquareLabel);
+            this.panelLikedPages.Controls.Add(this.imageSquarePictureBox);
+            this.panelLikedPages.Controls.Add(uRLLabel);
+            this.panelLikedPages.Controls.Add(this.uRLLinkLabel);
+            this.panelLikedPages.Location = new System.Drawing.Point(800, 283);
+            this.panelLikedPages.Name = "panelLikedPages";
+            this.panelLikedPages.Size = new System.Drawing.Size(355, 320);
+            this.panelLikedPages.TabIndex = 79;
+            // 
+            // descriptionLabel
+            // 
+            descriptionLabel.AutoSize = true;
+            descriptionLabel.Location = new System.Drawing.Point(25, 33);
+            descriptionLabel.Name = "descriptionLabel";
+            descriptionLabel.Size = new System.Drawing.Size(93, 20);
+            descriptionLabel.TabIndex = 0;
+            descriptionLabel.Text = "Description:";
+            // 
+            // descriptionLabel1
+            // 
+            this.descriptionLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pageBindingSource, "Description", true));
+            this.descriptionLabel1.Location = new System.Drawing.Point(156, 33);
+            this.descriptionLabel1.Name = "descriptionLabel1";
+            this.descriptionLabel1.Size = new System.Drawing.Size(178, 23);
+            this.descriptionLabel1.TabIndex = 1;
+            this.descriptionLabel1.Text = "label1";
+            // 
+            // imageSquareLabel
+            // 
+            imageSquareLabel.AutoSize = true;
+            imageSquareLabel.Location = new System.Drawing.Point(25, 100);
+            imageSquareLabel.Name = "imageSquareLabel";
+            imageSquareLabel.Size = new System.Drawing.Size(114, 20);
+            imageSquareLabel.TabIndex = 2;
+            imageSquareLabel.Text = "Image Square:";
+            // 
+            // imageSquarePictureBox
+            // 
+            this.imageSquarePictureBox.DataBindings.Add(new System.Windows.Forms.Binding("Image", this.pageBindingSource, "ImageSquare", true));
+            this.imageSquarePictureBox.Location = new System.Drawing.Point(160, 59);
+            this.imageSquarePictureBox.Name = "imageSquarePictureBox";
+            this.imageSquarePictureBox.Size = new System.Drawing.Size(134, 121);
+            this.imageSquarePictureBox.TabIndex = 3;
+            this.imageSquarePictureBox.TabStop = false;
+            // 
+            // uRLLabel
+            // 
+            uRLLabel.AutoSize = true;
+            uRLLabel.Location = new System.Drawing.Point(25, 195);
+            uRLLabel.Name = "uRLLabel";
+            uRLLabel.Size = new System.Drawing.Size(46, 20);
+            uRLLabel.TabIndex = 4;
+            uRLLabel.Text = "URL:";
+            // 
+            // uRLLinkLabel
+            // 
+            this.uRLLinkLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pageBindingSource, "URL", true));
+            this.uRLLinkLabel.Location = new System.Drawing.Point(67, 195);
+            this.uRLLinkLabel.Name = "uRLLinkLabel";
+            this.uRLLinkLabel.Size = new System.Drawing.Size(285, 23);
+            this.uRLLinkLabel.TabIndex = 5;
+            this.uRLLinkLabel.TabStop = true;
+            this.uRLLinkLabel.Text = "linkLabel1";
+            // 
+            // cityLabel
+            // 
+            cityLabel.AutoSize = true;
+            cityLabel.Location = new System.Drawing.Point(25, 240);
+            cityLabel.Name = "cityLabel";
+            cityLabel.Size = new System.Drawing.Size(39, 20);
+            cityLabel.TabIndex = 6;
+            cityLabel.Text = "City:";
+            // 
+            // cityLabel1
+            // 
+            this.cityLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pageBindingSource, "Location.City", true));
+            this.cityLabel1.Location = new System.Drawing.Point(156, 237);
+            this.cityLabel1.Name = "cityLabel1";
+            this.cityLabel1.Size = new System.Drawing.Size(100, 23);
+            this.cityLabel1.TabIndex = 7;
+            this.cityLabel1.Text = "label1";
+            // 
+            // countryLabel
+            // 
+            countryLabel.AutoSize = true;
+            countryLabel.Location = new System.Drawing.Point(25, 283);
+            countryLabel.Name = "countryLabel";
+            countryLabel.Size = new System.Drawing.Size(68, 20);
+            countryLabel.TabIndex = 8;
+            countryLabel.Text = "Country:";
+            // 
+            // countryLabel1
+            // 
+            this.countryLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pageBindingSource, "Location.Country", true));
+            this.countryLabel1.Location = new System.Drawing.Point(160, 280);
+            this.countryLabel1.Name = "countryLabel1";
+            this.countryLabel1.Size = new System.Drawing.Size(100, 23);
+            this.countryLabel1.TabIndex = 9;
+            this.countryLabel1.Text = "label1";
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.AliceBlue;
-            this.ClientSize = new System.Drawing.Size(1263, 1011);
+            this.ClientSize = new System.Drawing.Size(1386, 1011);
+            this.Controls.Add(this.panelLikedPages);
+            this.Controls.Add(this.panelPosts);
             this.Controls.Add(this.labelFetchLikedPages);
             this.Controls.Add(this.checkBoxLikedPages);
             this.Controls.Add(this.pictureBoxLikedPages);
@@ -371,7 +524,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFriends)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAlbum)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogoFacebook)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pageBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLikedPages)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.postBindingSource)).EndInit();
+            this.panelLikedPages.ResumeLayout(false);
+            this.panelLikedPages.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imageSquarePictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -403,5 +561,14 @@
         private System.Windows.Forms.PictureBox pictureBoxLikedPages;
         private System.Windows.Forms.CheckBox checkBoxLikedPages;
         private System.Windows.Forms.Label labelFetchLikedPages;
+        private System.Windows.Forms.Panel panelPosts;
+        private System.Windows.Forms.BindingSource postBindingSource;
+        private System.Windows.Forms.BindingSource pageBindingSource;
+        private System.Windows.Forms.Panel panelLikedPages;
+        private System.Windows.Forms.Label cityLabel1;
+        private System.Windows.Forms.Label countryLabel1;
+        private System.Windows.Forms.Label descriptionLabel1;
+        private System.Windows.Forms.PictureBox imageSquarePictureBox;
+        private System.Windows.Forms.LinkLabel uRLLinkLabel;
     }
 }
