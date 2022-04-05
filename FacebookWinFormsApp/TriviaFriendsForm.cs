@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using FacebookWrapper.ObjectModel;
@@ -51,38 +52,43 @@ namespace BasicFacebookFeatures
             ////    listBoxFriend.Items.Add(friend);
             ////}
 
+            
             foreach (var user in r_ListOfFictionUsers)
             {
                 listBoxFriend.Items.Add(user.Name);
             }
+           
         }
 
         private void listBoxFriends_SelectedIndexChanged(object sender, EventArgs e)
         {
-            /**
-             * In case we can access the user's friend via facebook
-             */
-            ////ApplicationManager.InitializeChosenFriend(sender as User);          
-            
-            if (listBoxFriend.SelectedItem.ToString() == "Haim Levi")
+            Invoke(new Action(() =>
             {
-                m_ChosenFriend = r_ListOfFictionUsers[0];
-            }
-            else if (listBoxFriend.SelectedItem.ToString() == "Dor Cohen")
-            {
-                m_ChosenFriend = r_ListOfFictionUsers[1];
-            }
-            else if (listBoxFriend.SelectedItem.ToString() == "Dana Ron")
-            {
-                m_ChosenFriend = r_ListOfFictionUsers[2];
-            }
-           
-            listBoxFriend.Enabled = false;
-            ApplicationManager.InitializeChosenFriend(m_ChosenFriend);
-            ApplicationManager.ResetWrongAndCorrectAnswers();
-            displaySelectedFriendQuestions();
-            checkBoxChangeFriend.Enabled = true;
-            buttonSubmit.Enabled = true;
+                /**
+                 * In case we can access the user's friend via facebook
+                 */
+                ////ApplicationManager.InitializeChosenFriend(sender as User);
+                
+                if (listBoxFriend.SelectedItem.ToString() == "Haim Levi")
+                {
+                    m_ChosenFriend = r_ListOfFictionUsers[0];
+                }
+                else if (listBoxFriend.SelectedItem.ToString() == "Dor Cohen")
+                {
+                    m_ChosenFriend = r_ListOfFictionUsers[1];
+                }
+                else if (listBoxFriend.SelectedItem.ToString() == "Dana Ron")
+                {
+                    m_ChosenFriend = r_ListOfFictionUsers[2];
+                }
+
+                listBoxFriend.Enabled = false;
+                ApplicationManager.InitializeChosenFriend(m_ChosenFriend);
+                ApplicationManager.ResetWrongAndCorrectAnswers();
+                displaySelectedFriendQuestions();
+                checkBoxChangeFriend.Enabled = true;
+                buttonSubmit.Enabled = true;
+            }));
         }
 
         private void displaySelectedFriendQuestions()
@@ -94,65 +100,70 @@ namespace BasicFacebookFeatures
 
         private void displayQuestionsAndAnswers()
         {
-            displayQuestions();
+           new Thread(displayQuestions).Start();
         }
 
         private void displayQuestions()
         {
-            ApplicationManager.GetListOfQuestions();
-            pictureBoxNextQuestion.Enabled = false;
-            labelDescriptionQuestion.Text = r_TriviaQuestions[m_IndexOfQuestions];
-            labelDescriptionQuestion.Show();
-            displayAnswers(m_IndexOfQuestions);
-            if (m_IndexOfQuestions < 3)
+            Invoke(new Action(() =>
             {
-                m_IndexOfQuestions++;
-            }
-
-            if (m_IndexOfQuestions == 3)
-            {
+                ApplicationManager.GetListOfQuestions();
                 pictureBoxNextQuestion.Enabled = false;
-            }
+                labelDescriptionQuestion.Text = r_TriviaQuestions[m_IndexOfQuestions];
+                labelDescriptionQuestion.Show();
+                displayAnswers(m_IndexOfQuestions);
+                if (m_IndexOfQuestions < 3)
+                {
+                    m_IndexOfQuestions++;
+                }
+
+                if (m_IndexOfQuestions == 3)
+                {
+                    pictureBoxNextQuestion.Enabled = false;
+                }
+            }));
         }
 
         private void pictureBoxNextQuestion_Click(object sender, EventArgs e)
         {
-            displayQuestions();
+           displayQuestions();
         }
      
         private void displayAnswers(int i_IndexOfCurrentQuestion)
         {
-            List<string> answersToSpecificQuestion = ApplicationManager.GetListOfAnswers(i_IndexOfCurrentQuestion);
-
-            radioButtonFirstAnswer.Text = answersToSpecificQuestion[0];
-            radioButtonSecondAnswer.Text = answersToSpecificQuestion[1];
-            radioButtonThirdAnswer.Text = answersToSpecificQuestion[2];
+            
+           List<string> answersToSpecificQuestion = ApplicationManager.GetListOfAnswers(i_IndexOfCurrentQuestion);
+           radioButtonFirstAnswer.Text = answersToSpecificQuestion[0];
+           radioButtonSecondAnswer.Text = answersToSpecificQuestion[1];
+           radioButtonThirdAnswer.Text = answersToSpecificQuestion[2];
         }
 
         private void CheckIfTheAnswerIsCorrect(object sender, EventArgs e) 
         {
-            eKeyQuestions currentQuestion = (eKeyQuestions)(m_IndexOfQuestions - 1);
-            string chosenAnswer = null;
-            bool isCorrectAnswer;
+            Invoke(new Action(() =>
+            {
+                eKeyQuestions currentQuestion = (eKeyQuestions)(m_IndexOfQuestions - 1);
+                string chosenAnswer = null;
+                bool isCorrectAnswer;
 
-            if (radioButtonFirstAnswer.Checked)
-            {
-                chosenAnswer = radioButtonFirstAnswer.Text;
-            }
-            else if (radioButtonSecondAnswer.Checked)
-            {
-                chosenAnswer = radioButtonSecondAnswer.Text;
-            }
-            else if(radioButtonThirdAnswer.Checked)
-            {
-                chosenAnswer = radioButtonThirdAnswer.Text;
-            }
-
-            isCorrectAnswer = ApplicationManager.CheckIfAnswerIsCorrect(currentQuestion, chosenAnswer);
-            updateResults((int)currentQuestion, isCorrectAnswer);
-            pictureBoxNextQuestion.Visible = true;
-            pictureBoxNextQuestion.Enabled = true;
-            checkIfItsTheLastQuestion(currentQuestion);
+                if (radioButtonFirstAnswer.Checked)
+                {
+                    chosenAnswer = radioButtonFirstAnswer.Text;
+                }
+                else if (radioButtonSecondAnswer.Checked)
+                {
+                    chosenAnswer = radioButtonSecondAnswer.Text;
+                }
+                else if (radioButtonThirdAnswer.Checked)
+                {
+                    chosenAnswer = radioButtonThirdAnswer.Text;
+                }
+                isCorrectAnswer = ApplicationManager.CheckIfAnswerIsCorrect(currentQuestion, chosenAnswer);
+                updateResults((int)currentQuestion, isCorrectAnswer);
+                pictureBoxNextQuestion.Visible = true;
+                pictureBoxNextQuestion.Enabled = true;
+                checkIfItsTheLastQuestion(currentQuestion);
+            }));
         }
 
         private void updateResults(int i_IndexOfQuestion, bool i_IsCorrectAnswer)
@@ -176,17 +187,20 @@ namespace BasicFacebookFeatures
 
         private void checkBoxChangeFriend_CheckedChanged(object sender, EventArgs e)
         {
-            labelFeedback.Text = string.Empty;
-            if (checkBoxChangeFriend.Checked)
+            Invoke(new Action(() =>
             {
-                listBoxFriend.Enabled = true;
-            }
-            else
-            {
-                listBoxFriend.Enabled = false;
-            }
+                labelFeedback.Text = string.Empty;
+                if (checkBoxChangeFriend.Checked)
+                {
+                    listBoxFriend.Enabled = true;
+                }
+                else
+                {
+                    listBoxFriend.Enabled = false;
+                }
 
-            m_IndexOfQuestions = 0;
+                m_IndexOfQuestions = 0;
+            }));
         }
 
         private void buttonBack_Click(object sender, EventArgs e)

@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ApplicationLogic;
@@ -35,55 +36,64 @@ namespace BasicFacebookFeatures
 
         private void buttonCheckAnswers_Click(object sender, EventArgs e)
         {
-            bool isMatchExist;
-
-            if (checkedListBoxGender.CheckedItems.Count != 0 &&
-               checkedListBoxAge.CheckedItems.Count != 0 &&
-               !textBoxCity.Text.Equals(string.Empty))
+            Invoke(new Action(() =>
             {
-                m_City = textBoxCity.Text.ToLower();
-                isMatchExist = ApplicationManager.CheckIfThereIsMatch(m_Gender, m_Age, m_City);              
-                if (isMatchExist)
-                {
-                    m_PotentialMatch = ApplicationManager.GetPotentionalMatch();
-                    MessageBox.Show("Your Potentional Match Is:" + Environment.NewLine +
-                                    $"Name: {m_PotentialMatch.Name}" + Environment.NewLine +
-                                    $"Age: {m_PotentialMatch.Age}" + Environment.NewLine +
-                                    $"Gender: {m_PotentialMatch.Gender}" + Environment.NewLine +
-                                    $"City: {m_PotentialMatch.City}");
+                bool isMatchExist;
 
-                    /**
-                     * In case we can get the user's friends via facebook
-                     */
-                    ////m_PotentionalMatchUser = ApplicationManager.GetPotentionalMatchUser();
-                    ////int userAge = ApplicationManager.getUserAge();
-                    ////MessageBox.Show("Your Potentional Match Is:" + Environment.NewLine +
-                    ////                $"Name: {m_PotentionalMatchUser.Name}" + Environment.NewLine +
-                    ////                $"Age: {userAge}" + Environment.NewLine +
-                    ////                $"Gender: {m_PotentionalMatchUser.Gender}" + Environment.NewLine +
-                    ////                $"City: {m_PotentionalMatchUser.Location}");
+                if (checkedListBoxGender.CheckedItems.Count != 0 &&
+                   checkedListBoxAge.CheckedItems.Count != 0 &&
+                   !textBoxCity.Text.Equals(string.Empty))
+                {
+                    m_City = textBoxCity.Text.ToLower();
+                    isMatchExist = ApplicationManager.CheckIfThereIsMatch(m_Gender, m_Age, m_City);
+                    if (isMatchExist)
+                    {
+                        m_PotentialMatch = ApplicationManager.GetPotentionalMatch();
+                        MessageBox.Show("Your Potentional Match Is:" + Environment.NewLine +
+                                        $"Name: {m_PotentialMatch.Name}" + Environment.NewLine +
+                                        $"Age: {m_PotentialMatch.Age}" + Environment.NewLine +
+                                        $"Gender: {m_PotentialMatch.Gender}" + Environment.NewLine +
+                                        $"City: {m_PotentialMatch.City}");
+
+                        /**
+                         * In case we can get the user's friends via facebook
+                         */
+                        ////m_PotentionalMatchUser = ApplicationManager.GetPotentionalMatchUser();
+                        ////int userAge = ApplicationManager.getUserAge();
+                        ////MessageBox.Show("Your Potentional Match Is:" + Environment.NewLine +
+                        ////                $"Name: {m_PotentionalMatchUser.Name}" + Environment.NewLine +
+                        ////                $"Age: {userAge}" + Environment.NewLine +
+                        ////                $"Gender: {m_PotentionalMatchUser.Gender}" + Environment.NewLine +
+                        ////                $"City: {m_PotentionalMatchUser.Location}");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Sorry, we can't find a match for you");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Sorry, we can't find a match for you");
+                    MessageBox.Show("You should check all the three preferences");
                 }
-            }
-            else
-            {
-                MessageBox.Show("You should check all the three preferences");
-            }
+            }));
         }
 
         private void checkedListBoxGender_SelectedIndexChanged(object sender, EventArgs e)
         {
-            m_Gender = (sender as CheckedListBox).SelectedItem.ToString();
-            makeTheOtherCheckBoxOptionsEnabled(sender);
+            Invoke(new Action(() =>
+            {
+                m_Gender = (sender as CheckedListBox).SelectedItem.ToString();
+                makeTheOtherCheckBoxOptionsEnabled(sender);
+            }));
         }
 
-        private void checkedListBoxAge_SelectedIndexChanged_1(object sender, EventArgs e)
+        private void checkedListBoxAge_SelectedIndexChanged(object sender, EventArgs e)
         {
-            m_Age = (sender as CheckedListBox).SelectedItem.ToString();
-            makeTheOtherCheckBoxOptionsEnabled(sender);
+            Invoke(new Action(() =>
+            {
+                m_Age = (sender as CheckedListBox).SelectedItem.ToString();
+                makeTheOtherCheckBoxOptionsEnabled(sender);
+            }));
         }
 
         private void makeTheOtherCheckBoxOptionsEnabled(object i_Sender)

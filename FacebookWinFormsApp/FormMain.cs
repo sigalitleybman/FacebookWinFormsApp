@@ -107,17 +107,20 @@ namespace BasicFacebookFeatures
 
         private void fetchUserInfo()
         {
-            pictureBoxProfile.LoadAsync(LoggedInUser.PictureNormalURL);
-            labelProfileName.Visible = true;
-            labelProfileName.Text = LoggedInUser.Name;
-            if (r_AppSettings.RememberUser)
+            Invoke(new Action(() =>
             {
-                checkBoxRememberMe.Checked = true;
-            }
-            else
-            {
-                checkBoxRememberMe.Checked = false;
-            }
+                pictureBoxProfile.LoadAsync(LoggedInUser.PictureNormalURL);
+                labelProfileName.Visible = true;
+                labelProfileName.Text = LoggedInUser.Name;
+                if (r_AppSettings.RememberUser)
+                {
+                    checkBoxRememberMe.Checked = true;
+                }
+                else
+                {
+                    checkBoxRememberMe.Checked = false;
+                }
+            }));
         }
 
         private void checkBoxFriends_CheckedChanged(object sender, EventArgs e)
@@ -210,7 +213,6 @@ namespace BasicFacebookFeatures
                     MessageBox.Show("No Albums to retrieve :(");
                 }
             }));
-
         }
 
         private void listBoxAlbums_SelectedIndexChanged(object sender, EventArgs e)

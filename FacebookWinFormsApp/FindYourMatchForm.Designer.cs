@@ -120,7 +120,7 @@
             this.checkedListBoxAge.Name = "checkedListBoxAge";
             this.checkedListBoxAge.Size = new System.Drawing.Size(120, 50);
             this.checkedListBoxAge.TabIndex = 26;
-            this.checkedListBoxAge.SelectedIndexChanged += new System.EventHandler(this.checkedListBoxAge_SelectedIndexChanged_1);
+            this.checkedListBoxAge.SelectedIndexChanged += new System.EventHandler(this.checkedListBoxAge_SelectedIndexChanged);
             // 
             // buttonBack
             // 
