@@ -29,12 +29,15 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
-            System.Windows.Forms.Label descriptionLabel;
             System.Windows.Forms.Label imageSquareLabel;
             System.Windows.Forms.Label uRLLabel;
-            System.Windows.Forms.Label cityLabel;
-            System.Windows.Forms.Label countryLabel;
+            System.Windows.Forms.Label pictureAlbumURLLabel;
+            System.Windows.Forms.Label createdTimeLabel1;
+            System.Windows.Forms.Label imageThumbLabel;
+            System.Windows.Forms.Label imageLargeLabel;
+            System.Windows.Forms.Label birthdayLabel;
+            System.Windows.Forms.Label createdTimeLabel;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.buttonLogin = new System.Windows.Forms.Button();
             this.buttonLogout = new System.Windows.Forms.Button();
             this.pictureBoxProfile = new System.Windows.Forms.PictureBox();
@@ -46,43 +49,129 @@
             this.labelFetchAlbums = new System.Windows.Forms.Label();
             this.checkBoxAlbums = new System.Windows.Forms.CheckBox();
             this.listBoxAlbums = new System.Windows.Forms.ListBox();
-            this.pictureBoxAlbum = new System.Windows.Forms.PictureBox();
+            this.albumBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.labelFetchPosts = new System.Windows.Forms.Label();
             this.checkBoxPosts = new System.Windows.Forms.CheckBox();
             this.listBoxPosts = new System.Windows.Forms.ListBox();
+            this.postBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.pictureBoxLogoFacebook = new System.Windows.Forms.PictureBox();
             this.buttonTrivia = new System.Windows.Forms.Button();
             this.checkBoxRememberMe = new System.Windows.Forms.CheckBox();
             this.buttonFindYourMatch = new System.Windows.Forms.Button();
-            this.listBoxComments = new System.Windows.Forms.ListBox();
             this.listBoxLikedPages = new System.Windows.Forms.ListBox();
             this.pageBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.pictureBoxLikedPages = new System.Windows.Forms.PictureBox();
             this.checkBoxLikedPages = new System.Windows.Forms.CheckBox();
             this.labelFetchLikedPages = new System.Windows.Forms.Label();
-            this.panelPosts = new System.Windows.Forms.Panel();
-            this.postBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panelLikedPages = new System.Windows.Forms.Panel();
-            this.descriptionLabel1 = new System.Windows.Forms.Label();
             this.imageSquarePictureBox = new System.Windows.Forms.PictureBox();
             this.uRLLinkLabel = new System.Windows.Forms.LinkLabel();
-            this.cityLabel1 = new System.Windows.Forms.Label();
-            this.countryLabel1 = new System.Windows.Forms.Label();
-            descriptionLabel = new System.Windows.Forms.Label();
+            this.panelAlbums = new System.Windows.Forms.Panel();
+            this.imageThumbPictureBox = new System.Windows.Forms.PictureBox();
+            this.createdTimeDateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.pictureAlbumURLLinkLabel = new System.Windows.Forms.LinkLabel();
+            this.panelFriends = new System.Windows.Forms.Panel();
+            this.birthdayLabel1 = new System.Windows.Forms.Label();
+            this.membersBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.friendListBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.imageLargePictureBox = new System.Windows.Forms.PictureBox();
+            this.panelPosts = new System.Windows.Forms.Panel();
+            this.createdTimeDateTimePicker = new System.Windows.Forms.DateTimePicker();
             imageSquareLabel = new System.Windows.Forms.Label();
             uRLLabel = new System.Windows.Forms.Label();
-            cityLabel = new System.Windows.Forms.Label();
-            countryLabel = new System.Windows.Forms.Label();
+            pictureAlbumURLLabel = new System.Windows.Forms.Label();
+            createdTimeLabel1 = new System.Windows.Forms.Label();
+            imageThumbLabel = new System.Windows.Forms.Label();
+            imageLargeLabel = new System.Windows.Forms.Label();
+            birthdayLabel = new System.Windows.Forms.Label();
+            createdTimeLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFriends)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAlbum)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.albumBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.postBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogoFacebook)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pageBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLikedPages)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.postBindingSource)).BeginInit();
             this.panelLikedPages.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imageSquarePictureBox)).BeginInit();
+            this.panelAlbums.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imageThumbPictureBox)).BeginInit();
+            this.panelFriends.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.membersBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.friendListBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageLargePictureBox)).BeginInit();
+            this.panelPosts.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // imageSquareLabel
+            // 
+            imageSquareLabel.AutoSize = true;
+            imageSquareLabel.Location = new System.Drawing.Point(14, 27);
+            imageSquareLabel.Name = "imageSquareLabel";
+            imageSquareLabel.Size = new System.Drawing.Size(114, 20);
+            imageSquareLabel.TabIndex = 2;
+            imageSquareLabel.Text = "Image Square:";
+            // 
+            // uRLLabel
+            // 
+            uRLLabel.AutoSize = true;
+            uRLLabel.Location = new System.Drawing.Point(18, 156);
+            uRLLabel.Name = "uRLLabel";
+            uRLLabel.Size = new System.Drawing.Size(46, 20);
+            uRLLabel.TabIndex = 4;
+            uRLLabel.Text = "URL:";
+            // 
+            // pictureAlbumURLLabel
+            // 
+            pictureAlbumURLLabel.AutoSize = true;
+            pictureAlbumURLLabel.Location = new System.Drawing.Point(27, 151);
+            pictureAlbumURLLabel.Name = "pictureAlbumURLLabel";
+            pictureAlbumURLLabel.Size = new System.Drawing.Size(148, 20);
+            pictureAlbumURLLabel.TabIndex = 2;
+            pictureAlbumURLLabel.Text = "Picture Album URL:";
+            // 
+            // createdTimeLabel1
+            // 
+            createdTimeLabel1.AutoSize = true;
+            createdTimeLabel1.Location = new System.Drawing.Point(29, 202);
+            createdTimeLabel1.Name = "createdTimeLabel1";
+            createdTimeLabel1.Size = new System.Drawing.Size(108, 20);
+            createdTimeLabel1.TabIndex = 4;
+            createdTimeLabel1.Text = "Created Time:";
+            // 
+            // imageThumbLabel
+            // 
+            imageThumbLabel.AutoSize = true;
+            imageThumbLabel.Location = new System.Drawing.Point(36, 32);
+            imageThumbLabel.Name = "imageThumbLabel";
+            imageThumbLabel.Size = new System.Drawing.Size(111, 20);
+            imageThumbLabel.TabIndex = 5;
+            imageThumbLabel.Text = "Image Thumb:";
+            // 
+            // imageLargeLabel
+            // 
+            imageLargeLabel.AutoSize = true;
+            imageLargeLabel.Location = new System.Drawing.Point(15, 58);
+            imageLargeLabel.Name = "imageLargeLabel";
+            imageLargeLabel.Size = new System.Drawing.Size(103, 20);
+            imageLargeLabel.TabIndex = 0;
+            imageLargeLabel.Text = "Image Large:";
+            // 
+            // birthdayLabel
+            // 
+            birthdayLabel.AutoSize = true;
+            birthdayLabel.Location = new System.Drawing.Point(15, 18);
+            birthdayLabel.Name = "birthdayLabel";
+            birthdayLabel.Size = new System.Drawing.Size(71, 20);
+            birthdayLabel.TabIndex = 2;
+            birthdayLabel.Text = "Birthday:";
+            // 
+            // createdTimeLabel
+            // 
+            createdTimeLabel.AutoSize = true;
+            createdTimeLabel.Location = new System.Drawing.Point(25, 21);
+            createdTimeLabel.Name = "createdTimeLabel";
+            createdTimeLabel.Size = new System.Drawing.Size(108, 20);
+            createdTimeLabel.TabIndex = 0;
+            createdTimeLabel.Text = "Created Time:";
             // 
             // buttonLogin
             // 
@@ -199,6 +288,8 @@
             // 
             // listBoxAlbums
             // 
+            this.listBoxAlbums.DataSource = this.albumBindingSource;
+            this.listBoxAlbums.DisplayMember = "Name";
             this.listBoxAlbums.FormattingEnabled = true;
             this.listBoxAlbums.ItemHeight = 20;
             this.listBoxAlbums.Location = new System.Drawing.Point(529, 545);
@@ -206,16 +297,10 @@
             this.listBoxAlbums.Name = "listBoxAlbums";
             this.listBoxAlbums.Size = new System.Drawing.Size(258, 324);
             this.listBoxAlbums.TabIndex = 61;
-            this.listBoxAlbums.Click += new System.EventHandler(this.listBoxAlbums_SelectedIndexChanged);
             // 
-            // pictureBoxAlbum
+            // albumBindingSource
             // 
-            this.pictureBoxAlbum.Location = new System.Drawing.Point(800, 545);
-            this.pictureBoxAlbum.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBoxAlbum.Name = "pictureBoxAlbum";
-            this.pictureBoxAlbum.Size = new System.Drawing.Size(235, 324);
-            this.pictureBoxAlbum.TabIndex = 62;
-            this.pictureBoxAlbum.TabStop = false;
+            this.albumBindingSource.DataSource = typeof(FacebookWrapper.ObjectModel.Album);
             // 
             // labelFetchPosts
             // 
@@ -242,6 +327,8 @@
             // 
             // listBoxPosts
             // 
+            this.listBoxPosts.DataSource = this.postBindingSource;
+            this.listBoxPosts.DisplayMember = "Message";
             this.listBoxPosts.FormattingEnabled = true;
             this.listBoxPosts.ItemHeight = 20;
             this.listBoxPosts.Location = new System.Drawing.Point(315, 195);
@@ -249,7 +336,10 @@
             this.listBoxPosts.Name = "listBoxPosts";
             this.listBoxPosts.Size = new System.Drawing.Size(372, 184);
             this.listBoxPosts.TabIndex = 65;
-            this.listBoxPosts.SelectedIndexChanged += new System.EventHandler(this.listBoxPosts_SelectedIndexChanged);
+            // 
+            // postBindingSource
+            // 
+            this.postBindingSource.DataSource = typeof(FacebookWrapper.ObjectModel.Post);
             // 
             // pictureBoxLogoFacebook
             // 
@@ -302,17 +392,6 @@
             this.buttonFindYourMatch.UseVisualStyleBackColor = true;
             this.buttonFindYourMatch.Click += new System.EventHandler(this.buttonFindYourMatch_Click);
             // 
-            // listBoxComments
-            // 
-            this.listBoxComments.DisplayMember = "Name";
-            this.listBoxComments.FormattingEnabled = true;
-            this.listBoxComments.ItemHeight = 20;
-            this.listBoxComments.Location = new System.Drawing.Point(566, 13);
-            this.listBoxComments.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.listBoxComments.Name = "listBoxComments";
-            this.listBoxComments.Size = new System.Drawing.Size(290, 104);
-            this.listBoxComments.TabIndex = 70;
-            // 
             // listBoxLikedPages
             // 
             this.listBoxLikedPages.DataSource = this.pageBindingSource;
@@ -324,22 +403,10 @@
             this.listBoxLikedPages.Name = "listBoxLikedPages";
             this.listBoxLikedPages.Size = new System.Drawing.Size(224, 184);
             this.listBoxLikedPages.TabIndex = 71;
-            this.listBoxLikedPages.SelectedIndexChanged += new System.EventHandler(this.listBoxLikedPages_SelectedIndexChanged);
             // 
             // pageBindingSource
             // 
             this.pageBindingSource.DataSource = typeof(FacebookWrapper.ObjectModel.Page);
-            // 
-            // pictureBoxLikedPages
-            // 
-            this.pictureBoxLikedPages.BackColor = System.Drawing.Color.White;
-            this.pictureBoxLikedPages.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBoxLikedPages.Location = new System.Drawing.Point(929, -8);
-            this.pictureBoxLikedPages.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.pictureBoxLikedPages.Name = "pictureBoxLikedPages";
-            this.pictureBoxLikedPages.Size = new System.Drawing.Size(146, 152);
-            this.pictureBoxLikedPages.TabIndex = 73;
-            this.pictureBoxLikedPages.TabStop = false;
             // 
             // checkBoxLikedPages
             // 
@@ -363,140 +430,149 @@
             this.labelFetchLikedPages.TabIndex = 75;
             this.labelFetchLikedPages.Text = "Fetch Liked Pages";
             // 
-            // panelPosts
-            // 
-            this.panelPosts.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.panelPosts.Location = new System.Drawing.Point(417, 270);
-            this.panelPosts.Name = "panelPosts";
-            this.panelPosts.Size = new System.Drawing.Size(239, 123);
-            this.panelPosts.TabIndex = 78;
-            // 
-            // postBindingSource
-            // 
-            this.postBindingSource.DataSource = typeof(FacebookWrapper.ObjectModel.Post);
-            // 
             // panelLikedPages
             // 
             this.panelLikedPages.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.panelLikedPages.Controls.Add(cityLabel);
-            this.panelLikedPages.Controls.Add(this.cityLabel1);
-            this.panelLikedPages.Controls.Add(countryLabel);
-            this.panelLikedPages.Controls.Add(this.countryLabel1);
-            this.panelLikedPages.Controls.Add(descriptionLabel);
-            this.panelLikedPages.Controls.Add(this.descriptionLabel1);
             this.panelLikedPages.Controls.Add(imageSquareLabel);
             this.panelLikedPages.Controls.Add(this.imageSquarePictureBox);
             this.panelLikedPages.Controls.Add(uRLLabel);
             this.panelLikedPages.Controls.Add(this.uRLLinkLabel);
             this.panelLikedPages.Location = new System.Drawing.Point(800, 283);
             this.panelLikedPages.Name = "panelLikedPages";
-            this.panelLikedPages.Size = new System.Drawing.Size(355, 320);
+            this.panelLikedPages.Size = new System.Drawing.Size(355, 191);
             this.panelLikedPages.TabIndex = 79;
-            // 
-            // descriptionLabel
-            // 
-            descriptionLabel.AutoSize = true;
-            descriptionLabel.Location = new System.Drawing.Point(25, 33);
-            descriptionLabel.Name = "descriptionLabel";
-            descriptionLabel.Size = new System.Drawing.Size(93, 20);
-            descriptionLabel.TabIndex = 0;
-            descriptionLabel.Text = "Description:";
-            // 
-            // descriptionLabel1
-            // 
-            this.descriptionLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pageBindingSource, "Description", true));
-            this.descriptionLabel1.Location = new System.Drawing.Point(156, 33);
-            this.descriptionLabel1.Name = "descriptionLabel1";
-            this.descriptionLabel1.Size = new System.Drawing.Size(178, 23);
-            this.descriptionLabel1.TabIndex = 1;
-            this.descriptionLabel1.Text = "label1";
-            // 
-            // imageSquareLabel
-            // 
-            imageSquareLabel.AutoSize = true;
-            imageSquareLabel.Location = new System.Drawing.Point(25, 100);
-            imageSquareLabel.Name = "imageSquareLabel";
-            imageSquareLabel.Size = new System.Drawing.Size(114, 20);
-            imageSquareLabel.TabIndex = 2;
-            imageSquareLabel.Text = "Image Square:";
             // 
             // imageSquarePictureBox
             // 
             this.imageSquarePictureBox.DataBindings.Add(new System.Windows.Forms.Binding("Image", this.pageBindingSource, "ImageSquare", true));
-            this.imageSquarePictureBox.Location = new System.Drawing.Point(160, 59);
+            this.imageSquarePictureBox.Location = new System.Drawing.Point(160, 27);
             this.imageSquarePictureBox.Name = "imageSquarePictureBox";
             this.imageSquarePictureBox.Size = new System.Drawing.Size(134, 121);
             this.imageSquarePictureBox.TabIndex = 3;
             this.imageSquarePictureBox.TabStop = false;
             // 
-            // uRLLabel
-            // 
-            uRLLabel.AutoSize = true;
-            uRLLabel.Location = new System.Drawing.Point(25, 195);
-            uRLLabel.Name = "uRLLabel";
-            uRLLabel.Size = new System.Drawing.Size(46, 20);
-            uRLLabel.TabIndex = 4;
-            uRLLabel.Text = "URL:";
-            // 
             // uRLLinkLabel
             // 
             this.uRLLinkLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pageBindingSource, "URL", true));
-            this.uRLLinkLabel.Location = new System.Drawing.Point(67, 195);
+            this.uRLLinkLabel.Location = new System.Drawing.Point(70, 156);
             this.uRLLinkLabel.Name = "uRLLinkLabel";
             this.uRLLinkLabel.Size = new System.Drawing.Size(285, 23);
             this.uRLLinkLabel.TabIndex = 5;
             this.uRLLinkLabel.TabStop = true;
             this.uRLLinkLabel.Text = "linkLabel1";
             // 
-            // cityLabel
+            // panelAlbums
             // 
-            cityLabel.AutoSize = true;
-            cityLabel.Location = new System.Drawing.Point(25, 240);
-            cityLabel.Name = "cityLabel";
-            cityLabel.Size = new System.Drawing.Size(39, 20);
-            cityLabel.TabIndex = 6;
-            cityLabel.Text = "City:";
+            this.panelAlbums.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.panelAlbums.Controls.Add(imageThumbLabel);
+            this.panelAlbums.Controls.Add(this.imageThumbPictureBox);
+            this.panelAlbums.Controls.Add(createdTimeLabel1);
+            this.panelAlbums.Controls.Add(this.createdTimeDateTimePicker1);
+            this.panelAlbums.Controls.Add(pictureAlbumURLLabel);
+            this.panelAlbums.Controls.Add(this.pictureAlbumURLLinkLabel);
+            this.panelAlbums.Location = new System.Drawing.Point(585, 720);
+            this.panelAlbums.Name = "panelAlbums";
+            this.panelAlbums.Size = new System.Drawing.Size(405, 245);
+            this.panelAlbums.TabIndex = 81;
             // 
-            // cityLabel1
+            // imageThumbPictureBox
             // 
-            this.cityLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pageBindingSource, "Location.City", true));
-            this.cityLabel1.Location = new System.Drawing.Point(156, 237);
-            this.cityLabel1.Name = "cityLabel1";
-            this.cityLabel1.Size = new System.Drawing.Size(100, 23);
-            this.cityLabel1.TabIndex = 7;
-            this.cityLabel1.Text = "label1";
+            this.imageThumbPictureBox.DataBindings.Add(new System.Windows.Forms.Binding("Image", this.albumBindingSource, "ImageThumb", true));
+            this.imageThumbPictureBox.Location = new System.Drawing.Point(153, 3);
+            this.imageThumbPictureBox.Name = "imageThumbPictureBox";
+            this.imageThumbPictureBox.Size = new System.Drawing.Size(190, 142);
+            this.imageThumbPictureBox.TabIndex = 6;
+            this.imageThumbPictureBox.TabStop = false;
             // 
-            // countryLabel
+            // createdTimeDateTimePicker1
             // 
-            countryLabel.AutoSize = true;
-            countryLabel.Location = new System.Drawing.Point(25, 283);
-            countryLabel.Name = "countryLabel";
-            countryLabel.Size = new System.Drawing.Size(68, 20);
-            countryLabel.TabIndex = 8;
-            countryLabel.Text = "Country:";
+            this.createdTimeDateTimePicker1.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.albumBindingSource, "CreatedTime", true));
+            this.createdTimeDateTimePicker1.Location = new System.Drawing.Point(161, 196);
+            this.createdTimeDateTimePicker1.Name = "createdTimeDateTimePicker1";
+            this.createdTimeDateTimePicker1.Size = new System.Drawing.Size(200, 26);
+            this.createdTimeDateTimePicker1.TabIndex = 5;
             // 
-            // countryLabel1
+            // pictureAlbumURLLinkLabel
             // 
-            this.countryLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pageBindingSource, "Location.Country", true));
-            this.countryLabel1.Location = new System.Drawing.Point(160, 280);
-            this.countryLabel1.Name = "countryLabel1";
-            this.countryLabel1.Size = new System.Drawing.Size(100, 23);
-            this.countryLabel1.TabIndex = 9;
-            this.countryLabel1.Text = "label1";
+            this.pictureAlbumURLLinkLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.albumBindingSource, "PictureAlbumURL", true));
+            this.pictureAlbumURLLinkLabel.Location = new System.Drawing.Point(185, 151);
+            this.pictureAlbumURLLinkLabel.Name = "pictureAlbumURLLinkLabel";
+            this.pictureAlbumURLLinkLabel.Size = new System.Drawing.Size(200, 35);
+            this.pictureAlbumURLLinkLabel.TabIndex = 3;
+            this.pictureAlbumURLLinkLabel.TabStop = true;
+            this.pictureAlbumURLLinkLabel.Text = "linkLabel1";
+            // 
+            // panelFriends
+            // 
+            this.panelFriends.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.panelFriends.Controls.Add(birthdayLabel);
+            this.panelFriends.Controls.Add(this.birthdayLabel1);
+            this.panelFriends.Controls.Add(imageLargeLabel);
+            this.panelFriends.Controls.Add(this.imageLargePictureBox);
+            this.panelFriends.Location = new System.Drawing.Point(112, 742);
+            this.panelFriends.Name = "panelFriends";
+            this.panelFriends.Size = new System.Drawing.Size(336, 186);
+            this.panelFriends.TabIndex = 82;
+            // 
+            // birthdayLabel1
+            // 
+            this.birthdayLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.membersBindingSource, "Birthday", true));
+            this.birthdayLabel1.Location = new System.Drawing.Point(92, 18);
+            this.birthdayLabel1.Name = "birthdayLabel1";
+            this.birthdayLabel1.Size = new System.Drawing.Size(100, 23);
+            this.birthdayLabel1.TabIndex = 3;
+            this.birthdayLabel1.Text = "label1";
+            // 
+            // membersBindingSource
+            // 
+            this.membersBindingSource.DataMember = "Members";
+            this.membersBindingSource.DataSource = this.friendListBindingSource;
+            // 
+            // friendListBindingSource
+            // 
+            this.friendListBindingSource.DataSource = typeof(FacebookWrapper.ObjectModel.FriendList);
+            // 
+            // imageLargePictureBox
+            // 
+            this.imageLargePictureBox.DataBindings.Add(new System.Windows.Forms.Binding("Image", this.membersBindingSource, "ImageLarge", true));
+            this.imageLargePictureBox.Location = new System.Drawing.Point(124, 44);
+            this.imageLargePictureBox.Name = "imageLargePictureBox";
+            this.imageLargePictureBox.Size = new System.Drawing.Size(155, 128);
+            this.imageLargePictureBox.TabIndex = 1;
+            this.imageLargePictureBox.TabStop = false;
+            // 
+            // panelPosts
+            // 
+            this.panelPosts.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.panelPosts.Controls.Add(createdTimeLabel);
+            this.panelPosts.Controls.Add(this.createdTimeDateTimePicker);
+            this.panelPosts.Location = new System.Drawing.Point(315, 319);
+            this.panelPosts.Name = "panelPosts";
+            this.panelPosts.Size = new System.Drawing.Size(417, 78);
+            this.panelPosts.TabIndex = 83;
+            // 
+            // createdTimeDateTimePicker
+            // 
+            this.createdTimeDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.postBindingSource, "CreatedTime", true));
+            this.createdTimeDateTimePicker.Location = new System.Drawing.Point(139, 17);
+            this.createdTimeDateTimePicker.Name = "createdTimeDateTimePicker";
+            this.createdTimeDateTimePicker.Size = new System.Drawing.Size(200, 26);
+            this.createdTimeDateTimePicker.TabIndex = 1;
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.AliceBlue;
-            this.ClientSize = new System.Drawing.Size(1386, 1011);
-            this.Controls.Add(this.panelLikedPages);
+            this.ClientSize = new System.Drawing.Size(1490, 1050);
             this.Controls.Add(this.panelPosts);
+            this.Controls.Add(this.panelFriends);
+            this.Controls.Add(this.panelAlbums);
+            this.Controls.Add(this.panelLikedPages);
             this.Controls.Add(this.labelFetchLikedPages);
             this.Controls.Add(this.checkBoxLikedPages);
-            this.Controls.Add(this.pictureBoxLikedPages);
             this.Controls.Add(this.listBoxLikedPages);
-            this.Controls.Add(this.listBoxComments);
             this.Controls.Add(this.buttonFindYourMatch);
             this.Controls.Add(this.checkBoxRememberMe);
             this.Controls.Add(this.buttonTrivia);
@@ -504,7 +580,6 @@
             this.Controls.Add(this.listBoxPosts);
             this.Controls.Add(this.checkBoxPosts);
             this.Controls.Add(this.labelFetchPosts);
-            this.Controls.Add(this.pictureBoxAlbum);
             this.Controls.Add(this.listBoxAlbums);
             this.Controls.Add(this.checkBoxAlbums);
             this.Controls.Add(this.labelFetchAlbums);
@@ -522,14 +597,23 @@
             this.Text = "Facebook";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFriends)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAlbum)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.albumBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.postBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogoFacebook)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pageBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLikedPages)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.postBindingSource)).EndInit();
             this.panelLikedPages.ResumeLayout(false);
             this.panelLikedPages.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imageSquarePictureBox)).EndInit();
+            this.panelAlbums.ResumeLayout(false);
+            this.panelAlbums.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imageThumbPictureBox)).EndInit();
+            this.panelFriends.ResumeLayout(false);
+            this.panelFriends.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.membersBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.friendListBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageLargePictureBox)).EndInit();
+            this.panelPosts.ResumeLayout(false);
+            this.panelPosts.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -548,7 +632,6 @@
         private System.Windows.Forms.Label labelFetchAlbums;
         private System.Windows.Forms.CheckBox checkBoxAlbums;
         private System.Windows.Forms.ListBox listBoxAlbums;
-        private System.Windows.Forms.PictureBox pictureBoxAlbum;
         private System.Windows.Forms.Label labelFetchPosts;
         private System.Windows.Forms.CheckBox checkBoxPosts;
         private System.Windows.Forms.ListBox listBoxPosts;
@@ -556,19 +639,25 @@
         private System.Windows.Forms.Button buttonTrivia;
         private System.Windows.Forms.CheckBox checkBoxRememberMe;
         private System.Windows.Forms.Button buttonFindYourMatch;
-        private System.Windows.Forms.ListBox listBoxComments;
         private System.Windows.Forms.ListBox listBoxLikedPages;
-        private System.Windows.Forms.PictureBox pictureBoxLikedPages;
         private System.Windows.Forms.CheckBox checkBoxLikedPages;
         private System.Windows.Forms.Label labelFetchLikedPages;
-        private System.Windows.Forms.Panel panelPosts;
         private System.Windows.Forms.BindingSource postBindingSource;
         private System.Windows.Forms.BindingSource pageBindingSource;
         private System.Windows.Forms.Panel panelLikedPages;
-        private System.Windows.Forms.Label cityLabel1;
-        private System.Windows.Forms.Label countryLabel1;
-        private System.Windows.Forms.Label descriptionLabel1;
         private System.Windows.Forms.PictureBox imageSquarePictureBox;
         private System.Windows.Forms.LinkLabel uRLLinkLabel;
+        private System.Windows.Forms.Panel panelAlbums;
+        private System.Windows.Forms.BindingSource albumBindingSource;
+        private System.Windows.Forms.LinkLabel pictureAlbumURLLinkLabel;
+        private System.Windows.Forms.DateTimePicker createdTimeDateTimePicker1;
+        private System.Windows.Forms.PictureBox imageThumbPictureBox;
+        private System.Windows.Forms.Panel panelFriends;
+        private System.Windows.Forms.BindingSource friendListBindingSource;
+        private System.Windows.Forms.Label birthdayLabel1;
+        private System.Windows.Forms.BindingSource membersBindingSource;
+        private System.Windows.Forms.PictureBox imageLargePictureBox;
+        private System.Windows.Forms.Panel panelPosts;
+        private System.Windows.Forms.DateTimePicker createdTimeDateTimePicker;
     }
 }

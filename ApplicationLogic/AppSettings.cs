@@ -22,8 +22,8 @@ namespace ApplicationLogic
 
         private AppSettings()
         {
-            LastWindowSize = new Size(2500, 900);
-            LastWindowLocation = new Point(50, 50);
+            LastWindowSize = new Size(2500, 1500);
+            LastWindowLocation = new Point(10, 10);
             RememberUser = false;
             LastAccessToken = null;
         }

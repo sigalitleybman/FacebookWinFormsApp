@@ -132,6 +132,8 @@
       <DependentUpon>TriviaFriendsForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\FacebookWrapper.ObjectModel.Album.datasource" />
+    <None Include="Properties\DataSources\FacebookWrapper.ObjectModel.FriendList.datasource" />
     <None Include="Properties\DataSources\FacebookWrapper.ObjectModel.Page.datasource" />
     <None Include="Properties\DataSources\FacebookWrapper.ObjectModel.Post.datasource" />
     <None Include="Properties\Settings.settings">
