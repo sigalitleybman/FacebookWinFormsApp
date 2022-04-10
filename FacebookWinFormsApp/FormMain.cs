@@ -20,7 +20,7 @@ namespace BasicFacebookFeatures
         private readonly AppSettings r_AppSettings;
         private FacebookWrapper.LoginResult m_LoginResult;
         internal User LoggedInUser { get; set; }
-       internal ApplicationManager ApplicationManager { get; set; }
+       internal ApplicationManagerFacade ApplicationManagerFacade { get; set; }
 
         public FormMain()
         {
@@ -28,8 +28,8 @@ namespace BasicFacebookFeatures
             FacebookWrapper.FacebookService.s_CollectionLimit = 100;
             r_AppSettings = AppSettings.LoadFromFile();
             fetchFormSettings();
-            ApplicationManager = new ApplicationManager() { LoggedInUser = LoggedInUser };
-            r_ListOfFictionUsers = ApplicationManager.GetListOfFictionUsersToMainForm();
+            ApplicationManagerFacade = new ApplicationManagerFacade() { LoggedInUser = LoggedInUser };
+            r_ListOfFictionUsers = ApplicationManagerFacade.GetListOfFictionUsersToMainForm();
         }
 
         private void fetchFormSettings()

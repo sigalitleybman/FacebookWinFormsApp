@@ -5,14 +5,14 @@ using FacebookWrapper.ObjectModel;
 
 namespace ApplicationLogic
 {
-    public class ApplicationManager
+    public class ApplicationManagerFacade
     {
         private readonly TriviaManager r_TriviaManager;
         private readonly FindYourMatchManager r_FindYourMatchManager;
         private readonly MainFormManager r_MainFormManager;
         public User LoggedInUser { get; set; }
 
-        public ApplicationManager() 
+        public ApplicationManagerFacade() 
         {
             r_TriviaManager = new TriviaManager();
             r_FindYourMatchManager = new FindYourMatchManager();

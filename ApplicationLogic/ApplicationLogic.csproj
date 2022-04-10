@@ -39,7 +39,7 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="ApplicationManager.cs" />
+    <Compile Include="ApplicationManagerFacade.cs" />
     <Compile Include="AppSettings.cs" />
     <Compile Include="eGender.cs" />
     <Compile Include="eKeyQuestions.cs" />

@@ -21,7 +21,7 @@ namespace BasicFacebookFeatures
         private readonly List<string> r_TriviaQuestions;
         private int m_IndexOfQuestions = 0;
         private FictionUsers m_ChosenFriend;
-        internal ApplicationManager ApplicationManager { get; set; }
+        internal ApplicationManagerFacade ApplicationManagerFacade { get; set; }
 
         /**
          * In the case we can access the login user's chosen friend via facebook
@@ -32,9 +32,9 @@ namespace BasicFacebookFeatures
         public TriviaFriendsForm(FormMain i_FormMain)
         {
             InitializeComponent();
-            ApplicationManager = i_FormMain.ApplicationManager;
-            r_TriviaQuestions = ApplicationManager.GetListOfQuestions();
-            r_ListOfFictionUsers = ApplicationManager.GetListOfFictionUsersToTriviaForm();
+            ApplicationManagerFacade = i_FormMain.ApplicationManagerFacade;
+            r_TriviaQuestions = ApplicationManagerFacade.GetListOfQuestions();
+            r_ListOfFictionUsers = ApplicationManagerFacade.GetListOfFictionUsersToTriviaForm();
             InitializeListBoxOfFriends();
             ////r_LoggedInUser = i_FormMain.LoggedInUser;
         }
@@ -67,7 +67,7 @@ namespace BasicFacebookFeatures
                 /**
                  * In case we can access the user's friend via facebook
                  */
-                ////ApplicationManager.InitializeChosenFriend(sender as User);
+                ////ApplicationManagerFacade.InitializeChosenFriend(sender as User);
                 
                 if (listBoxFriend.SelectedItem.ToString() == "Haim Levi")
                 {
@@ -83,8 +83,8 @@ namespace BasicFacebookFeatures
                 }
 
                 listBoxFriend.Enabled = false;
-                ApplicationManager.InitializeChosenFriend(m_ChosenFriend);
-                ApplicationManager.ResetWrongAndCorrectAnswers();
+                ApplicationManagerFacade.InitializeChosenFriend(m_ChosenFriend);
+                ApplicationManagerFacade.ResetWrongAndCorrectAnswers();
                 displaySelectedFriendQuestions();
                 checkBoxChangeFriend.Enabled = true;
                 buttonSubmit.Enabled = true;
@@ -93,8 +93,8 @@ namespace BasicFacebookFeatures
 
         private void displaySelectedFriendQuestions()
         {
-            ApplicationManager.InitializeQuestions(m_ChosenFriend);
-            ApplicationManager.InitializeDictionaryOfQuestionsAndAnswers();
+            ApplicationManagerFacade.InitializeQuestions(m_ChosenFriend);
+            ApplicationManagerFacade.InitializeDictionaryOfQuestionsAndAnswers();
             displayQuestionsAndAnswers();
         }
 
@@ -107,7 +107,7 @@ namespace BasicFacebookFeatures
         {
             Invoke(new Action(() =>
             {
-                ApplicationManager.GetListOfQuestions();
+                ApplicationManagerFacade.GetListOfQuestions();
                 pictureBoxNextQuestion.Enabled = false;
                 labelDescriptionQuestion.Text = r_TriviaQuestions[m_IndexOfQuestions];
                 labelDescriptionQuestion.Show();
@@ -132,7 +132,7 @@ namespace BasicFacebookFeatures
         private void displayAnswers(int i_IndexOfCurrentQuestion)
         {
             
-           List<string> answersToSpecificQuestion = ApplicationManager.GetListOfAnswers(i_IndexOfCurrentQuestion);
+           List<string> answersToSpecificQuestion = ApplicationManagerFacade.GetListOfAnswers(i_IndexOfCurrentQuestion);
            radioButtonFirstAnswer.Text = answersToSpecificQuestion[0];
            radioButtonSecondAnswer.Text = answersToSpecificQuestion[1];
            radioButtonThirdAnswer.Text = answersToSpecificQuestion[2];
@@ -158,7 +158,7 @@ namespace BasicFacebookFeatures
                 {
                     chosenAnswer = radioButtonThirdAnswer.Text;
                 }
-                isCorrectAnswer = ApplicationManager.CheckIfAnswerIsCorrect(currentQuestion, chosenAnswer);
+                isCorrectAnswer = ApplicationManagerFacade.CheckIfAnswerIsCorrect(currentQuestion, chosenAnswer);
                 updateResults((int)currentQuestion, isCorrectAnswer);
                 pictureBoxNextQuestion.Visible = true;
                 pictureBoxNextQuestion.Enabled = true;
@@ -168,7 +168,7 @@ namespace BasicFacebookFeatures
 
         private void updateResults(int i_IndexOfQuestion, bool i_IsCorrectAnswer)
         {
-            ApplicationManager.UpdateResults(i_IndexOfQuestion, i_IsCorrectAnswer);
+            ApplicationManagerFacade.UpdateResults(i_IndexOfQuestion, i_IsCorrectAnswer);
         }
 
         private void checkIfItsTheLastQuestion(eKeyQuestions i_CurrentQuestion)
@@ -179,9 +179,9 @@ namespace BasicFacebookFeatures
                 buttonSubmit.Enabled = false;
                 labelFeedback.Visible = true;
                 labelFeedback.Text =
-                    $"You succeeded in {ApplicationManager.GetCorrectResults()} questions " +
+                    $"You succeeded in {ApplicationManagerFacade.GetCorrectResults()} questions " +
                     Environment.NewLine +
-                    $"and failed in {ApplicationManager.GetWrongResults()} questions";
+                    $"and failed in {ApplicationManagerFacade.GetWrongResults()} questions";
             }
         }
 

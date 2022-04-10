@@ -20,7 +20,7 @@ namespace BasicFacebookFeatures
         private string m_Gender;
         private string m_Age;
         private string m_City;
-        internal ApplicationManager ApplicationManager { get; set; }
+        internal ApplicationManagerFacade ApplicationManagerFacade { get; set; }
 
         /**
          * In case we can get the user's friends via facebook
@@ -31,7 +31,7 @@ namespace BasicFacebookFeatures
         public FindYourMatchForm(FormMain i_FormMain)
         {
             InitializeComponent();
-            ApplicationManager = i_FormMain.ApplicationManager;
+            ApplicationManagerFacade = i_FormMain.ApplicationManagerFacade;
             ////r_LoggedInUser = i_FormMain.LoggedInUser;
         }
 
@@ -46,10 +46,10 @@ namespace BasicFacebookFeatures
                    !textBoxCity.Text.Equals(string.Empty))
                 {
                     //m_City = textBoxCity.Text.ToLower();
-                    isMatchExist = ApplicationManager.CheckIfThereIsMatch(m_Gender, m_Age, m_City);
+                    isMatchExist = ApplicationManagerFacade.CheckIfThereIsMatch(m_Gender, m_Age, m_City);
                     if (isMatchExist)
                     {
-                        m_PotentialMatch = ApplicationManager.GetPotentionalMatch();
+                        m_PotentialMatch = ApplicationManagerFacade.GetPotentionalMatch();
                         MessageBox.Show("Your Potentional Match Is:" + Environment.NewLine +
                                         $"Name: {m_PotentialMatch.Name}" + Environment.NewLine +
                                         $"Age: {m_PotentialMatch.Age}" + Environment.NewLine +
@@ -59,8 +59,8 @@ namespace BasicFacebookFeatures
                         /**
                          * In case we can get the user's friends via facebook
                          */
-                        ////m_PotentionalMatchUser = ApplicationManager.GetPotentionalMatchUser();
-                        ////int userAge = ApplicationManager.getUserAge();
+                        ////m_PotentionalMatchUser = ApplicationManagerFacade.GetPotentionalMatchUser();
+                        ////int userAge = ApplicationManagerFacade.getUserAge();
                         ////MessageBox.Show("Your Potentional Match Is:" + Environment.NewLine +
                         ////                $"Name: {m_PotentionalMatchUser.Name}" + Environment.NewLine +
                         ////                $"Age: {userAge}" + Environment.NewLine +
