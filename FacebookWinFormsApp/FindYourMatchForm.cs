@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -44,7 +45,7 @@ namespace BasicFacebookFeatures
                    checkedListBoxAge.CheckedItems.Count != 0 &&
                    !textBoxCity.Text.Equals(string.Empty))
                 {
-                    m_City = textBoxCity.Text.ToLower();
+                    //m_City = textBoxCity.Text.ToLower();
                     isMatchExist = ApplicationManager.CheckIfThereIsMatch(m_Gender, m_Age, m_City);
                     if (isMatchExist)
                     {
@@ -124,6 +125,24 @@ namespace BasicFacebookFeatures
         private void BackToMainForm()
         {
             this.Close();
+        }
+
+        private void textBoxCity_Validating(object sender, CancelEventArgs e)
+        {
+            string patternContainsLattersAndSpaces = "^[A-Za-z ]+$";
+            string patternContainsSpaces = "^[ ]+$";
+            Regex regexForLattersAndSpaces = new Regex(patternContainsLattersAndSpaces);
+            Regex regexForSpaces = new Regex(patternContainsSpaces);
+
+            if (regexForSpaces.IsMatch(textBoxCity.Text))
+            {
+                MessageBox.Show("You should enter only characters");
+            }
+
+            if (!regexForLattersAndSpaces.IsMatch(textBoxCity.Text))
+            {
+                e.Cancel = true;
+            }
         }
     }
 }

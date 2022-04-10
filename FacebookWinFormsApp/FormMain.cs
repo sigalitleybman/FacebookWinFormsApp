@@ -277,11 +277,11 @@ namespace BasicFacebookFeatures
                 //    }
                 //}
 
-
-                postBindingSource.DataSource = LoggedInUser.Posts.Where(post=>post.Message != null);
-
-
-                if (listBoxPosts.Items.Count == 0)
+                if(LoggedInUser.Posts.Count != 0)
+                {
+                    postBindingSource.DataSource = LoggedInUser.Posts.Where(post => post.Message != null);
+                }
+                else
                 {
                     MessageBox.Show("No Posts to retrieve :(");
                 }
