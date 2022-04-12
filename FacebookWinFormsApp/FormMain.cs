@@ -20,7 +20,8 @@ namespace BasicFacebookFeatures
         private readonly AppSettings r_AppSettings;
         private FacebookWrapper.LoginResult m_LoginResult;
         internal User LoggedInUser { get; set; }
-       internal ApplicationManagerFacade ApplicationManagerFacade { get; set; }
+        //internal ApplicationManagerFacade ApplicationManagerFacade { get; set; }
+       internal ApplicationManagerFacade ApplicationManagerFacade;
 
         public FormMain()
         {
@@ -28,8 +29,13 @@ namespace BasicFacebookFeatures
             FacebookWrapper.FacebookService.s_CollectionLimit = 100;
             r_AppSettings = AppSettings.LoadFromFile();
             fetchFormSettings();
-            ApplicationManagerFacade = new ApplicationManagerFacade() { LoggedInUser = LoggedInUser };
-            r_ListOfFictionUsers = ApplicationManagerFacade.GetListOfFictionUsersToMainForm();
+           // ApplicationManagerFacade = new ApplicationManagerFacade() { LoggedInUser = LoggedInUser };
+          
+           ApplicationManagerFacade = ApplicationManagerFacade.Instance;
+           ApplicationManagerFacade.LoggedInUser = LoggedInUser;
+           ApplicationManagerFacade.createFeatures();
+
+           r_ListOfFictionUsers = ApplicationManagerFacade.GetListOfFictionUsersToMainForm();
         }
 
         private void fetchFormSettings()
@@ -291,7 +297,8 @@ namespace BasicFacebookFeatures
         private void buttonTrivia_Click(object sender, EventArgs e)
         {
             this.Hide();
-            TriviaFriendsForm triviaFriendsForm = new TriviaFriendsForm(this);
+            //TriviaFriendsForm triviaFriendsForm = new TriviaFriendsForm(this);
+            TriviaFriendsForm triviaFriendsForm = new TriviaFriendsForm(LoggedInUser);
             triviaFriendsForm.ShowDialog();
             this.Show();
         }
@@ -299,7 +306,8 @@ namespace BasicFacebookFeatures
         private void buttonFindYourMatch_Click(object sender, EventArgs e)
         {
             this.Hide();
-            FindYourMatchForm findYourMatchForm = new FindYourMatchForm(this);
+           // FindYourMatchForm findYourMatchForm = new FindYourMatchForm(this);
+            FindYourMatchForm findYourMatchForm = new FindYourMatchForm(LoggedInUser);
             findYourMatchForm.ShowDialog();
             this.Show();
         }

@@ -21,7 +21,8 @@ namespace BasicFacebookFeatures
         private readonly List<string> r_TriviaQuestions;
         private int m_IndexOfQuestions = 0;
         private FictionUsers m_ChosenFriend;
-        internal ApplicationManagerFacade ApplicationManagerFacade { get; set; }
+        //internal ApplicationManagerFacade ApplicationManagerFacade { get; set; }
+        internal ApplicationManagerFacade ApplicationManagerFacade;
 
         /**
          * In the case we can access the login user's chosen friend via facebook
@@ -29,12 +30,15 @@ namespace BasicFacebookFeatures
          * //// private readonly User r_LoggedInUser;
          */
 
-        public TriviaFriendsForm(FormMain i_FormMain)
+        public TriviaFriendsForm(User i_LoggedInUser)
         {
             InitializeComponent();
-            ApplicationManagerFacade = i_FormMain.ApplicationManagerFacade;
+
+            //ApplicationManagerFacade = i_FormMain.ApplicationManagerFacade;
+            ApplicationManagerFacade = ApplicationManagerFacade.Instance;
             r_TriviaQuestions = ApplicationManagerFacade.GetListOfQuestions();
             r_ListOfFictionUsers = ApplicationManagerFacade.GetListOfFictionUsersToTriviaForm();
+
             InitializeListBoxOfFriends();
             ////r_LoggedInUser = i_FormMain.LoggedInUser;
         }

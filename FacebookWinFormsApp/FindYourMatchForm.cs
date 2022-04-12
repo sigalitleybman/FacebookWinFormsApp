@@ -20,7 +20,8 @@ namespace BasicFacebookFeatures
         private string m_Gender;
         private string m_Age;
         private string m_City;
-        internal ApplicationManagerFacade ApplicationManagerFacade { get; set; }
+       // internal ApplicationManagerFacade ApplicationManagerFacade { get; set; }
+       internal ApplicationManagerFacade ApplicationManagerFacade;
 
         /**
          * In case we can get the user's friends via facebook
@@ -28,10 +29,14 @@ namespace BasicFacebookFeatures
         ////private readonly User r_LoggedInUser;
         ////private User m_PotentionalMatchUser;
 
-        public FindYourMatchForm(FormMain i_FormMain)
+        public FindYourMatchForm(User i_LoggedInUser)
         {
             InitializeComponent();
-            ApplicationManagerFacade = i_FormMain.ApplicationManagerFacade;
+           
+            // ApplicationManagerFacade = i_FormMain.ApplicationManagerFacade;
+            ApplicationManagerFacade = ApplicationManagerFacade.Instance;
+
+            //r_LoggedInUser = i_LoggedInUser;
             ////r_LoggedInUser = i_FormMain.LoggedInUser;
         }
 
@@ -141,6 +146,7 @@ namespace BasicFacebookFeatures
 
             if (!regexForLattersAndSpaces.IsMatch(textBoxCity.Text))
             {
+                MessageBox.Show("Please enter valid letters !");
                 e.Cancel = true;
             }
         }

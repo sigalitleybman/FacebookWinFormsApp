@@ -5,16 +5,49 @@ using FacebookWrapper.ObjectModel;
 
 namespace ApplicationLogic
 {
-    public class ApplicationManagerFacade
+    public sealed class ApplicationManagerFacade
     {
-        private readonly TriviaManager r_TriviaManager;
-        private readonly FindYourMatchManager r_FindYourMatchManager;
-        private readonly MainFormManager r_MainFormManager;
+        private static ApplicationManagerFacade s_OneAndOnlyInstance = null;
+        private static readonly object sr_CreationalLockContext = new object();
+
+        private TriviaManager r_TriviaManager;
+        private FindYourMatchManager r_FindYourMatchManager;
+        private MainFormManager r_MainFormManager;
         public User LoggedInUser { get; set; }
 
-        public ApplicationManagerFacade() 
+        //public ApplicationManagerFacade() 
+        //{
+        //    r_TriviaManager = new TriviaManager();
+        //    r_FindYourMatchManager = new FindYourMatchManager();
+        //    r_MainFormManager = new MainFormManager();
+        //}
+
+        private ApplicationManagerFacade()
         {
-            r_TriviaManager = new TriviaManager();
+        }
+
+        public static ApplicationManagerFacade Instance
+        {
+            get
+            {
+                if(s_OneAndOnlyInstance == null)
+                {
+                    lock (sr_CreationalLockContext)
+                    {
+                        if(s_OneAndOnlyInstance == null)
+                        {
+                            s_OneAndOnlyInstance = new ApplicationManagerFacade();
+                        }
+                    }
+                }
+
+                return s_OneAndOnlyInstance;
+            }
+        }
+
+        public void createFeatures()
+        {
+            r_TriviaManager = new TriviaManager(); 
             r_FindYourMatchManager = new FindYourMatchManager();
             r_MainFormManager = new MainFormManager();
         }
