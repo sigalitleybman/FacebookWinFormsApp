@@ -298,7 +298,8 @@ namespace BasicFacebookFeatures
         {
             this.Hide();
             //TriviaFriendsForm triviaFriendsForm = new TriviaFriendsForm(this);
-            TriviaFriendsForm triviaFriendsForm = new TriviaFriendsForm(LoggedInUser);
+            //TriviaFriendsForm triviaFriendsForm = new TriviaFriendsForm(LoggedInUser);
+            TriviaFriendsForm triviaFriendsForm = FactoryForm.CreateSpecificForm("TriviaFriendsForm") as TriviaFriendsForm;
             triviaFriendsForm.ShowDialog();
             this.Show();
         }
@@ -307,7 +308,8 @@ namespace BasicFacebookFeatures
         {
             this.Hide();
            // FindYourMatchForm findYourMatchForm = new FindYourMatchForm(this);
-            FindYourMatchForm findYourMatchForm = new FindYourMatchForm(LoggedInUser);
+            //FindYourMatchForm findYourMatchForm = new FindYourMatchForm(LoggedInUser);
+            FindYourMatchForm findYourMatchForm = FactoryForm.CreateSpecificForm("FindYourMatchForm") as FindYourMatchForm;
             findYourMatchForm.ShowDialog();
             this.Show();
         }

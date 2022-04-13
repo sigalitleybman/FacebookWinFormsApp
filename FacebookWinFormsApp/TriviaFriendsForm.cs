@@ -30,7 +30,7 @@ namespace BasicFacebookFeatures
          * //// private readonly User r_LoggedInUser;
          */
 
-        public TriviaFriendsForm(User i_LoggedInUser)
+        public TriviaFriendsForm()
         {
             InitializeComponent();
 
@@ -40,6 +40,7 @@ namespace BasicFacebookFeatures
             r_ListOfFictionUsers = ApplicationManagerFacade.GetListOfFictionUsersToTriviaForm();
 
             InitializeListBoxOfFriends();
+            //r_LoggedInUser = i_LoggedInUser;
             ////r_LoggedInUser = i_FormMain.LoggedInUser;
         }
 

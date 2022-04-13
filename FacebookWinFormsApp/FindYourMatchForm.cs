@@ -29,7 +29,7 @@ namespace BasicFacebookFeatures
         ////private readonly User r_LoggedInUser;
         ////private User m_PotentionalMatchUser;
 
-        public FindYourMatchForm(User i_LoggedInUser)
+        public FindYourMatchForm()
         {
             InitializeComponent();
            
