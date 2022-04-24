@@ -15,13 +15,6 @@ namespace ApplicationLogic
         private MainFormManager r_MainFormManager;
         public User LoggedInUser { get; set; }
 
-        //public ApplicationManagerFacade() 
-        //{
-        //    r_TriviaManager = new TriviaManager();
-        //    r_FindYourMatchManager = new FindYourMatchManager();
-        //    r_MainFormManager = new MainFormManager();
-        //}
-
         private ApplicationManagerFacade()
         {
         }

@@ -20,7 +20,6 @@ namespace BasicFacebookFeatures
         private string m_Gender;
         private string m_Age;
         private string m_City;
-       // internal ApplicationManagerFacade ApplicationManagerFacade { get; set; }
        internal ApplicationManagerFacade ApplicationManagerFacade;
 
         /**
@@ -32,12 +31,8 @@ namespace BasicFacebookFeatures
         public FindYourMatchForm()
         {
             InitializeComponent();
-           
-            // ApplicationManagerFacade = i_FormMain.ApplicationManagerFacade;
             ApplicationManagerFacade = ApplicationManagerFacade.Instance;
-
-            //r_LoggedInUser = i_LoggedInUser;
-            ////r_LoggedInUser = i_FormMain.LoggedInUser;
+            ////r_LoggedInUser = ApplicationManagerFacade.LoggedInUser;
         }
 
         private void buttonCheckAnswers_Click(object sender, EventArgs e)
@@ -50,7 +45,6 @@ namespace BasicFacebookFeatures
                    checkedListBoxAge.CheckedItems.Count != 0 &&
                    !textBoxCity.Text.Equals(string.Empty))
                 {
-                    //m_City = textBoxCity.Text.ToLower();
                     isMatchExist = ApplicationManagerFacade.CheckIfThereIsMatch(m_Gender, m_Age, m_City);
                     if (isMatchExist)
                     {
@@ -143,7 +137,6 @@ namespace BasicFacebookFeatures
             {
                 MessageBox.Show("You should enter only characters");
             }
-
             if (!regexForLattersAndSpaces.IsMatch(textBoxCity.Text))
             {
                 MessageBox.Show("Please enter valid letters !");

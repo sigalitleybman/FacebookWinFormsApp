@@ -21,7 +21,6 @@ namespace BasicFacebookFeatures
         private readonly List<string> r_TriviaQuestions;
         private int m_IndexOfQuestions = 0;
         private FictionUsers m_ChosenFriend;
-        //internal ApplicationManagerFacade ApplicationManagerFacade { get; set; }
         internal ApplicationManagerFacade ApplicationManagerFacade;
 
         /**
@@ -33,15 +32,11 @@ namespace BasicFacebookFeatures
         public TriviaFriendsForm()
         {
             InitializeComponent();
-
-            //ApplicationManagerFacade = i_FormMain.ApplicationManagerFacade;
             ApplicationManagerFacade = ApplicationManagerFacade.Instance;
             r_TriviaQuestions = ApplicationManagerFacade.GetListOfQuestions();
             r_ListOfFictionUsers = ApplicationManagerFacade.GetListOfFictionUsersToTriviaForm();
-
             InitializeListBoxOfFriends();
-            //r_LoggedInUser = i_LoggedInUser;
-            ////r_LoggedInUser = i_FormMain.LoggedInUser;
+            //r_LoggedInUser = ApplicationManagerFacade.LoggedInUser;
         }
 
         private void InitializeListBoxOfFriends()
@@ -57,12 +52,10 @@ namespace BasicFacebookFeatures
             ////    listBoxFriend.Items.Add(friend);
             ////}
 
-            
             foreach (var user in r_ListOfFictionUsers)
             {
                 listBoxFriend.Items.Add(user.Name);
             }
-           
         }
 
         private void listBoxFriends_SelectedIndexChanged(object sender, EventArgs e)

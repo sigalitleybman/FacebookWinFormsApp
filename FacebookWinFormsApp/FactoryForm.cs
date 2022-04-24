@@ -24,8 +24,6 @@ namespace BasicFacebookFeatures
             switch (typeOfForm)
             {
                 case eFormName.FormMain:
-                    //s_FormMain = new FormMain();
-                    //formToCreate = s_FormMain;
                     formToCreate = new FormMain();
                     break;
                 case eFormName.TriviaFriendsForm:

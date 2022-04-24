@@ -21,11 +21,13 @@ namespace ApplicationLogic
          * //internal User ChosenFriend;
          * //private DateTime m_BirthDateOfTheFriend;
          * // internal User LoggedInUser { get; set; }
+           // internal ApplicationManagerFacade ApplicationManagerFacade;
+         *
          */
 
         public TriviaManager()
         {
-            ////LoggedInUser = i_LoggedInUser
+            ////LoggedInUser = ApplicationManagerFacade.LoggedInUser;
             r_ListOfQuestions = new List<string>();
             r_TriviaQuestionsAndAnswers = new Dictionary<string, string>();
             r_ListOfFictionUsers = new List<FictionUsers>();
@@ -84,15 +86,8 @@ namespace ApplicationLogic
             foreach (eKeyQuestions keyQuestion in Enum.GetValues(typeof(eKeyQuestions)))
             {
                 r_TriviaQuestionsAndAnswers.Add(r_ListOfQuestions[(int)keyQuestion], getSpecificAnswer(keyQuestion));
-               //new Thread(() => addQuestionAndItsAnswerToDictionary(keyQuestion));
             }
         }
-
-        //private void addQuestionAndItsAnswerToDictionary(eKeyQuestions i_KeyQuestion)
-        //{
-        //    Thread specificAnswer = new Thread(() => getSpecificAnswer(i_KeyQuestion));
-        //    r_TriviaQuestionsAndAnswers.Add(r_ListOfQuestions[(int)i_KeyQuestion], specificAnswer.ToString());
-        //}
 
         private string getSpecificAnswer(eKeyQuestions i_KeyQuestion)
         {

@@ -45,7 +45,6 @@
             this.labelFriends = new System.Windows.Forms.Label();
             this.checkBoxFriends = new System.Windows.Forms.CheckBox();
             this.listBoxFriends = new System.Windows.Forms.ListBox();
-            this.pictureBoxFriends = new System.Windows.Forms.PictureBox();
             this.labelFetchAlbums = new System.Windows.Forms.Label();
             this.checkBoxAlbums = new System.Windows.Forms.CheckBox();
             this.listBoxAlbums = new System.Windows.Forms.ListBox();
@@ -85,7 +84,6 @@
             birthdayLabel = new System.Windows.Forms.Label();
             createdTimeLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFriends)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.albumBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.postBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogoFacebook)).BeginInit();
@@ -253,15 +251,6 @@
             this.listBoxFriends.Name = "listBoxFriends";
             this.listBoxFriends.Size = new System.Drawing.Size(257, 324);
             this.listBoxFriends.TabIndex = 57;
-            // 
-            // pictureBoxFriends
-            // 
-            this.pictureBoxFriends.Location = new System.Drawing.Point(286, 545);
-            this.pictureBoxFriends.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBoxFriends.Name = "pictureBoxFriends";
-            this.pictureBoxFriends.Size = new System.Drawing.Size(192, 320);
-            this.pictureBoxFriends.TabIndex = 58;
-            this.pictureBoxFriends.TabStop = false;
             // 
             // labelFetchAlbums
             // 
@@ -432,7 +421,8 @@
             // 
             // panelLikedPages
             // 
-            this.panelLikedPages.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.panelLikedPages.BackColor = System.Drawing.Color.Violet;
+            this.panelLikedPages.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelLikedPages.Controls.Add(imageSquareLabel);
             this.panelLikedPages.Controls.Add(this.imageSquarePictureBox);
             this.panelLikedPages.Controls.Add(uRLLabel);
@@ -463,7 +453,8 @@
             // 
             // panelAlbums
             // 
-            this.panelAlbums.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.panelAlbums.BackColor = System.Drawing.Color.Violet;
+            this.panelAlbums.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelAlbums.Controls.Add(imageThumbLabel);
             this.panelAlbums.Controls.Add(this.imageThumbPictureBox);
             this.panelAlbums.Controls.Add(createdTimeLabel1);
@@ -504,7 +495,8 @@
             // 
             // panelFriends
             // 
-            this.panelFriends.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.panelFriends.BackColor = System.Drawing.Color.Violet;
+            this.panelFriends.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelFriends.Controls.Add(birthdayLabel);
             this.panelFriends.Controls.Add(this.birthdayLabel1);
             this.panelFriends.Controls.Add(imageLargeLabel);
@@ -543,7 +535,8 @@
             // 
             // panelPosts
             // 
-            this.panelPosts.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.panelPosts.BackColor = System.Drawing.Color.Violet;
+            this.panelPosts.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelPosts.Controls.Add(createdTimeLabel);
             this.panelPosts.Controls.Add(this.createdTimeDateTimePicker);
             this.panelPosts.Location = new System.Drawing.Point(315, 319);
@@ -583,7 +576,6 @@
             this.Controls.Add(this.listBoxAlbums);
             this.Controls.Add(this.checkBoxAlbums);
             this.Controls.Add(this.labelFetchAlbums);
-            this.Controls.Add(this.pictureBoxFriends);
             this.Controls.Add(this.listBoxFriends);
             this.Controls.Add(this.checkBoxFriends);
             this.Controls.Add(this.labelFriends);
@@ -596,7 +588,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Facebook";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFriends)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.albumBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.postBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogoFacebook)).EndInit();
@@ -628,7 +619,6 @@
         private System.Windows.Forms.Label labelFriends;
         private System.Windows.Forms.CheckBox checkBoxFriends;
         private System.Windows.Forms.ListBox listBoxFriends;
-        private System.Windows.Forms.PictureBox pictureBoxFriends;
         private System.Windows.Forms.Label labelFetchAlbums;
         private System.Windows.Forms.CheckBox checkBoxAlbums;
         private System.Windows.Forms.ListBox listBoxAlbums;
