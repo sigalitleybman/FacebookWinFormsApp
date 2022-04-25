@@ -249,7 +249,6 @@ namespace ApplicationLogic
                 m_CorrectAnswers = 0;
                 m_WrongAnswers = 0;
             }
-
             if (i_IsCorrectAnswer)
             {
                 m_CorrectAnswers++;
