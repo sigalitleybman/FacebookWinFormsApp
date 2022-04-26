@@ -43,14 +43,11 @@
             this.pictureBoxProfile = new System.Windows.Forms.PictureBox();
             this.labelProfileName = new System.Windows.Forms.Label();
             this.labelFriends = new System.Windows.Forms.Label();
-            this.checkBoxFriends = new System.Windows.Forms.CheckBox();
             this.listBoxFriends = new System.Windows.Forms.ListBox();
             this.labelFetchAlbums = new System.Windows.Forms.Label();
-            this.checkBoxAlbums = new System.Windows.Forms.CheckBox();
             this.listBoxAlbums = new System.Windows.Forms.ListBox();
             this.albumBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.labelFetchPosts = new System.Windows.Forms.Label();
-            this.checkBoxPosts = new System.Windows.Forms.CheckBox();
             this.listBoxPosts = new System.Windows.Forms.ListBox();
             this.postBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.pictureBoxLogoFacebook = new System.Windows.Forms.PictureBox();
@@ -59,7 +56,6 @@
             this.buttonFindYourMatch = new System.Windows.Forms.Button();
             this.listBoxLikedPages = new System.Windows.Forms.ListBox();
             this.pageBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.checkBoxLikedPages = new System.Windows.Forms.CheckBox();
             this.labelFetchLikedPages = new System.Windows.Forms.Label();
             this.panelLikedPages = new System.Windows.Forms.Panel();
             this.imageSquarePictureBox = new System.Windows.Forms.PictureBox();
@@ -75,6 +71,10 @@
             this.imageLargePictureBox = new System.Windows.Forms.PictureBox();
             this.panelPosts = new System.Windows.Forms.Panel();
             this.createdTimeDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.buttonAlbum = new System.Windows.Forms.Button();
+            this.buttonFriends = new System.Windows.Forms.Button();
+            this.buttonLikedPaages = new System.Windows.Forms.Button();
+            this.buttonPosts = new System.Windows.Forms.Button();
             imageSquareLabel = new System.Windows.Forms.Label();
             uRLLabel = new System.Windows.Forms.Label();
             pictureAlbumURLLabel = new System.Windows.Forms.Label();
@@ -229,19 +229,6 @@
             this.labelFriends.TabIndex = 55;
             this.labelFriends.Text = "Fetch Friends";
             // 
-            // checkBoxFriends
-            // 
-            this.checkBoxFriends.AutoSize = true;
-            this.checkBoxFriends.Location = new System.Drawing.Point(18, 505);
-            this.checkBoxFriends.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.checkBoxFriends.Name = "checkBoxFriends";
-            this.checkBoxFriends.Size = new System.Drawing.Size(124, 24);
-            this.checkBoxFriends.TabIndex = 56;
-            this.checkBoxFriends.Text = "show friends";
-            this.checkBoxFriends.UseVisualStyleBackColor = true;
-            this.checkBoxFriends.Visible = false;
-            this.checkBoxFriends.CheckedChanged += new System.EventHandler(this.checkBoxFriends_CheckedChanged);
-            // 
             // listBoxFriends
             // 
             this.listBoxFriends.FormattingEnabled = true;
@@ -261,19 +248,6 @@
             this.labelFetchAlbums.Size = new System.Drawing.Size(200, 32);
             this.labelFetchAlbums.TabIndex = 59;
             this.labelFetchAlbums.Text = "Fetch Albums";
-            // 
-            // checkBoxAlbums
-            // 
-            this.checkBoxAlbums.AutoSize = true;
-            this.checkBoxAlbums.Location = new System.Drawing.Point(529, 505);
-            this.checkBoxAlbums.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.checkBoxAlbums.Name = "checkBoxAlbums";
-            this.checkBoxAlbums.Size = new System.Drawing.Size(127, 24);
-            this.checkBoxAlbums.TabIndex = 60;
-            this.checkBoxAlbums.Text = "show albums";
-            this.checkBoxAlbums.UseVisualStyleBackColor = true;
-            this.checkBoxAlbums.Visible = false;
-            this.checkBoxAlbums.CheckedChanged += new System.EventHandler(this.checkBoxAlbums_CheckedChanged);
             // 
             // listBoxAlbums
             // 
@@ -300,19 +274,6 @@
             this.labelFetchPosts.Size = new System.Drawing.Size(175, 32);
             this.labelFetchPosts.TabIndex = 63;
             this.labelFetchPosts.Text = "Fetch Posts";
-            // 
-            // checkBoxPosts
-            // 
-            this.checkBoxPosts.AutoSize = true;
-            this.checkBoxPosts.Location = new System.Drawing.Point(315, 169);
-            this.checkBoxPosts.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.checkBoxPosts.Name = "checkBoxPosts";
-            this.checkBoxPosts.Size = new System.Drawing.Size(115, 24);
-            this.checkBoxPosts.TabIndex = 64;
-            this.checkBoxPosts.Text = "show posts";
-            this.checkBoxPosts.UseVisualStyleBackColor = true;
-            this.checkBoxPosts.Visible = false;
-            this.checkBoxPosts.CheckedChanged += new System.EventHandler(this.checkBoxShowPosts_CheckedChanged);
             // 
             // listBoxPosts
             // 
@@ -396,18 +357,6 @@
             // pageBindingSource
             // 
             this.pageBindingSource.DataSource = typeof(FacebookWrapper.ObjectModel.Page);
-            // 
-            // checkBoxLikedPages
-            // 
-            this.checkBoxLikedPages.AutoSize = true;
-            this.checkBoxLikedPages.Location = new System.Drawing.Point(746, 169);
-            this.checkBoxLikedPages.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.checkBoxLikedPages.Name = "checkBoxLikedPages";
-            this.checkBoxLikedPages.Size = new System.Drawing.Size(156, 24);
-            this.checkBoxLikedPages.TabIndex = 74;
-            this.checkBoxLikedPages.Text = "show liked pages";
-            this.checkBoxLikedPages.UseVisualStyleBackColor = true;
-            this.checkBoxLikedPages.CheckedChanged += new System.EventHandler(this.checkBoxLikedPages_CheckedChanged);
             // 
             // labelFetchLikedPages
             // 
@@ -552,6 +501,50 @@
             this.createdTimeDateTimePicker.Size = new System.Drawing.Size(200, 26);
             this.createdTimeDateTimePicker.TabIndex = 1;
             // 
+            // buttonAlbum
+            // 
+            this.buttonAlbum.BackColor = System.Drawing.Color.Violet;
+            this.buttonAlbum.Location = new System.Drawing.Point(529, 504);
+            this.buttonAlbum.Name = "buttonAlbum";
+            this.buttonAlbum.Size = new System.Drawing.Size(145, 39);
+            this.buttonAlbum.TabIndex = 84;
+            this.buttonAlbum.Text = "show albums";
+            this.buttonAlbum.UseVisualStyleBackColor = false;
+            this.buttonAlbum.Click += new System.EventHandler(this.buttonAlbum_Click);
+            // 
+            // buttonFriends
+            // 
+            this.buttonFriends.BackColor = System.Drawing.Color.Violet;
+            this.buttonFriends.Location = new System.Drawing.Point(20, 506);
+            this.buttonFriends.Name = "buttonFriends";
+            this.buttonFriends.Size = new System.Drawing.Size(159, 34);
+            this.buttonFriends.TabIndex = 85;
+            this.buttonFriends.Text = "show friends";
+            this.buttonFriends.UseVisualStyleBackColor = false;
+            this.buttonFriends.Click += new System.EventHandler(this.buttonFriends_Click);
+            // 
+            // buttonLikedPaages
+            // 
+            this.buttonLikedPaages.BackColor = System.Drawing.Color.Violet;
+            this.buttonLikedPaages.Location = new System.Drawing.Point(746, 167);
+            this.buttonLikedPaages.Name = "buttonLikedPaages";
+            this.buttonLikedPaages.Size = new System.Drawing.Size(183, 32);
+            this.buttonLikedPaages.TabIndex = 86;
+            this.buttonLikedPaages.Text = "show liked pages";
+            this.buttonLikedPaages.UseVisualStyleBackColor = false;
+            this.buttonLikedPaages.Click += new System.EventHandler(this.buttonLikedPaages_Click);
+            // 
+            // buttonPosts
+            // 
+            this.buttonPosts.BackColor = System.Drawing.Color.Violet;
+            this.buttonPosts.Location = new System.Drawing.Point(315, 167);
+            this.buttonPosts.Name = "buttonPosts";
+            this.buttonPosts.Size = new System.Drawing.Size(145, 34);
+            this.buttonPosts.TabIndex = 87;
+            this.buttonPosts.Text = "show posts";
+            this.buttonPosts.UseVisualStyleBackColor = false;
+            this.buttonPosts.Click += new System.EventHandler(this.buttonPosts_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -559,25 +552,25 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.AliceBlue;
             this.ClientSize = new System.Drawing.Size(1490, 1050);
+            this.Controls.Add(this.buttonPosts);
+            this.Controls.Add(this.buttonLikedPaages);
+            this.Controls.Add(this.buttonFriends);
+            this.Controls.Add(this.buttonAlbum);
             this.Controls.Add(this.panelPosts);
             this.Controls.Add(this.panelFriends);
             this.Controls.Add(this.panelAlbums);
             this.Controls.Add(this.panelLikedPages);
             this.Controls.Add(this.labelFetchLikedPages);
-            this.Controls.Add(this.checkBoxLikedPages);
             this.Controls.Add(this.listBoxLikedPages);
             this.Controls.Add(this.buttonFindYourMatch);
             this.Controls.Add(this.checkBoxRememberMe);
             this.Controls.Add(this.buttonTrivia);
             this.Controls.Add(this.pictureBoxLogoFacebook);
             this.Controls.Add(this.listBoxPosts);
-            this.Controls.Add(this.checkBoxPosts);
             this.Controls.Add(this.labelFetchPosts);
             this.Controls.Add(this.listBoxAlbums);
-            this.Controls.Add(this.checkBoxAlbums);
             this.Controls.Add(this.labelFetchAlbums);
             this.Controls.Add(this.listBoxFriends);
-            this.Controls.Add(this.checkBoxFriends);
             this.Controls.Add(this.labelFriends);
             this.Controls.Add(this.labelProfileName);
             this.Controls.Add(this.pictureBoxProfile);
@@ -617,20 +610,16 @@
         private System.Windows.Forms.PictureBox pictureBoxProfile;
         private System.Windows.Forms.Label labelProfileName;
         private System.Windows.Forms.Label labelFriends;
-        private System.Windows.Forms.CheckBox checkBoxFriends;
         private System.Windows.Forms.ListBox listBoxFriends;
         private System.Windows.Forms.Label labelFetchAlbums;
-        private System.Windows.Forms.CheckBox checkBoxAlbums;
         private System.Windows.Forms.ListBox listBoxAlbums;
         private System.Windows.Forms.Label labelFetchPosts;
-        private System.Windows.Forms.CheckBox checkBoxPosts;
         private System.Windows.Forms.ListBox listBoxPosts;
         private System.Windows.Forms.PictureBox pictureBoxLogoFacebook;
         private System.Windows.Forms.Button buttonTrivia;
         private System.Windows.Forms.CheckBox checkBoxRememberMe;
         private System.Windows.Forms.Button buttonFindYourMatch;
         private System.Windows.Forms.ListBox listBoxLikedPages;
-        private System.Windows.Forms.CheckBox checkBoxLikedPages;
         private System.Windows.Forms.Label labelFetchLikedPages;
         private System.Windows.Forms.BindingSource postBindingSource;
         private System.Windows.Forms.BindingSource pageBindingSource;
@@ -649,5 +638,9 @@
         private System.Windows.Forms.PictureBox imageLargePictureBox;
         private System.Windows.Forms.Panel panelPosts;
         private System.Windows.Forms.DateTimePicker createdTimeDateTimePicker;
+        private System.Windows.Forms.Button buttonAlbum;
+        private System.Windows.Forms.Button buttonFriends;
+        private System.Windows.Forms.Button buttonLikedPaages;
+        private System.Windows.Forms.Button buttonPosts;
     }
 }

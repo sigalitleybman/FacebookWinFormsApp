@@ -63,7 +63,7 @@ namespace BasicFacebookFeatures
                     "user_videos");           
             LoggedInUser = m_LoginResult.LoggedInUser;
             new Thread(fetchUserInfo).Start();
-            defineCheckBoxAsVisible();
+            defineButtonsAsVisible();
         }
 
         protected override void OnShown(EventArgs e)
@@ -80,7 +80,7 @@ namespace BasicFacebookFeatures
             m_LoginResult = FacebookService.Connect(r_AppSettings.LastAccessToken);
             LoggedInUser = m_LoginResult.LoggedInUser;
             fetchUserInfo();
-            defineCheckBoxAsVisible();
+            defineButtonsAsVisible();
         }
 
         protected override void OnFormClosing(FormClosingEventArgs e)
@@ -97,13 +97,14 @@ namespace BasicFacebookFeatures
             r_AppSettings.SaveToFile();
         }
 
-        private void defineCheckBoxAsVisible()
+        private void defineButtonsAsVisible()
         {
             Invoke(new Action(() =>
             {
-                checkBoxAlbums.Visible = true;
-                checkBoxFriends.Visible = true;
-                checkBoxPosts.Visible = true;
+                buttonAlbum.Visible = true;
+                buttonFriends.Visible = true;
+                buttonPosts.Visible = true;
+                buttonLikedPaages.Visible = true;
             }));
         }
 
@@ -134,17 +135,17 @@ namespace BasicFacebookFeatures
             }));
         }
 
-        private void checkBoxFriends_CheckedChanged(object sender, EventArgs e)
-        {
-            if (checkBoxFriends.Checked)
-            {
-                new Thread(showFriends).Start();
-            }
-            else
-            {
-                listBoxFriends.Items.Clear();
-            }
-        }
+        //private void checkBoxFriends_CheckedChanged(object sender, EventArgs e)
+        //{
+        //    if (checkBoxFriends.Checked)
+        //    {
+        //        new Thread(showFriends).Start();
+        //    }
+        //    else
+        //    {
+        //        listBoxFriends.Items.Clear();
+        //    }
+        //}
         
         private void showFriends()
         {
@@ -174,47 +175,59 @@ namespace BasicFacebookFeatures
             new Thread(displaySelectedFriend).Start();
         }*/
 
-        private void checkBoxAlbums_CheckedChanged(object sender, EventArgs e)
-        {
-            if (checkBoxAlbums.Checked)
-            {
-                new Thread(showAlbums).Start();
-            }
-        }
+        //private void checkBoxAlbums_CheckedChanged(object sender, EventArgs e)
+        //{
+        //   // if (checkBoxAlbums.Checked)
+        //    //{
+        //        new Thread(showAlbums).Start();
+        //   // }
+        //    //else
+        //    //{
+        //    //    
+        //    //}
+        //}
 
         private void showAlbums()
         {
-            listBoxAlbums.Invoke(new Action(() =>
+            listBoxAlbums.Invoke(new Action(()=> bindingAlbums()));
+            if (listBoxAlbums.Items.Count == 0)
             {
-                albumBindingSource.DataSource = LoggedInUser.Albums;
-                if (listBoxAlbums.Items.Count == 0)
-                {
-                    MessageBox.Show("No Albums to retrieve :(");
-                }
-            }));
-        }
-
-        private void checkBoxShowPosts_CheckedChanged(object sender, EventArgs e)
-        {
-            if (checkBoxPosts.Checked)
-            {
-                new Thread(fetchPosts).Start();
+                MessageBox.Show("No Albums to retrieve :(");
             }
         }
 
+        private void bindingAlbums()
+        {
+            albumBindingSource.DataSource = LoggedInUser.Albums;
+        }
+
+        //private void checkBoxShowPosts_CheckedChanged(object sender, EventArgs e)
+        //{
+        //    if (checkBoxPosts.Checked)
+        //    {
+        //        new Thread(fetchPosts).Start();
+        //    }
+        //    else
+        //    {
+        //        listBoxPosts.Items.Clear();
+        //    }
+        //}
+
         private void fetchPosts()
         {
-            listBoxPosts.Invoke(new Action(() =>
+            if(LoggedInUser.Posts.Count != 0)
             {
-                if(LoggedInUser.Posts.Count != 0)
-                {
-                    postBindingSource.DataSource = LoggedInUser.Posts.Where(post => post.Message != null);
-                }
-                else
-                {
-                    MessageBox.Show("No Posts to retrieve :(");
-                }
-            }));
+                listBoxPosts.Invoke(new Action(()=> bindingPosts()));
+            }
+            else
+            {
+                MessageBox.Show("No Posts to retrieve :(");
+            }
+        }
+
+        private void bindingPosts()
+        {
+            postBindingSource.DataSource = LoggedInUser.Posts.Where(post => post.Message != null);
         }
 
         private void buttonTrivia_Click(object sender, EventArgs e)
@@ -233,24 +246,50 @@ namespace BasicFacebookFeatures
             this.Show();
         }
 
-        private void checkBoxLikedPages_CheckedChanged(object sender, EventArgs e)
-        {
-            if (checkBoxLikedPages.Checked)
-            {
-                new Thread(fetchLikedPages).Start();
-            }
-        }
+        //private void checkBoxLikedPages_CheckedChanged(object sender, EventArgs e)
+        //{
+        //    if (checkBoxLikedPages.Checked)
+        //    {
+        //        new Thread(fetchLikedPages).Start();
+        //    }
+        //    else
+        //    {
+        //        listBoxLikedPages.Items.Clear();
+        //    }
+        //}
 
         private void fetchLikedPages()
         {
-           listBoxLikedPages.Invoke(new Action(() =>
+            listBoxLikedPages.Invoke(new Action(()=> bindingLikedPages()));
+            if (listBoxLikedPages.Items.Count == 0)
             {
-                pageBindingSource.DataSource = LoggedInUser.LikedPages;
-                if (listBoxLikedPages.Items.Count == 0)
-                {
-                    MessageBox.Show("No liked pages to retrieve :(");
-                }
-            }));
+                MessageBox.Show("No liked pages to retrieve :(");
+            }
+        }
+
+        private void bindingLikedPages()
+        {
+            pageBindingSource.DataSource = LoggedInUser.LikedPages;
+        }
+
+        private void buttonAlbum_Click(object sender, EventArgs e)
+        {
+            new Thread(showAlbums).Start();
+        }
+
+        private void buttonFriends_Click(object sender, EventArgs e)
+        {
+            new Thread(showFriends).Start();
+        }
+
+        private void buttonLikedPaages_Click(object sender, EventArgs e)
+        {
+            new Thread(fetchLikedPages).Start();
+        }
+
+        private void buttonPosts_Click(object sender, EventArgs e)
+        {
+            new Thread(fetchPosts).Start();
         }
 
         //private void likedByBindingSource_CurrentChanged(object sender, EventArgs e)
