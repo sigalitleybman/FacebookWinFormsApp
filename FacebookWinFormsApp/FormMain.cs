@@ -135,23 +135,15 @@ namespace BasicFacebookFeatures
             }));
         }
 
-        //private void checkBoxFriends_CheckedChanged(object sender, EventArgs e)
-        //{
-        //    if (checkBoxFriends.Checked)
-        //    {
-        //        new Thread(showFriends).Start();
-        //    }
-        //    else
-        //    {
-        //        listBoxFriends.Items.Clear();
-        //    }
-        //}
-        
         private void showFriends()
         {
             foreach (FictionUsers fictionUser in r_ListOfFictionUsers)
             {
                 listBoxFriends.Invoke(new Action(() => listBoxFriends.Items.Add(fictionUser.Name)));
+                if (listBoxFriends.Items.Count == 0)
+                {
+                    MessageBox.Show("No Friends to retrieve :(");
+                }
             }
 
             /**
@@ -159,13 +151,12 @@ namespace BasicFacebookFeatures
              */
             //  listBoxFriends.Invoke(new Action(() =>
             //{
-                  //friendBindingSource.DataSource = LoggedInUser.Albums;
-                ////if (listBoxFriends.Items.Count == 0)
-                ////{
-                ////    MessageBox.Show("No Friends to retrieve :(");
-                ////}
-           // }));
-            }
+            ////if (listBoxFriends.Items.Count == 0)
+            ////{
+            ////    MessageBox.Show("No Friends to retrieve :(");
+            ////}
+            // }));
+        }
 
         /**
         * In case we can access user's friend via fecebook
@@ -174,18 +165,6 @@ namespace BasicFacebookFeatures
         {
             new Thread(displaySelectedFriend).Start();
         }*/
-
-        //private void checkBoxAlbums_CheckedChanged(object sender, EventArgs e)
-        //{
-        //   // if (checkBoxAlbums.Checked)
-        //    //{
-        //        new Thread(showAlbums).Start();
-        //   // }
-        //    //else
-        //    //{
-        //    //    
-        //    //}
-        //}
 
         private void showAlbums()
         {
@@ -200,18 +179,6 @@ namespace BasicFacebookFeatures
         {
             albumBindingSource.DataSource = LoggedInUser.Albums;
         }
-
-        //private void checkBoxShowPosts_CheckedChanged(object sender, EventArgs e)
-        //{
-        //    if (checkBoxPosts.Checked)
-        //    {
-        //        new Thread(fetchPosts).Start();
-        //    }
-        //    else
-        //    {
-        //        listBoxPosts.Items.Clear();
-        //    }
-        //}
 
         private void fetchPosts()
         {
@@ -246,18 +213,6 @@ namespace BasicFacebookFeatures
             this.Show();
         }
 
-        //private void checkBoxLikedPages_CheckedChanged(object sender, EventArgs e)
-        //{
-        //    if (checkBoxLikedPages.Checked)
-        //    {
-        //        new Thread(fetchLikedPages).Start();
-        //    }
-        //    else
-        //    {
-        //        listBoxLikedPages.Items.Clear();
-        //    }
-        //}
-
         private void fetchLikedPages()
         {
             listBoxLikedPages.Invoke(new Action(()=> bindingLikedPages()));
@@ -291,10 +246,5 @@ namespace BasicFacebookFeatures
         {
             new Thread(fetchPosts).Start();
         }
-
-        //private void likedByBindingSource_CurrentChanged(object sender, EventArgs e)
-        //{
-
-        //}
     }
 }

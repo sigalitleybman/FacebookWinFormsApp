@@ -34,8 +34,6 @@
             System.Windows.Forms.Label pictureAlbumURLLabel;
             System.Windows.Forms.Label createdTimeLabel1;
             System.Windows.Forms.Label imageThumbLabel;
-            System.Windows.Forms.Label imageLargeLabel;
-            System.Windows.Forms.Label birthdayLabel;
             System.Windows.Forms.Label createdTimeLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.buttonLogin = new System.Windows.Forms.Button();
@@ -64,11 +62,8 @@
             this.imageThumbPictureBox = new System.Windows.Forms.PictureBox();
             this.createdTimeDateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.pictureAlbumURLLinkLabel = new System.Windows.Forms.LinkLabel();
-            this.panelFriends = new System.Windows.Forms.Panel();
-            this.birthdayLabel1 = new System.Windows.Forms.Label();
             this.membersBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.friendListBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.imageLargePictureBox = new System.Windows.Forms.PictureBox();
             this.panelPosts = new System.Windows.Forms.Panel();
             this.createdTimeDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.buttonAlbum = new System.Windows.Forms.Button();
@@ -80,8 +75,6 @@
             pictureAlbumURLLabel = new System.Windows.Forms.Label();
             createdTimeLabel1 = new System.Windows.Forms.Label();
             imageThumbLabel = new System.Windows.Forms.Label();
-            imageLargeLabel = new System.Windows.Forms.Label();
-            birthdayLabel = new System.Windows.Forms.Label();
             createdTimeLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.albumBindingSource)).BeginInit();
@@ -92,10 +85,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.imageSquarePictureBox)).BeginInit();
             this.panelAlbums.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imageThumbPictureBox)).BeginInit();
-            this.panelFriends.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.membersBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.friendListBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imageLargePictureBox)).BeginInit();
             this.panelPosts.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -143,24 +134,6 @@
             imageThumbLabel.Size = new System.Drawing.Size(111, 20);
             imageThumbLabel.TabIndex = 5;
             imageThumbLabel.Text = "Image Thumb:";
-            // 
-            // imageLargeLabel
-            // 
-            imageLargeLabel.AutoSize = true;
-            imageLargeLabel.Location = new System.Drawing.Point(15, 58);
-            imageLargeLabel.Name = "imageLargeLabel";
-            imageLargeLabel.Size = new System.Drawing.Size(103, 20);
-            imageLargeLabel.TabIndex = 0;
-            imageLargeLabel.Text = "Image Large:";
-            // 
-            // birthdayLabel
-            // 
-            birthdayLabel.AutoSize = true;
-            birthdayLabel.Location = new System.Drawing.Point(15, 18);
-            birthdayLabel.Name = "birthdayLabel";
-            birthdayLabel.Size = new System.Drawing.Size(71, 20);
-            birthdayLabel.TabIndex = 2;
-            birthdayLabel.Text = "Birthday:";
             // 
             // createdTimeLabel
             // 
@@ -442,28 +415,6 @@
             this.pictureAlbumURLLinkLabel.TabStop = true;
             this.pictureAlbumURLLinkLabel.Text = "linkLabel1";
             // 
-            // panelFriends
-            // 
-            this.panelFriends.BackColor = System.Drawing.Color.Violet;
-            this.panelFriends.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelFriends.Controls.Add(birthdayLabel);
-            this.panelFriends.Controls.Add(this.birthdayLabel1);
-            this.panelFriends.Controls.Add(imageLargeLabel);
-            this.panelFriends.Controls.Add(this.imageLargePictureBox);
-            this.panelFriends.Location = new System.Drawing.Point(112, 742);
-            this.panelFriends.Name = "panelFriends";
-            this.panelFriends.Size = new System.Drawing.Size(336, 186);
-            this.panelFriends.TabIndex = 82;
-            // 
-            // birthdayLabel1
-            // 
-            this.birthdayLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.membersBindingSource, "Birthday", true));
-            this.birthdayLabel1.Location = new System.Drawing.Point(92, 18);
-            this.birthdayLabel1.Name = "birthdayLabel1";
-            this.birthdayLabel1.Size = new System.Drawing.Size(100, 23);
-            this.birthdayLabel1.TabIndex = 3;
-            this.birthdayLabel1.Text = "label1";
-            // 
             // membersBindingSource
             // 
             this.membersBindingSource.DataMember = "Members";
@@ -472,15 +423,6 @@
             // friendListBindingSource
             // 
             this.friendListBindingSource.DataSource = typeof(FacebookWrapper.ObjectModel.FriendList);
-            // 
-            // imageLargePictureBox
-            // 
-            this.imageLargePictureBox.DataBindings.Add(new System.Windows.Forms.Binding("Image", this.membersBindingSource, "ImageLarge", true));
-            this.imageLargePictureBox.Location = new System.Drawing.Point(124, 44);
-            this.imageLargePictureBox.Name = "imageLargePictureBox";
-            this.imageLargePictureBox.Size = new System.Drawing.Size(155, 128);
-            this.imageLargePictureBox.TabIndex = 1;
-            this.imageLargePictureBox.TabStop = false;
             // 
             // panelPosts
             // 
@@ -557,7 +499,6 @@
             this.Controls.Add(this.buttonFriends);
             this.Controls.Add(this.buttonAlbum);
             this.Controls.Add(this.panelPosts);
-            this.Controls.Add(this.panelFriends);
             this.Controls.Add(this.panelAlbums);
             this.Controls.Add(this.panelLikedPages);
             this.Controls.Add(this.labelFetchLikedPages);
@@ -591,11 +532,8 @@
             this.panelAlbums.ResumeLayout(false);
             this.panelAlbums.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imageThumbPictureBox)).EndInit();
-            this.panelFriends.ResumeLayout(false);
-            this.panelFriends.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.membersBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.friendListBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imageLargePictureBox)).EndInit();
             this.panelPosts.ResumeLayout(false);
             this.panelPosts.PerformLayout();
             this.ResumeLayout(false);
@@ -631,11 +569,8 @@
         private System.Windows.Forms.LinkLabel pictureAlbumURLLinkLabel;
         private System.Windows.Forms.DateTimePicker createdTimeDateTimePicker1;
         private System.Windows.Forms.PictureBox imageThumbPictureBox;
-        private System.Windows.Forms.Panel panelFriends;
         private System.Windows.Forms.BindingSource friendListBindingSource;
-        private System.Windows.Forms.Label birthdayLabel1;
         private System.Windows.Forms.BindingSource membersBindingSource;
-        private System.Windows.Forms.PictureBox imageLargePictureBox;
         private System.Windows.Forms.Panel panelPosts;
         private System.Windows.Forms.DateTimePicker createdTimeDateTimePicker;
         private System.Windows.Forms.Button buttonAlbum;
