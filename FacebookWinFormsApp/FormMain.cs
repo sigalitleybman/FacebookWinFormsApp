@@ -30,7 +30,7 @@ namespace BasicFacebookFeatures
             fetchFormSettings();
             ApplicationManagerFacade = ApplicationManagerFacade.Instance;
             ApplicationManagerFacade.LoggedInUser = LoggedInUser;
-            ApplicationManagerFacade.createFeatures();
+            ApplicationManagerFacade.CreateFeatures();
             r_ListOfFictionUsers = ApplicationManagerFacade.GetListOfFictionUsersToMainForm();
         }
 
@@ -149,8 +149,8 @@ namespace BasicFacebookFeatures
             /**
              * In case we can access user's friend via fecebook
              */
-            //  listBoxFriends.Invoke(new Action(() =>
-            //{
+            ////  listBoxFriends.Invoke(new Action(() =>
+            ////{
             ////if (listBoxFriends.Items.Count == 0)
             ////{
             ////    MessageBox.Show("No Friends to retrieve :(");
@@ -168,7 +168,7 @@ namespace BasicFacebookFeatures
 
         private void showAlbums()
         {
-            listBoxAlbums.Invoke(new Action(()=> bindingAlbums()));
+            listBoxAlbums.Invoke(new Action(() => bindingAlbums()));
             if (listBoxAlbums.Items.Count == 0)
             {
                 MessageBox.Show("No Albums to retrieve :(");
@@ -184,7 +184,7 @@ namespace BasicFacebookFeatures
         {
             if(LoggedInUser.Posts.Count != 0)
             {
-                listBoxPosts.Invoke(new Action(()=> bindingPosts()));
+                listBoxPosts.Invoke(new Action(() => bindingPosts()));
             }
             else
             {
@@ -215,7 +215,7 @@ namespace BasicFacebookFeatures
 
         private void fetchLikedPages()
         {
-            listBoxLikedPages.Invoke(new Action(()=> bindingLikedPages()));
+            listBoxLikedPages.Invoke(new Action(() => bindingLikedPages()));
             if (listBoxLikedPages.Items.Count == 0)
             {
                 MessageBox.Show("No liked pages to retrieve :(");

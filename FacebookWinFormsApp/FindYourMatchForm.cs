@@ -16,11 +16,11 @@ namespace BasicFacebookFeatures
 {
     public partial class FindYourMatchForm : Form
     {
-        private FictionUsers m_PotentialMatch;
+        private readonly string r_City;
         private string m_Gender;
         private string m_Age;
-        private string m_City;
-       internal ApplicationManagerFacade ApplicationManagerFacade;
+        private FictionUsers m_PotentialMatch;
+        internal ApplicationManagerFacade ApplicationManagerFacade;
 
         /**
          * In case we can get the user's friends via facebook
@@ -45,7 +45,7 @@ namespace BasicFacebookFeatures
                    checkedListBoxAge.CheckedItems.Count != 0 &&
                    !textBoxCity.Text.Equals(string.Empty))
                 {
-                    isMatchExist = ApplicationManagerFacade.CheckIfThereIsMatch(m_Gender, m_Age, m_City);
+                    isMatchExist = ApplicationManagerFacade.CheckIfThereIsMatch(m_Gender, m_Age, r_City);
                     if (isMatchExist)
                     {
                         m_PotentialMatch = ApplicationManagerFacade.GetPotentionalMatch();

@@ -7,17 +7,12 @@ namespace ApplicationLogic
 {
     public sealed class ApplicationManagerFacade
     {
-        private static ApplicationManagerFacade s_OneAndOnlyInstance = null;
         private static readonly object sr_CreationalLockContext = new object();
-
+        private static ApplicationManagerFacade s_OneAndOnlyInstance = null;
         private TriviaManager r_TriviaManager;
         private FindYourMatchManager r_FindYourMatchManager;
         private MainFormManager r_MainFormManager;
         public User LoggedInUser { get; set; }
-
-        private ApplicationManagerFacade()
-        {
-        }
 
         public static ApplicationManagerFacade Instance
         {
@@ -38,7 +33,11 @@ namespace ApplicationLogic
             }
         }
 
-        public void createFeatures()
+        private ApplicationManagerFacade()
+        {
+        }
+
+        public void CreateFeatures()
         {
             r_TriviaManager = new TriviaManager(); 
             r_FindYourMatchManager = new FindYourMatchManager();

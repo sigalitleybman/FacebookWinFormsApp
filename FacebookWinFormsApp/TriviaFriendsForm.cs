@@ -36,7 +36,7 @@ namespace BasicFacebookFeatures
             r_TriviaQuestions = ApplicationManagerFacade.GetListOfQuestions();
             r_ListOfFictionUsers = ApplicationManagerFacade.GetListOfFictionUsersToTriviaForm();
             InitializeListBoxOfFriends();
-            //r_LoggedInUser = ApplicationManagerFacade.LoggedInUser;
+            ////r_LoggedInUser = ApplicationManagerFacade.LoggedInUser;
         }
 
         private void InitializeListBoxOfFriends()
@@ -128,8 +128,7 @@ namespace BasicFacebookFeatures
         }
      
         private void displayAnswers(int i_IndexOfCurrentQuestion)
-        {
-            
+        { 
            List<string> answersToSpecificQuestion = ApplicationManagerFacade.GetListOfAnswers(i_IndexOfCurrentQuestion);
            radioButtonFirstAnswer.Text = answersToSpecificQuestion[0];
            radioButtonSecondAnswer.Text = answersToSpecificQuestion[1];
@@ -156,6 +155,7 @@ namespace BasicFacebookFeatures
                 {
                     chosenAnswer = radioButtonThirdAnswer.Text;
                 }
+
                 isCorrectAnswer = ApplicationManagerFacade.CheckIfAnswerIsCorrect(currentQuestion, chosenAnswer);
                 updateResults((int)currentQuestion, isCorrectAnswer);
                 pictureBoxNextQuestion.Visible = true;
