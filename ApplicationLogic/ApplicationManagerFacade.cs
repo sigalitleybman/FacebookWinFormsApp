@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using ApplicationLogic.Stretegy;
 using FacebookWrapper.ObjectModel;
 
 namespace ApplicationLogic
@@ -124,6 +125,21 @@ namespace ApplicationLogic
             return r_MainFormManager.GetListOfFictionUsersToMainForm();
         }
 
+        public List<FictionUsers> GetListOfMatchFriendsBySeason(string season)
+        {
+            BirthMonthFilter birthMonthFilter = new BirthMonthFilter();
+
+            if (season.Equals("Summer"))
+            {
+                birthMonthFilter.seasoneFilter = new ConcreteSeasons.MonthOfSummerSeason();
+            }
+            else if (season.Equals("Winter"))
+            {
+                birthMonthFilter.seasoneFilter = new ConcreteSeasons.MonthOfWinterSeason();
+            }
+
+            return birthMonthFilter.FilterByMonth(GetListOfFictionUsersToMainForm());
+        }
         /**
          * In case we can access the user's friends via facebook
          */

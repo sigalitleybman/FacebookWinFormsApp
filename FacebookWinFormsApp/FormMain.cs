@@ -21,6 +21,8 @@ namespace BasicFacebookFeatures
         private FacebookWrapper.LoginResult m_LoginResult;
         internal User LoggedInUser { get; set; }
         internal ApplicationManagerFacade ApplicationManagerFacade;
+        private string season;
+        private List<FictionUsers> friendsBornedInSelectedSeason = new List<FictionUsers> { };
 
         public FormMain()
         {
@@ -245,6 +247,82 @@ namespace BasicFacebookFeatures
         private void buttonPosts_Click(object sender, EventArgs e)
         {
             new Thread(fetchPosts).Start();
+        }
+
+        private void fetchMatchFriendsBornedInSummer(string i_Season)
+        {
+            listBoxFilterBySeasonFriend.Items.Clear();
+            friendsBornedInSelectedSeason = ApplicationManagerFacade.GetListOfMatchFriendsBySeason(i_Season);
+            foreach (FictionUsers fictionUser in friendsBornedInSelectedSeason)
+            {
+                listBoxFilterBySeasonFriend.Invoke(new Action(() => listBoxFilterBySeasonFriend.Items.Add(fictionUser.Name)));
+                if (listBoxFilterBySeasonFriend.Items.Count == 0)
+                {
+                    MessageBox.Show("There are no friends that borned in summer season :(");
+                }
+            }
+        }
+
+        private void fetchMatchFriendsBornedInWinter(string i_Season)
+        {
+            listBoxFilterBySeasonFriend.Items.Clear();
+            friendsBornedInSelectedSeason = ApplicationManagerFacade.GetListOfMatchFriendsBySeason(i_Season);
+            foreach (FictionUsers fictionUser in friendsBornedInSelectedSeason)
+            {
+                listBoxFilterBySeasonFriend.Invoke(new Action(() => listBoxFilterBySeasonFriend.Items.Add(fictionUser.Name)));
+                if (listBoxFilterBySeasonFriend.Items.Count == 0)
+                {
+                    MessageBox.Show("There are no friends that borned in winter season :(");
+                }
+            }
+        }
+
+        //private void checkedListBoxSeasons_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    season = (sender as CheckedListBox).SelectedItem.ToString();
+        //    makeTheOtherCheckBoxOptionsEnabled(sender);
+        //    if (season.Equals("Summer"))
+        //    {
+        //        fetchMatchFriendsBornedInSummer(season);
+        //    }
+        //    else if (season.Equals("Winter"))
+        //    {
+        //        fetchMatchFriendsBornedInWinter(season);
+        //    }
+        //}
+
+        private void makeTheOtherCheckBoxOptionsEnabled(object i_Sender)
+        {
+            int indexOfChosenCheckBox;
+            int countCheckBox;
+            CheckedListBox currentCheckedListBox = i_Sender as CheckedListBox;
+
+            if (currentCheckedListBox != null)
+            {
+                indexOfChosenCheckBox = currentCheckedListBox.SelectedIndex;
+                countCheckBox = currentCheckedListBox.Items.Count;
+                for (int i = 0; i < countCheckBox; i++)
+                {
+                    if (indexOfChosenCheckBox != i)
+                    {
+                        currentCheckedListBox.SetItemChecked(i, false);
+                    }
+                }
+            }
+        }
+
+        private void checkedListBoxSeasons_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            season = (sender as CheckedListBox).SelectedItem.ToString();
+            makeTheOtherCheckBoxOptionsEnabled(sender);
+            if (season.Equals("Summer"))
+            {
+                fetchMatchFriendsBornedInSummer(season);
+            }
+            else if (season.Equals("Winter"))
+            {
+                fetchMatchFriendsBornedInWinter(season);
+            }
         }
     }
 }

@@ -210,10 +210,10 @@ namespace ApplicationLogic
 
             while (true)
             {
-                randomForFirstMonthOptional = random.Next(Enum.GetNames(typeof(eMonthAnswers)).Length);
-                randomForSecondMonthOptional = random.Next(Enum.GetNames(typeof(eMonthAnswers)).Length);
-                firstMonthOptional = ((eMonthAnswers)randomForFirstMonthOptional).ToString();
-                secondMonthOptional = ((eMonthAnswers)randomForSecondMonthOptional).ToString();
+                randomForFirstMonthOptional = random.Next(Enum.GetNames(typeof(eBirthMonth)).Length);
+                randomForSecondMonthOptional = random.Next(Enum.GetNames(typeof(eBirthMonth)).Length);
+                firstMonthOptional = ((eBirthMonth)randomForFirstMonthOptional).ToString();
+                secondMonthOptional = ((eBirthMonth)randomForSecondMonthOptional).ToString();
                 if (!firstMonthOptional.Equals(secondMonthOptional) &&
                     !firstMonthOptional.Equals(correctAnswer) &&
                     !secondMonthOptional.Equals(correctAnswer))
@@ -283,20 +283,20 @@ namespace ApplicationLogic
             Eilat
         }
 
-        private enum eMonthAnswers
-        {
-            January = 0,
-            February,
-            March,
-            April,
-            May,
-            June,
-            July,
-            August,
-            September,
-            October,
-            November,
-            December
-        }
+        //private enum eMonthAnswers
+        //{
+        //    January = 0,
+        //    February,
+        //    March,
+        //    April,
+        //    May,
+        //    June,
+        //    July,
+        //    August,
+        //    September,
+        //    October,
+        //    November,
+        //    December
+        //}
     }
 }

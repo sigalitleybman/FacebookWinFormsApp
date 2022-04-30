@@ -18,11 +18,11 @@ namespace ApplicationLogic
 
         private void initializeListOfFictionFriends()
         {
-            FictionUsers friend1 = new FictionUsers("Michael Levi");
-            FictionUsers friend2 = new FictionUsers("Dor Cohen");
-            FictionUsers friend3 = new FictionUsers("Shalom Asayag");
-            FictionUsers friend4 = new FictionUsers("Tal Avital");
-            FictionUsers friend5 = new FictionUsers("Rona Grinberg");
+            FictionUsers friend1 = new FictionUsers("Michael Levi", "April");
+            FictionUsers friend2 = new FictionUsers("Dor Cohen", "November");
+            FictionUsers friend3 = new FictionUsers("Shalom Asayag", "February");
+            FictionUsers friend4 = new FictionUsers("Tal Avital", "August");
+            FictionUsers friend5 = new FictionUsers("Rona Grinberg", "December");
 
             r_ListOfFictionUsers.Add(friend1);
             r_ListOfFictionUsers.Add(friend2);
@@ -35,5 +35,7 @@ namespace ApplicationLogic
         {
             return r_ListOfFictionUsers;
         }
+
+
     }
 }

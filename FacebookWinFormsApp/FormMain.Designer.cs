@@ -70,6 +70,8 @@
             this.buttonFriends = new System.Windows.Forms.Button();
             this.buttonLikedPaages = new System.Windows.Forms.Button();
             this.buttonPosts = new System.Windows.Forms.Button();
+            this.checkedListBoxSeasons = new System.Windows.Forms.CheckedListBox();
+            this.listBoxFilterBySeasonFriend = new System.Windows.Forms.ListBox();
             imageSquareLabel = new System.Windows.Forms.Label();
             uRLLabel = new System.Windows.Forms.Label();
             pictureAlbumURLLabel = new System.Windows.Forms.Label();
@@ -487,6 +489,27 @@
             this.buttonPosts.UseVisualStyleBackColor = false;
             this.buttonPosts.Click += new System.EventHandler(this.buttonPosts_Click);
             // 
+            // checkedListBoxSeasons
+            // 
+            this.checkedListBoxSeasons.FormattingEnabled = true;
+            this.checkedListBoxSeasons.Items.AddRange(new object[] {
+            "Summer",
+            "Winter"});
+            this.checkedListBoxSeasons.Location = new System.Drawing.Point(286, 577);
+            this.checkedListBoxSeasons.Name = "checkedListBoxSeasons";
+            this.checkedListBoxSeasons.Size = new System.Drawing.Size(118, 50);
+            this.checkedListBoxSeasons.TabIndex = 88;
+            this.checkedListBoxSeasons.SelectedIndexChanged += new System.EventHandler(this.checkedListBoxSeasons_SelectedIndexChanged_1);
+            // 
+            // listBoxFilterBySeasonFriend
+            // 
+            this.listBoxFilterBySeasonFriend.FormattingEnabled = true;
+            this.listBoxFilterBySeasonFriend.ItemHeight = 20;
+            this.listBoxFilterBySeasonFriend.Location = new System.Drawing.Point(286, 648);
+            this.listBoxFilterBySeasonFriend.Name = "listBoxFilterBySeasonFriend";
+            this.listBoxFilterBySeasonFriend.Size = new System.Drawing.Size(204, 224);
+            this.listBoxFilterBySeasonFriend.TabIndex = 89;
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -494,6 +517,8 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.AliceBlue;
             this.ClientSize = new System.Drawing.Size(1490, 1050);
+            this.Controls.Add(this.listBoxFilterBySeasonFriend);
+            this.Controls.Add(this.checkedListBoxSeasons);
             this.Controls.Add(this.buttonPosts);
             this.Controls.Add(this.buttonLikedPaages);
             this.Controls.Add(this.buttonFriends);
@@ -577,5 +602,7 @@
         private System.Windows.Forms.Button buttonFriends;
         private System.Windows.Forms.Button buttonLikedPaages;
         private System.Windows.Forms.Button buttonPosts;
+        private System.Windows.Forms.CheckedListBox checkedListBoxSeasons;
+        private System.Windows.Forms.ListBox listBoxFilterBySeasonFriend;
     }
 }
