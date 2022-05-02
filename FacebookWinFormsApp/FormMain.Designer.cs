@@ -72,6 +72,7 @@
             this.buttonPosts = new System.Windows.Forms.Button();
             this.checkedListBoxSeasons = new System.Windows.Forms.CheckedListBox();
             this.listBoxFilterBySeasonFriend = new System.Windows.Forms.ListBox();
+            this.labelFetchFriendSeason = new System.Windows.Forms.Label();
             imageSquareLabel = new System.Windows.Forms.Label();
             uRLLabel = new System.Windows.Forms.Label();
             pictureAlbumURLLabel = new System.Windows.Forms.Label();
@@ -131,7 +132,7 @@
             // imageThumbLabel
             // 
             imageThumbLabel.AutoSize = true;
-            imageThumbLabel.Location = new System.Drawing.Point(36, 32);
+            imageThumbLabel.Location = new System.Drawing.Point(25, 22);
             imageThumbLabel.Name = "imageThumbLabel";
             imageThumbLabel.Size = new System.Drawing.Size(111, 20);
             imageThumbLabel.TabIndex = 5;
@@ -198,7 +199,7 @@
             // 
             this.labelFriends.AutoSize = true;
             this.labelFriends.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.labelFriends.Location = new System.Drawing.Point(14, 466);
+            this.labelFriends.Location = new System.Drawing.Point(23, 595);
             this.labelFriends.Name = "labelFriends";
             this.labelFriends.Size = new System.Drawing.Size(201, 32);
             this.labelFriends.TabIndex = 55;
@@ -208,7 +209,7 @@
             // 
             this.listBoxFriends.FormattingEnabled = true;
             this.listBoxFriends.ItemHeight = 20;
-            this.listBoxFriends.Location = new System.Drawing.Point(18, 545);
+            this.listBoxFriends.Location = new System.Drawing.Point(18, 670);
             this.listBoxFriends.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listBoxFriends.Name = "listBoxFriends";
             this.listBoxFriends.Size = new System.Drawing.Size(257, 324);
@@ -218,7 +219,7 @@
             // 
             this.labelFetchAlbums.AutoSize = true;
             this.labelFetchAlbums.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.labelFetchAlbums.Location = new System.Drawing.Point(523, 466);
+            this.labelFetchAlbums.Location = new System.Drawing.Point(707, 595);
             this.labelFetchAlbums.Name = "labelFetchAlbums";
             this.labelFetchAlbums.Size = new System.Drawing.Size(200, 32);
             this.labelFetchAlbums.TabIndex = 59;
@@ -230,7 +231,7 @@
             this.listBoxAlbums.DisplayMember = "Name";
             this.listBoxAlbums.FormattingEnabled = true;
             this.listBoxAlbums.ItemHeight = 20;
-            this.listBoxAlbums.Location = new System.Drawing.Point(529, 545);
+            this.listBoxAlbums.Location = new System.Drawing.Point(713, 670);
             this.listBoxAlbums.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listBoxAlbums.Name = "listBoxAlbums";
             this.listBoxAlbums.Size = new System.Drawing.Size(258, 324);
@@ -351,7 +352,7 @@
             this.panelLikedPages.Controls.Add(this.imageSquarePictureBox);
             this.panelLikedPages.Controls.Add(uRLLabel);
             this.panelLikedPages.Controls.Add(this.uRLLinkLabel);
-            this.panelLikedPages.Location = new System.Drawing.Point(800, 283);
+            this.panelLikedPages.Location = new System.Drawing.Point(793, 347);
             this.panelLikedPages.Name = "panelLikedPages";
             this.panelLikedPages.Size = new System.Drawing.Size(355, 191);
             this.panelLikedPages.TabIndex = 79;
@@ -385,7 +386,7 @@
             this.panelAlbums.Controls.Add(this.createdTimeDateTimePicker1);
             this.panelAlbums.Controls.Add(pictureAlbumURLLabel);
             this.panelAlbums.Controls.Add(this.pictureAlbumURLLinkLabel);
-            this.panelAlbums.Location = new System.Drawing.Point(585, 720);
+            this.panelAlbums.Location = new System.Drawing.Point(786, 813);
             this.panelAlbums.Name = "panelAlbums";
             this.panelAlbums.Size = new System.Drawing.Size(405, 245);
             this.panelAlbums.TabIndex = 81;
@@ -432,7 +433,7 @@
             this.panelPosts.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelPosts.Controls.Add(createdTimeLabel);
             this.panelPosts.Controls.Add(this.createdTimeDateTimePicker);
-            this.panelPosts.Location = new System.Drawing.Point(315, 319);
+            this.panelPosts.Location = new System.Drawing.Point(315, 382);
             this.panelPosts.Name = "panelPosts";
             this.panelPosts.Size = new System.Drawing.Size(417, 78);
             this.panelPosts.TabIndex = 83;
@@ -448,7 +449,7 @@
             // buttonAlbum
             // 
             this.buttonAlbum.BackColor = System.Drawing.Color.Violet;
-            this.buttonAlbum.Location = new System.Drawing.Point(529, 504);
+            this.buttonAlbum.Location = new System.Drawing.Point(713, 626);
             this.buttonAlbum.Name = "buttonAlbum";
             this.buttonAlbum.Size = new System.Drawing.Size(145, 39);
             this.buttonAlbum.TabIndex = 84;
@@ -459,7 +460,7 @@
             // buttonFriends
             // 
             this.buttonFriends.BackColor = System.Drawing.Color.Violet;
-            this.buttonFriends.Location = new System.Drawing.Point(20, 506);
+            this.buttonFriends.Location = new System.Drawing.Point(20, 631);
             this.buttonFriends.Name = "buttonFriends";
             this.buttonFriends.Size = new System.Drawing.Size(159, 34);
             this.buttonFriends.TabIndex = 85;
@@ -495,7 +496,7 @@
             this.checkedListBoxSeasons.Items.AddRange(new object[] {
             "Summer",
             "Winter"});
-            this.checkedListBoxSeasons.Location = new System.Drawing.Point(286, 577);
+            this.checkedListBoxSeasons.Location = new System.Drawing.Point(309, 631);
             this.checkedListBoxSeasons.Name = "checkedListBoxSeasons";
             this.checkedListBoxSeasons.Size = new System.Drawing.Size(118, 50);
             this.checkedListBoxSeasons.TabIndex = 88;
@@ -505,10 +506,20 @@
             // 
             this.listBoxFilterBySeasonFriend.FormattingEnabled = true;
             this.listBoxFilterBySeasonFriend.ItemHeight = 20;
-            this.listBoxFilterBySeasonFriend.Location = new System.Drawing.Point(286, 648);
+            this.listBoxFilterBySeasonFriend.Location = new System.Drawing.Point(309, 690);
             this.listBoxFilterBySeasonFriend.Name = "listBoxFilterBySeasonFriend";
-            this.listBoxFilterBySeasonFriend.Size = new System.Drawing.Size(204, 224);
+            this.listBoxFilterBySeasonFriend.Size = new System.Drawing.Size(204, 304);
             this.listBoxFilterBySeasonFriend.TabIndex = 89;
+            // 
+            // labelFetchFriendSeason
+            // 
+            this.labelFetchFriendSeason.AutoSize = true;
+            this.labelFetchFriendSeason.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.labelFetchFriendSeason.Location = new System.Drawing.Point(295, 595);
+            this.labelFetchFriendSeason.Name = "labelFetchFriendSeason";
+            this.labelFetchFriendSeason.Size = new System.Drawing.Size(392, 32);
+            this.labelFetchFriendSeason.TabIndex = 90;
+            this.labelFetchFriendSeason.Text = "Fetch friend by birth season";
             // 
             // FormMain
             // 
@@ -517,6 +528,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.AliceBlue;
             this.ClientSize = new System.Drawing.Size(1490, 1050);
+            this.Controls.Add(this.labelFetchFriendSeason);
             this.Controls.Add(this.listBoxFilterBySeasonFriend);
             this.Controls.Add(this.checkedListBoxSeasons);
             this.Controls.Add(this.buttonPosts);
@@ -604,5 +616,6 @@
         private System.Windows.Forms.Button buttonPosts;
         private System.Windows.Forms.CheckedListBox checkedListBoxSeasons;
         private System.Windows.Forms.ListBox listBoxFilterBySeasonFriend;
+        private System.Windows.Forms.Label labelFetchFriendSeason;
     }
 }

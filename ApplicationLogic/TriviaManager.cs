@@ -15,6 +15,13 @@ namespace ApplicationLogic
         private int m_CorrectAnswers = 0;
         private int m_WrongAnswers = 0;
         internal FictionUsers ChosenFriend { get; set; }
+        private readonly List<String> r_ListOfFeedbackToTriviaForm = new List<string>()
+        {
+            "Let's see how good you know your friend",
+            "You should know your friend better!",
+            "You got this",
+            "Think twice before you answer"
+        };
 
         /**
          * In case we can access the user's friends via facebook
@@ -267,6 +274,11 @@ namespace ApplicationLogic
         internal int getWrongResults()
         {
             return m_WrongAnswers;
+        }
+
+        internal List<string> getListOfFeedbackMessages()
+        {
+            return r_ListOfFeedbackToTriviaForm;
         }
 
         private enum eCitiesAnswers

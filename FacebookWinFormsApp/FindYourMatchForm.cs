@@ -22,6 +22,8 @@ namespace BasicFacebookFeatures
         private FictionUsers m_PotentialMatch;
         internal ApplicationManagerFacade ApplicationManagerFacade;
 
+        internal DisplayFeedbackMessageVisitor DisplayFeedbackMessageVisitor { get; set; }
+
         /**
          * In case we can get the user's friends via facebook
          */
@@ -33,6 +35,8 @@ namespace BasicFacebookFeatures
             InitializeComponent();
             ApplicationManagerFacade = ApplicationManagerFacade.Instance;
             ////r_LoggedInUser = ApplicationManagerFacade.LoggedInUser;
+            DisplayFeedbackMessageVisitor = new DisplayFeedbackMessageVisitor(ApplicationManagerFacade.getListOfFeedbackMessagesToFindYourMatch());
+            DisplayFeedbackMessageVisitor.LabelMessageToDisplay = labelMessage;
         }
 
         private void buttonCheckAnswers_Click(object sender, EventArgs e)
@@ -123,7 +127,8 @@ namespace BasicFacebookFeatures
 
         private void BackToMainForm()
         {
-            this.Close();
+            DisplayFeedbackMessageVisitor.Back(this);
+            //this.Close();
         }
 
         private void textBoxCity_Validating(object sender, CancelEventArgs e)

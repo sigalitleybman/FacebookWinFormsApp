@@ -140,6 +140,17 @@ namespace ApplicationLogic
 
             return birthMonthFilter.FilterByMonth(GetListOfFictionUsersToMainForm());
         }
+
+        public List<string> getListOfFeedbackMessagesToFindYourMatch()
+        {
+            return r_FindYourMatchManager.getListOfFeedbackMessages();
+        }
+
+        public List<string> getListOfFeedbackMessagesToTrivia()
+        {
+            return r_TriviaManager.getListOfFeedbackMessages();
+        }
+
         /**
          * In case we can access the user's friends via facebook
          */

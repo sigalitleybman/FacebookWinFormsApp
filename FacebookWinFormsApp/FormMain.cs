@@ -201,18 +201,26 @@ namespace BasicFacebookFeatures
 
         private void buttonTrivia_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            TriviaFriendsForm triviaFriendsForm = FactoryForm.CreateSpecificForm("TriviaFriendsForm") as TriviaFriendsForm;
-            triviaFriendsForm.ShowDialog();
-            this.Show();
+            Invoke(new Action(() =>
+            {
+                this.Hide();
+                TriviaFriendsForm triviaFriendsForm =
+                    FactoryForm.CreateSpecificForm("TriviaFriendsForm") as TriviaFriendsForm;
+                triviaFriendsForm.ShowDialog();
+                this.Show();
+            }));
         }
+
 
         private void buttonFindYourMatch_Click(object sender, EventArgs e)
         {
-            this.Hide(); 
-            FindYourMatchForm findYourMatchForm = FactoryForm.CreateSpecificForm("FindYourMatchForm") as FindYourMatchForm;
-            findYourMatchForm.ShowDialog();
-            this.Show();
+            Invoke(new Action(() =>
+            {
+                this.Hide();
+                FindYourMatchForm findYourMatchForm = FactoryForm.CreateSpecificForm("FindYourMatchForm") as FindYourMatchForm;
+                findYourMatchForm.ShowDialog();
+                this.Show();
+            }));
         }
 
         private void fetchLikedPages()

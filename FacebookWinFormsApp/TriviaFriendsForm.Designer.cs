@@ -46,6 +46,7 @@
             this.labelinstructionsDescriptionFirstSection = new System.Windows.Forms.Label();
             this.labelinstructionsDescriptionSecondSection = new System.Windows.Forms.Label();
             this.labelInstructionSecondDescription = new System.Windows.Forms.Label();
+            this.labelMessage = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTriviaLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxNextQuestion)).BeginInit();
             this.SuspendLayout();
@@ -179,7 +180,7 @@
             // 
             this.checkBoxChangeFriend.AutoSize = true;
             this.checkBoxChangeFriend.Enabled = false;
-            this.checkBoxChangeFriend.Location = new System.Drawing.Point(47, 532);
+            this.checkBoxChangeFriend.Location = new System.Drawing.Point(28, 477);
             this.checkBoxChangeFriend.Name = "checkBoxChangeFriend";
             this.checkBoxChangeFriend.Size = new System.Drawing.Size(212, 24);
             this.checkBoxChangeFriend.TabIndex = 14;
@@ -241,12 +242,24 @@
             this.labelInstructionSecondDescription.TabIndex = 19;
             this.labelInstructionSecondDescription.Text = "click next to the next question";
             // 
+            // labelMessage
+            // 
+            this.labelMessage.AutoSize = true;
+            this.labelMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.labelMessage.ForeColor = System.Drawing.Color.DarkRed;
+            this.labelMessage.Location = new System.Drawing.Point(62, 561);
+            this.labelMessage.Name = "labelMessage";
+            this.labelMessage.Size = new System.Drawing.Size(108, 26);
+            this.labelMessage.TabIndex = 20;
+            this.labelMessage.Text = "message";
+            // 
             // TriviaFriendsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Thistle;
             this.ClientSize = new System.Drawing.Size(1132, 652);
+            this.Controls.Add(this.labelMessage);
             this.Controls.Add(this.labelInstructionSecondDescription);
             this.Controls.Add(this.labelinstructionsDescriptionSecondSection);
             this.Controls.Add(this.labelinstructionsDescriptionFirstSection);
@@ -293,5 +306,6 @@
         private System.Windows.Forms.Label labelinstructionsDescriptionFirstSection;
         private System.Windows.Forms.Label labelinstructionsDescriptionSecondSection;
         private System.Windows.Forms.Label labelInstructionSecondDescription;
+        private System.Windows.Forms.Label labelMessage;
     }
 }

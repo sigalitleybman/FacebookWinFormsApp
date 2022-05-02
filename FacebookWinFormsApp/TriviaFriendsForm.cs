@@ -22,6 +22,7 @@ namespace BasicFacebookFeatures
         private int m_IndexOfQuestions = 0;
         private FictionUsers m_ChosenFriend;
         internal ApplicationManagerFacade ApplicationManagerFacade;
+        internal DisplayFeedbackMessageVisitor DisplayFeedbackMessageVisitor { get; set; }
 
         /**
          * In the case we can access the login user's chosen friend via facebook
@@ -37,6 +38,8 @@ namespace BasicFacebookFeatures
             r_ListOfFictionUsers = ApplicationManagerFacade.GetListOfFictionUsersToTriviaForm();
             InitializeListBoxOfFriends();
             ////r_LoggedInUser = ApplicationManagerFacade.LoggedInUser;
+            DisplayFeedbackMessageVisitor = new DisplayFeedbackMessageVisitor(ApplicationManagerFacade.getListOfFeedbackMessagesToTrivia());
+            DisplayFeedbackMessageVisitor.LabelMessageToDisplay = labelMessage;
         }
 
         private void InitializeListBoxOfFriends()
@@ -208,7 +211,8 @@ namespace BasicFacebookFeatures
 
         private void BackToMainForm()
         {
-            this.Close();
+            DisplayFeedbackMessageVisitor.Back(this);
+            //this.Close();
         }
     }
 }
