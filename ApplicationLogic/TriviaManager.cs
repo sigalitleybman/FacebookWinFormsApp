@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
+using ApplicationLogic.Observer;
 using FacebookWrapper.ObjectModel;
 
 namespace ApplicationLogic
@@ -15,6 +16,8 @@ namespace ApplicationLogic
         private int m_CorrectAnswers = 0;
         private int m_WrongAnswers = 0;
         internal FictionUsers ChosenFriend { get; set; }
+        internal MessageBoxListener m_FeedbackListener;
+        private Notifier m_FeedbackNotifier;
         private readonly List<String> r_ListOfFeedbackToTriviaForm = new List<string>()
         {
             "Let's see how good you know your friend",
@@ -39,6 +42,8 @@ namespace ApplicationLogic
             r_TriviaQuestionsAndAnswers = new Dictionary<string, string>();
             r_ListOfFictionUsers = new List<FictionUsers>();
             initializeListOfFictionFriends();
+            m_FeedbackListener = new MessageBoxListener();
+            m_FeedbackNotifier = new Notifier();
         }
 
         private void initializeListOfFictionFriends()
@@ -279,6 +284,47 @@ namespace ApplicationLogic
         internal List<string> getListOfFeedbackMessages()
         {
             return r_ListOfFeedbackToTriviaForm;
+        }
+
+       /* internal void getMessageBoxFeedback()
+        {
+            m_FeedbackNotifier.addListener(m_FeedbackListener);
+            //return m_FeedbackNotifier.displayResults(m_CorrectAnswers, m_WrongAnswers);
+            //m_FeedbackNotifier.displayResults(m_CorrectAnswers, m_WrongAnswers);
+        }*/
+
+        internal string getFeedbackToDisplay()
+        {
+            string m_Feedback;
+
+            if (m_CorrectAnswers == 3)
+            {
+                m_Feedback = "Good Job! You Know About Your Friend Very Well";
+            }
+            else
+            {
+                m_Feedback = "You Should Know Your Friend Better";
+            }
+
+            return m_Feedback + Environment.NewLine +  "You Answered: " 
+                + Environment.NewLine + m_CorrectAnswers + " Correct Answers" 
+                + Environment.NewLine + m_WrongAnswers + " Wrong Answers";
+        }
+
+        internal void updateFeedbackListeners(string i_FeedbackToDisplay)
+        {
+            //m_FeedbackNotifier.addListener(m_FeedbackListener);
+            m_FeedbackNotifier.update(i_FeedbackToDisplay);
+        }
+
+        internal string getFeedbackMessageToDisplay()
+        {
+           return m_FeedbackListener.getFeedbackMessageToDisplay();
+        }
+
+        internal void addFeedbackListener()
+        {
+            m_FeedbackNotifier.addListener(m_FeedbackListener);
         }
 
         private enum eCitiesAnswers

@@ -179,10 +179,16 @@ namespace BasicFacebookFeatures
                 pictureBoxNextQuestion.Enabled = false;
                 buttonSubmit.Enabled = false;
                 labelFeedback.Visible = true;
-                labelFeedback.Text =
+
+                string feedbackToDisplay = ApplicationManagerFacade.GetFeedbackToDisplay();
+                ApplicationManagerFacade.AddFeedbackListener();
+                ApplicationManagerFacade.updateFeedbackListeners(feedbackToDisplay);
+                MessageBox.Show(ApplicationManagerFacade.GetFeedbackMessageToDisplay());
+
+                /*labelFeedback.Text =
                     $"You succeeded in {ApplicationManagerFacade.GetCorrectResults()} questions " +
                     Environment.NewLine +
-                    $"and failed in {ApplicationManagerFacade.GetWrongResults()} questions";
+                    $"and failed in {ApplicationManagerFacade.GetWrongResults()} questions";*/
             }
         }
 
@@ -213,6 +219,22 @@ namespace BasicFacebookFeatures
         {
             DisplayFeedbackMessageVisitor.Back(this);
             //this.Close();
+        }
+
+/*        private void buttonClose_Click(object sender, FormClosingEventArgs e)
+        {
+            BackToMainForm();
+        }*/
+
+/*        private void TriviaFriendsForm_Load(object sender, EventArgs e)
+        {
+            BackToMainForm();
+        }*/
+
+        private void TriviaFriendsForm_Close(object sender, FormClosedEventArgs e)
+        {
+            BackToMainForm();
+
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using ApplicationLogic.Observer;
 using ApplicationLogic.Stretegy;
 using FacebookWrapper.ObjectModel;
 
@@ -149,6 +150,34 @@ namespace ApplicationLogic
         public List<string> getListOfFeedbackMessagesToTrivia()
         {
             return r_TriviaManager.getListOfFeedbackMessages();
+        }
+
+        //public string GetMessageBoxFeedback()
+        //{
+        //    //IListener listener = new MessageBoxListener();
+        //    r_TriviaManager.getMessageBoxFeedback();
+        //    //string str = listener.MessageBoxFeedback;
+        //    return r_TriviaManager.m_FeedbackListener.MessageBoxFeedback;
+        //}
+
+        public string GetFeedbackToDisplay()
+        {
+            return r_TriviaManager.getFeedbackToDisplay();
+        }
+
+        public void updateFeedbackListeners(string i_FeedbackToDisplay)
+        {
+            r_TriviaManager.updateFeedbackListeners(i_FeedbackToDisplay);
+        }
+
+        public string GetFeedbackMessageToDisplay()
+        {
+            return r_TriviaManager.getFeedbackMessageToDisplay();
+        }
+
+        public void AddFeedbackListener()
+        {
+            r_TriviaManager.addFeedbackListener();
         }
 
         /**

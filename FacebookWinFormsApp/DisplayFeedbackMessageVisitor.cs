@@ -9,7 +9,6 @@ using Timer = System.Timers.Timer;
 //using System.Threading;
 //using System.Threading.Tasks;
 
-//check
 namespace BasicFacebookFeatures
 {
     internal class DisplayFeedbackMessageVisitor

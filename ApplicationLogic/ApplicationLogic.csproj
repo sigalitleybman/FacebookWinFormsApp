@@ -47,6 +47,9 @@
     <Compile Include="FictionUsers.cs" />
     <Compile Include="FindYourMatchManager.cs" />
     <Compile Include="MainFormManager.cs" />
+    <Compile Include="Observer\IListener.cs" />
+    <Compile Include="Observer\MessageBoxListener.cs" />
+    <Compile Include="Observer\Notifier.cs" />
     <Compile Include="Strategy\BirthMonthFilter.cs" />
     <Compile Include="Strategy\ConcreteSeasons.cs" />
     <Compile Include="Strategy\ISeasoneFilter.cs" />

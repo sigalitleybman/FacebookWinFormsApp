@@ -148,5 +148,10 @@ namespace BasicFacebookFeatures
                 e.Cancel = true;
             }
         }
+
+        private void FindYourMatchForm_Close(object sender, FormClosedEventArgs e)
+        {
+            BackToMainForm();
+        }
     }
 }
