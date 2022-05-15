@@ -217,7 +217,7 @@ namespace BasicFacebookFeatures
 
         private void BackToMainForm()
         {
-            DisplayFeedbackMessageVisitor.Back(this);
+            DisplayFeedbackMessageVisitor.back(this);
             //this.Close();
         }
 

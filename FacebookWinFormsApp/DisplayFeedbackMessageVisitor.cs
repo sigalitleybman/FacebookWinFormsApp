@@ -13,7 +13,7 @@ namespace BasicFacebookFeatures
 {
     internal class DisplayFeedbackMessageVisitor
     {
-        private Random m_Random = new Random();
+        //private Random m_Random = new Random();
         private Timer m_Timer= new Timer(2000);
         private Random m_RandomIndex = new Random();
         private List<string> m_ListOfMessageFeedback;
@@ -37,7 +37,7 @@ namespace BasicFacebookFeatures
             LabelMessageToDisplay.Invoke(new Action(() => LabelMessageToDisplay.Text = m_ListOfMessageFeedback[RandomIdx]));
         }
 
-        internal void Back(Form i_CurrentForm)
+        internal void back(Form i_CurrentForm)
         {
             m_Timer.Stop();
             i_CurrentForm.Close();
