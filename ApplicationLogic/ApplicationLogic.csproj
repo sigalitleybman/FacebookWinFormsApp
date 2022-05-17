@@ -48,8 +48,9 @@
     <Compile Include="FindYourMatchManager.cs" />
     <Compile Include="MainFormManager.cs" />
     <Compile Include="Observer\IListener.cs" />
+    <Compile Include="Observer\INotifier.cs" />
     <Compile Include="Observer\MessageBoxListener.cs" />
-    <Compile Include="Observer\Notifier.cs" />
+    <Compile Include="Observer\TriviaFormNotifier.cs" />
     <Compile Include="Strategy\BirthMonthFilter.cs" />
     <Compile Include="Strategy\ConcreteSeasons.cs" />
     <Compile Include="Strategy\ISeasoneFilter.cs" />

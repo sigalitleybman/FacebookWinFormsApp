@@ -165,9 +165,9 @@ namespace ApplicationLogic
             return r_TriviaManager.getFeedbackToDisplay();
         }
 
-        public void updateFeedbackListeners(string i_FeedbackToDisplay)
+        public void NotifyFeedbackListeners(string i_FeedbackToDisplay)
         {
-            r_TriviaManager.updateFeedbackListeners(i_FeedbackToDisplay);
+            r_TriviaManager.notifyFeedbackListeners(i_FeedbackToDisplay);
         }
 
         public string GetFeedbackMessageToDisplay()

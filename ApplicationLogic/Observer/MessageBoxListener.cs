@@ -10,19 +10,25 @@ namespace ApplicationLogic.Observer
 {
     public class MessageBoxListener : IListener
     {
-        private string m_Feedback;
+        //private string m_Feedback;
+        private readonly List<INotifier> r_ListOfNotifier = new List<INotifier> { };
+
         public string MessageBoxFeedback { get; set; }
 
+        public string getFeedbackMessageToDisplay()
+        {
+            return MessageBoxFeedback;
+        }
 
         public void Update(string i_FeedbackToDisplay)
         {
             MessageBoxFeedback = i_FeedbackToDisplay;
         }
 
-        internal string getFeedbackMessageToDisplay()
+        /*internal string getFeedbackMessageToDisplay()
         {
             return MessageBoxFeedback;
-        }
+        }*/
 
         //public void DisplayResults(int i_CorrectAnswers, int i_WrongAnswers)
         //{

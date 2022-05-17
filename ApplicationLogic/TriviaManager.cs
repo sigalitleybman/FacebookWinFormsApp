@@ -16,8 +16,10 @@ namespace ApplicationLogic
         private int m_CorrectAnswers = 0;
         private int m_WrongAnswers = 0;
         internal FictionUsers ChosenFriend { get; set; }
-        internal MessageBoxListener m_FeedbackListener;
-        private Notifier m_FeedbackNotifier;
+        //internal MessageBoxListener m_FeedbackListener;
+        internal IListener m_Listener;
+        //private Notifier m_FeedbackNotifier;
+        private INotifier m_Notifier;
         private readonly List<String> r_ListOfFeedbackToTriviaForm = new List<string>()
         {
             "Let's see how good you know your friend",
@@ -42,8 +44,8 @@ namespace ApplicationLogic
             r_TriviaQuestionsAndAnswers = new Dictionary<string, string>();
             r_ListOfFictionUsers = new List<FictionUsers>();
             initializeListOfFictionFriends();
-            m_FeedbackListener = new MessageBoxListener();
-            m_FeedbackNotifier = new Notifier();
+            m_Listener = new MessageBoxListener();
+            m_Notifier = new TriviaFormNotifier();
         }
 
         private void initializeListOfFictionFriends()
@@ -311,20 +313,20 @@ namespace ApplicationLogic
                 + Environment.NewLine + m_WrongAnswers + " Wrong Answers";
         }
 
-        internal void updateFeedbackListeners(string i_FeedbackToDisplay)
+        internal void notifyFeedbackListeners(string i_FeedbackToDisplay)
         {
             //m_FeedbackNotifier.addListener(m_FeedbackListener);
-            m_FeedbackNotifier.update(i_FeedbackToDisplay);
+            m_Notifier.notifyAll(i_FeedbackToDisplay);
         }
 
         internal string getFeedbackMessageToDisplay()
         {
-           return m_FeedbackListener.getFeedbackMessageToDisplay();
+           return m_Listener.getFeedbackMessageToDisplay();
         }
 
         internal void addFeedbackListener()
         {
-            m_FeedbackNotifier.addListener(m_FeedbackListener);
+            m_Notifier.addListener(m_Listener);
         }
 
         private enum eCitiesAnswers

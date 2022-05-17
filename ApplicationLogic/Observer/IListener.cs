@@ -12,10 +12,6 @@ namespace ApplicationLogic.Observer
 
         //void DisplayResults(int i_CorrectAnswers, int i_WrongAnswers);
         void Update(string i_FeedbackToDisplay);
-
-
-
-
-
+        string getFeedbackMessageToDisplay();
     }
 }

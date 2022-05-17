@@ -182,7 +182,7 @@ namespace BasicFacebookFeatures
 
                 string feedbackToDisplay = ApplicationManagerFacade.GetFeedbackToDisplay();
                 ApplicationManagerFacade.AddFeedbackListener();
-                ApplicationManagerFacade.updateFeedbackListeners(feedbackToDisplay);
+                ApplicationManagerFacade.NotifyFeedbackListeners(feedbackToDisplay);
                 MessageBox.Show(ApplicationManagerFacade.GetFeedbackMessageToDisplay());
 
                 /*labelFeedback.Text =
