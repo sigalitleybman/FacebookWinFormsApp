@@ -219,7 +219,7 @@
             // 
             this.labelFetchAlbums.AutoSize = true;
             this.labelFetchAlbums.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.labelFetchAlbums.Location = new System.Drawing.Point(707, 595);
+            this.labelFetchAlbums.Location = new System.Drawing.Point(771, 595);
             this.labelFetchAlbums.Name = "labelFetchAlbums";
             this.labelFetchAlbums.Size = new System.Drawing.Size(200, 32);
             this.labelFetchAlbums.TabIndex = 59;
@@ -231,7 +231,7 @@
             this.listBoxAlbums.DisplayMember = "Name";
             this.listBoxAlbums.FormattingEnabled = true;
             this.listBoxAlbums.ItemHeight = 20;
-            this.listBoxAlbums.Location = new System.Drawing.Point(713, 670);
+            this.listBoxAlbums.Location = new System.Drawing.Point(777, 670);
             this.listBoxAlbums.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listBoxAlbums.Name = "listBoxAlbums";
             this.listBoxAlbums.Size = new System.Drawing.Size(258, 324);
@@ -386,7 +386,7 @@
             this.panelAlbums.Controls.Add(this.createdTimeDateTimePicker1);
             this.panelAlbums.Controls.Add(pictureAlbumURLLabel);
             this.panelAlbums.Controls.Add(this.pictureAlbumURLLinkLabel);
-            this.panelAlbums.Location = new System.Drawing.Point(786, 813);
+            this.panelAlbums.Location = new System.Drawing.Point(884, 818);
             this.panelAlbums.Name = "panelAlbums";
             this.panelAlbums.Size = new System.Drawing.Size(405, 245);
             this.panelAlbums.TabIndex = 81;
@@ -449,7 +449,7 @@
             // buttonAlbum
             // 
             this.buttonAlbum.BackColor = System.Drawing.Color.Violet;
-            this.buttonAlbum.Location = new System.Drawing.Point(713, 626);
+            this.buttonAlbum.Location = new System.Drawing.Point(777, 626);
             this.buttonAlbum.Name = "buttonAlbum";
             this.buttonAlbum.Size = new System.Drawing.Size(145, 39);
             this.buttonAlbum.TabIndex = 84;
@@ -517,9 +517,9 @@
             this.labelFetchFriendSeason.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
             this.labelFetchFriendSeason.Location = new System.Drawing.Point(295, 595);
             this.labelFetchFriendSeason.Name = "labelFetchFriendSeason";
-            this.labelFetchFriendSeason.Size = new System.Drawing.Size(392, 32);
+            this.labelFetchFriendSeason.Size = new System.Drawing.Size(412, 32);
             this.labelFetchFriendSeason.TabIndex = 90;
-            this.labelFetchFriendSeason.Text = "Fetch friend by birth season";
+            this.labelFetchFriendSeason.Text = "Fetch Friend By Birth Season";
             // 
             // FormMain
             // 

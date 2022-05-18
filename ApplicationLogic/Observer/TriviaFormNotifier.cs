@@ -10,12 +10,12 @@ namespace ApplicationLogic.Observer
     {
         private readonly List<IListener> r_ListOfListeners = new List<IListener> { };
 
-        public void addListener(IListener i_Listener)
+        public void AddListener(IListener i_Listener)
         {
             r_ListOfListeners.Add(i_Listener);
         }
 
-        public void notifyAll(string i_FeedbackToDisplay)
+        public void NotifyAll(string i_FeedbackToDisplay)
         {
             foreach (IListener listener in r_ListOfListeners)
             {
@@ -23,7 +23,7 @@ namespace ApplicationLogic.Observer
             }
         }
 
-        public void removeListener(IListener i_Listener)
+        public void RemoveListener(IListener i_Listener)
         {
             r_ListOfListeners.Remove(i_Listener);
         }

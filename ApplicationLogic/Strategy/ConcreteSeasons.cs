@@ -10,7 +10,7 @@ namespace ApplicationLogic.Stretegy
     {
         internal class MonthOfSummerSeason : ISeasoneFilter
         {
-            public bool checkIfMonthMatch(string birthMonth)
+            public bool CheckIfMonthMatch(string birthMonth)
             {
                 bool isSummerMonth = false;
                 eBirthMonth eBirthMonth = (eBirthMonth)Enum.Parse(typeof(eBirthMonth), birthMonth);
@@ -42,7 +42,7 @@ namespace ApplicationLogic.Stretegy
 
         internal class MonthOfWinterSeason : ISeasoneFilter
         {
-            public bool checkIfMonthMatch(string birthMonth)
+            public bool CheckIfMonthMatch(string birthMonth)
             {
                 bool isWinterMonth = false;
                 eBirthMonth eBirthMonth = (eBirthMonth)Enum.Parse(typeof(eBirthMonth), birthMonth);

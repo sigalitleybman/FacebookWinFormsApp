@@ -16,12 +16,11 @@ namespace BasicFacebookFeatures
 {
     public partial class FindYourMatchForm : Form
     {
-        private readonly string r_City;
+        private string m_City;
         private string m_Gender;
         private string m_Age;
         private FictionUsers m_PotentialMatch;
         internal ApplicationManagerFacade ApplicationManagerFacade;
-
         internal DisplayFeedbackMessageVisitor DisplayFeedbackMessageVisitor { get; set; }
 
         /**
@@ -35,7 +34,7 @@ namespace BasicFacebookFeatures
             InitializeComponent();
             ApplicationManagerFacade = ApplicationManagerFacade.Instance;
             ////r_LoggedInUser = ApplicationManagerFacade.LoggedInUser;
-            DisplayFeedbackMessageVisitor = new DisplayFeedbackMessageVisitor(ApplicationManagerFacade.getListOfFeedbackMessagesToFindYourMatch());
+            DisplayFeedbackMessageVisitor = new DisplayFeedbackMessageVisitor(ApplicationManagerFacade.GetListOfFeedbackMessagesToFindYourMatch());
             DisplayFeedbackMessageVisitor.LabelMessageToDisplay = labelMessage;
         }
 
@@ -49,7 +48,7 @@ namespace BasicFacebookFeatures
                    checkedListBoxAge.CheckedItems.Count != 0 &&
                    !textBoxCity.Text.Equals(string.Empty))
                 {
-                    isMatchExist = ApplicationManagerFacade.CheckIfThereIsMatch(m_Gender, m_Age, r_City);
+                    isMatchExist = ApplicationManagerFacade.CheckIfThereIsMatch(m_Gender, m_Age, m_City);
                     if (isMatchExist)
                     {
                         m_PotentialMatch = ApplicationManagerFacade.GetPotentionalMatch();
@@ -122,13 +121,12 @@ namespace BasicFacebookFeatures
 
         private void buttonBack_Click(object sender, EventArgs e)
         {
-            BackToMainForm(); 
+            backToMainForm(); 
         }
 
-        private void BackToMainForm()
+        private void backToMainForm()
         {
             DisplayFeedbackMessageVisitor.back(this);
-            //this.Close();
         }
 
         private void textBoxCity_Validating(object sender, CancelEventArgs e)
@@ -147,11 +145,15 @@ namespace BasicFacebookFeatures
                 MessageBox.Show("Please enter valid letters !");
                 e.Cancel = true;
             }
+            else
+            {
+                m_City = textBoxCity.Text;
+            }
         }
 
         private void FindYourMatchForm_Close(object sender, FormClosedEventArgs e)
         {
-            BackToMainForm();
+            backToMainForm();
         }
     }
 }

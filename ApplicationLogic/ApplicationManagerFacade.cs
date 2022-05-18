@@ -14,7 +14,6 @@ namespace ApplicationLogic
         private TriviaManager r_TriviaManager;
         private FindYourMatchManager r_FindYourMatchManager;
         private MainFormManager r_MainFormManager;
-        public User LoggedInUser { get; set; }
 
         public static ApplicationManagerFacade Instance
         {
@@ -34,6 +33,8 @@ namespace ApplicationLogic
                 return s_OneAndOnlyInstance;
             }
         }
+
+        public User LoggedInUser { get; set; }
 
         private ApplicationManagerFacade()
         {
@@ -86,15 +87,15 @@ namespace ApplicationLogic
             r_TriviaManager.updateResults(i_IndexOfQuestion, i_IsCorrectAnswer);
         }
 
-        public int GetCorrectResults()
-        {
-            return r_TriviaManager.getCorrectResults();
-        }
+        //public int GetCorrectResults()
+        //{
+        //    return r_TriviaManager.getCorrectResults();
+        //}
 
-        public int GetWrongResults()
-        {
-            return r_TriviaManager.getWrongResults();
-        }
+        //public int GetWrongResults()
+        //{
+        //    return r_TriviaManager.getWrongResults();
+        //}
 
         public void InitializeChosenFriend(FictionUsers i_ChosenFriend)
         {
@@ -132,33 +133,25 @@ namespace ApplicationLogic
 
             if (season.Equals("Summer"))
             {
-                birthMonthFilter.seasoneFilter = new ConcreteSeasons.MonthOfSummerSeason();
+                birthMonthFilter.SeasoneFilter = new ConcreteSeasons.MonthOfSummerSeason();
             }
             else if (season.Equals("Winter"))
             {
-                birthMonthFilter.seasoneFilter = new ConcreteSeasons.MonthOfWinterSeason();
+                birthMonthFilter.SeasoneFilter = new ConcreteSeasons.MonthOfWinterSeason();
             }
 
             return birthMonthFilter.FilterByMonth(GetListOfFictionUsersToMainForm());
         }
 
-        public List<string> getListOfFeedbackMessagesToFindYourMatch()
+        public List<string> GetListOfFeedbackMessagesToFindYourMatch()
         {
             return r_FindYourMatchManager.getListOfFeedbackMessages();
         }
 
-        public List<string> getListOfFeedbackMessagesToTrivia()
+        public List<string> GetListOfFeedbackMessagesToTrivia()
         {
             return r_TriviaManager.getListOfFeedbackMessages();
         }
-
-        //public string GetMessageBoxFeedback()
-        //{
-        //    //IListener listener = new MessageBoxListener();
-        //    r_TriviaManager.getMessageBoxFeedback();
-        //    //string str = listener.MessageBoxFeedback;
-        //    return r_TriviaManager.m_FeedbackListener.MessageBoxFeedback;
-        //}
 
         public string GetFeedbackToDisplay()
         {

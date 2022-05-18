@@ -10,14 +10,15 @@ namespace ApplicationLogic
     internal class FindYourMatchManager
     {
         private readonly List<FictionUsers> r_ListOfFictionUsers;
-        private FictionUsers m_PotentionalMatch;
-        private readonly List<String> r_ListOfFeedbackToFindYourMatchForm = new List<string>()
+        private readonly List<string> r_ListOfFeedbackToFindYourMatchForm = new List<string>()
         {
             "Let's find a match for you",
             "Ohh, you are so romantic",
             "Maybe try to find another match",
             "Don't worry, you will find your match"
         };
+        private FictionUsers m_PotentionalMatch;
+
         /**
          * In case we can access the user's friends via facebook
          * //private DateTime m_BirthDateOfTheFriend;

@@ -8,10 +8,10 @@ namespace ApplicationLogic.Observer
 {
     internal interface INotifier
     {
-        void addListener(IListener i_Listener);
+        void AddListener(IListener i_Listener);
 
-        void removeListener(IListener i_Listener);
+        void RemoveListener(IListener i_Listener);
 
-        void notifyAll(string i_FeedbackToDisplay);
+        void NotifyAll(string i_FeedbackToDisplay);
     }
 }

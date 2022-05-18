@@ -35,7 +35,5 @@ namespace ApplicationLogic
         {
             return r_ListOfFictionUsers;
         }
-
-
     }
 }

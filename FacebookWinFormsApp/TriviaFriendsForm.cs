@@ -38,7 +38,7 @@ namespace BasicFacebookFeatures
             r_ListOfFictionUsers = ApplicationManagerFacade.GetListOfFictionUsersToTriviaForm();
             InitializeListBoxOfFriends();
             ////r_LoggedInUser = ApplicationManagerFacade.LoggedInUser;
-            DisplayFeedbackMessageVisitor = new DisplayFeedbackMessageVisitor(ApplicationManagerFacade.getListOfFeedbackMessagesToTrivia());
+            DisplayFeedbackMessageVisitor = new DisplayFeedbackMessageVisitor(ApplicationManagerFacade.GetListOfFeedbackMessagesToTrivia());
             DisplayFeedbackMessageVisitor.LabelMessageToDisplay = labelMessage;
         }
 
@@ -117,7 +117,6 @@ namespace BasicFacebookFeatures
                 {
                     m_IndexOfQuestions++;
                 }
-
                 if (m_IndexOfQuestions == 3)
                 {
                     pictureBoxNextQuestion.Enabled = false;
@@ -176,19 +175,14 @@ namespace BasicFacebookFeatures
         {
             if ((int) i_CurrentQuestion == 2)
             {
+                string feedbackToDisplay = ApplicationManagerFacade.GetFeedbackToDisplay();
+
                 pictureBoxNextQuestion.Enabled = false;
                 buttonSubmit.Enabled = false;
                 labelFeedback.Visible = true;
-
-                string feedbackToDisplay = ApplicationManagerFacade.GetFeedbackToDisplay();
                 ApplicationManagerFacade.AddFeedbackListener();
                 ApplicationManagerFacade.NotifyFeedbackListeners(feedbackToDisplay);
                 MessageBox.Show(ApplicationManagerFacade.GetFeedbackMessageToDisplay());
-
-                /*labelFeedback.Text =
-                    $"You succeeded in {ApplicationManagerFacade.GetCorrectResults()} questions " +
-                    Environment.NewLine +
-                    $"and failed in {ApplicationManagerFacade.GetWrongResults()} questions";*/
             }
         }
 
@@ -212,28 +206,17 @@ namespace BasicFacebookFeatures
 
         private void buttonBack_Click(object sender, EventArgs e)
         {
-            BackToMainForm();
+            backToMainForm();
         }
 
-        private void BackToMainForm()
+        private void backToMainForm()
         {
             DisplayFeedbackMessageVisitor.back(this);
-            //this.Close();
         }
 
-/*        private void buttonClose_Click(object sender, FormClosingEventArgs e)
+        private void triviaFriendsForm_Close(object sender, FormClosedEventArgs e)
         {
-            BackToMainForm();
-        }*/
-
-/*        private void TriviaFriendsForm_Load(object sender, EventArgs e)
-        {
-            BackToMainForm();
-        }*/
-
-        private void TriviaFriendsForm_Close(object sender, FormClosedEventArgs e)
-        {
-            BackToMainForm();
+            backToMainForm();
 
         }
     }

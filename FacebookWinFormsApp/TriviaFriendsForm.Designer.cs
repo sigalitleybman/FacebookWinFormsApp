@@ -281,7 +281,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "TriviaFriendsForm";
             this.Text = "Trivia";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.TriviaFriendsForm_Close);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.triviaFriendsForm_Close);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTriviaLogo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxNextQuestion)).EndInit();
             this.ResumeLayout(false);

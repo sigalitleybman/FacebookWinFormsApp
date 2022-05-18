@@ -211,7 +211,6 @@ namespace BasicFacebookFeatures
             }));
         }
 
-
         private void buttonFindYourMatch_Click(object sender, EventArgs e)
         {
             Invoke(new Action(() =>
@@ -284,20 +283,6 @@ namespace BasicFacebookFeatures
                 }
             }
         }
-
-        //private void checkedListBoxSeasons_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-        //    season = (sender as CheckedListBox).SelectedItem.ToString();
-        //    makeTheOtherCheckBoxOptionsEnabled(sender);
-        //    if (season.Equals("Summer"))
-        //    {
-        //        fetchMatchFriendsBornedInSummer(season);
-        //    }
-        //    else if (season.Equals("Winter"))
-        //    {
-        //        fetchMatchFriendsBornedInWinter(season);
-        //    }
-        //}
 
         private void makeTheOtherCheckBoxOptionsEnabled(object i_Sender)
         {

@@ -13,20 +13,19 @@ namespace ApplicationLogic
         private readonly List<FictionUsers> r_ListOfFictionUsers;
         private readonly Dictionary<string, string> r_TriviaQuestionsAndAnswers;
         private readonly List<string> r_ListOfQuestions;
-        private int m_CorrectAnswers = 0;
-        private int m_WrongAnswers = 0;
-        internal FictionUsers ChosenFriend { get; set; }
-        //internal MessageBoxListener m_FeedbackListener;
-        internal IListener m_Listener;
-        //private Notifier m_FeedbackNotifier;
-        private INotifier m_Notifier;
-        private readonly List<String> r_ListOfFeedbackToTriviaForm = new List<string>()
+        private readonly List<string> r_ListOfFeedbackToTriviaForm = new List<string>()
         {
             "Let's see how good you know your friend",
             "You should know your friend better!",
             "You got this",
             "Think twice before you answer"
         };
+        private int m_CorrectAnswers = 0;
+        private int m_WrongAnswers = 0;
+        internal FictionUsers ChosenFriend { get; set; }
+        internal readonly IListener r_Listener;
+        private readonly INotifier r_Notifier;
+        
 
         /**
          * In case we can access the user's friends via facebook
@@ -44,8 +43,8 @@ namespace ApplicationLogic
             r_TriviaQuestionsAndAnswers = new Dictionary<string, string>();
             r_ListOfFictionUsers = new List<FictionUsers>();
             initializeListOfFictionFriends();
-            m_Listener = new MessageBoxListener();
-            m_Notifier = new TriviaFormNotifier();
+            r_Listener = new MessageBoxListener();
+            r_Notifier = new TriviaFormNotifier();
         }
 
         private void initializeListOfFictionFriends()
@@ -273,15 +272,15 @@ namespace ApplicationLogic
             }
         }
 
-        internal int getCorrectResults()
-        {
-            return m_CorrectAnswers;
-        }
+        //internal int getCorrectResults()
+        //{
+        //    return m_CorrectAnswers;
+        //}
 
-        internal int getWrongResults()
-        {
-            return m_WrongAnswers;
-        }
+        //internal int getWrongResults()
+        //{
+        //    return m_WrongAnswers;
+        //}
 
         internal List<string> getListOfFeedbackMessages()
         {
@@ -290,7 +289,7 @@ namespace ApplicationLogic
 
        /* internal void getMessageBoxFeedback()
         {
-            m_FeedbackNotifier.addListener(m_FeedbackListener);
+            m_FeedbackNotifier.AddListener(m_FeedbackListener);
             //return m_FeedbackNotifier.displayResults(m_CorrectAnswers, m_WrongAnswers);
             //m_FeedbackNotifier.displayResults(m_CorrectAnswers, m_WrongAnswers);
         }*/
@@ -315,18 +314,17 @@ namespace ApplicationLogic
 
         internal void notifyFeedbackListeners(string i_FeedbackToDisplay)
         {
-            //m_FeedbackNotifier.addListener(m_FeedbackListener);
-            m_Notifier.notifyAll(i_FeedbackToDisplay);
+            r_Notifier.NotifyAll(i_FeedbackToDisplay);
         }
 
         internal string getFeedbackMessageToDisplay()
         {
-           return m_Listener.getFeedbackMessageToDisplay();
+           return r_Listener.GetFeedbackMessageToDisplay();
         }
 
         internal void addFeedbackListener()
         {
-            m_Notifier.addListener(m_Listener);
+            r_Notifier.AddListener(r_Listener);
         }
 
         private enum eCitiesAnswers
@@ -342,21 +340,5 @@ namespace ApplicationLogic
             Yafo,
             Eilat
         }
-
-        //private enum eMonthAnswers
-        //{
-        //    January = 0,
-        //    February,
-        //    March,
-        //    April,
-        //    May,
-        //    June,
-        //    July,
-        //    August,
-        //    September,
-        //    October,
-        //    November,
-        //    December
-        //}
     }
 }

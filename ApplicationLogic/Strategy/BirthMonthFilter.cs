@@ -8,20 +8,20 @@ namespace ApplicationLogic.Stretegy
 {
     internal class BirthMonthFilter
     {
-        public ISeasoneFilter seasoneFilter { get; set; }
-        private List<FictionUsers> listOfUserThatMatchTheSeason = new List<FictionUsers> { };
+        public ISeasoneFilter SeasoneFilter { get; set; }
+        private readonly List<FictionUsers> r_ListOfUserThatMatchTheSeason = new List<FictionUsers> { };
 
         public List<FictionUsers> FilterByMonth(List<FictionUsers> friendsList)
         {
             foreach(FictionUsers friend in friendsList)
             {
-                if(seasoneFilter.checkIfMonthMatch(friend.BirthMonth))
+                if(SeasoneFilter.CheckIfMonthMatch(friend.BirthMonth))
                 {
-                    listOfUserThatMatchTheSeason.Add(friend);
+                    r_ListOfUserThatMatchTheSeason.Add(friend);
                 }
             }
 
-            return listOfUserThatMatchTheSeason;
+            return r_ListOfUserThatMatchTheSeason;
         }
     }
 }
