@@ -138,7 +138,7 @@
             this.buttonSubmit.TabIndex = 9;
             this.buttonSubmit.Text = "Submit";
             this.buttonSubmit.UseVisualStyleBackColor = true;
-            this.buttonSubmit.Click += new System.EventHandler(this.CheckIfTheAnswerIsCorrect);
+            this.buttonSubmit.Click += new System.EventHandler(this.checkIfTheAnswerIsCorrect);
             // 
             // pictureBoxNextQuestion
             // 

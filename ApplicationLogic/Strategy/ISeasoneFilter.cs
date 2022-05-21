@@ -8,6 +8,6 @@ namespace ApplicationLogic.Stretegy
 {
     internal interface ISeasoneFilter
     {
-        bool CheckIfMonthMatch(string birthMonth);
+        bool CheckIfMonthMatch(string i_BirthMonth);
     }
 }

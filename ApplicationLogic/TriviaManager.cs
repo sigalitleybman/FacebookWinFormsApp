@@ -272,27 +272,10 @@ namespace ApplicationLogic
             }
         }
 
-        //internal int getCorrectResults()
-        //{
-        //    return m_CorrectAnswers;
-        //}
-
-        //internal int getWrongResults()
-        //{
-        //    return m_WrongAnswers;
-        //}
-
         internal List<string> getListOfFeedbackMessages()
         {
             return r_ListOfFeedbackToTriviaForm;
         }
-
-       /* internal void getMessageBoxFeedback()
-        {
-            m_FeedbackNotifier.AddListener(m_FeedbackListener);
-            //return m_FeedbackNotifier.displayResults(m_CorrectAnswers, m_WrongAnswers);
-            //m_FeedbackNotifier.displayResults(m_CorrectAnswers, m_WrongAnswers);
-        }*/
 
         internal string getFeedbackToDisplay()
         {

@@ -87,16 +87,6 @@ namespace ApplicationLogic
             r_TriviaManager.updateResults(i_IndexOfQuestion, i_IsCorrectAnswer);
         }
 
-        //public int GetCorrectResults()
-        //{
-        //    return r_TriviaManager.getCorrectResults();
-        //}
-
-        //public int GetWrongResults()
-        //{
-        //    return r_TriviaManager.getWrongResults();
-        //}
-
         public void InitializeChosenFriend(FictionUsers i_ChosenFriend)
         {
             r_TriviaManager.InitializeChosenFriend(i_ChosenFriend);
@@ -119,23 +109,23 @@ namespace ApplicationLogic
 
         public FictionUsers GetPotentionalMatch()
         {
-            return r_FindYourMatchManager.GetPotentionalMatch();
+            return r_FindYourMatchManager.getPotentionalMatch();
         }
 
         public List<FictionUsers> GetListOfFictionUsersToMainForm()
         {
-            return r_MainFormManager.GetListOfFictionUsersToMainForm();
+            return r_MainFormManager.getListOfFictionUsersToMainForm();
         }
 
-        public List<FictionUsers> GetListOfMatchFriendsBySeason(string season)
+        public List<FictionUsers> GetListOfMatchFriendsBySeason(string i_Season)
         {
             BirthMonthFilter birthMonthFilter = new BirthMonthFilter();
 
-            if (season.Equals("Summer"))
+            if (i_Season.Equals("Summer"))
             {
                 birthMonthFilter.SeasoneFilter = new ConcreteSeasons.MonthOfSummerSeason();
             }
-            else if (season.Equals("Winter"))
+            else if (i_Season.Equals("Winter"))
             {
                 birthMonthFilter.SeasoneFilter = new ConcreteSeasons.MonthOfWinterSeason();
             }

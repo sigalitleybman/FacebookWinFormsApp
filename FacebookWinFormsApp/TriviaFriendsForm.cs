@@ -36,13 +36,13 @@ namespace BasicFacebookFeatures
             ApplicationManagerFacade = ApplicationManagerFacade.Instance;
             r_TriviaQuestions = ApplicationManagerFacade.GetListOfQuestions();
             r_ListOfFictionUsers = ApplicationManagerFacade.GetListOfFictionUsersToTriviaForm();
-            InitializeListBoxOfFriends();
+            initializeListBoxOfFriends();
             ////r_LoggedInUser = ApplicationManagerFacade.LoggedInUser;
             DisplayFeedbackMessageVisitor = new DisplayFeedbackMessageVisitor(ApplicationManagerFacade.GetListOfFeedbackMessagesToTrivia());
             DisplayFeedbackMessageVisitor.LabelMessageToDisplay = labelMessage;
         }
 
-        private void InitializeListBoxOfFriends()
+        private void initializeListBoxOfFriends()
         {
             /**
              * This section is in comment because we cant get user's friends via facebook
@@ -137,7 +137,7 @@ namespace BasicFacebookFeatures
            radioButtonThirdAnswer.Text = answersToSpecificQuestion[2];
         }
 
-        private void CheckIfTheAnswerIsCorrect(object sender, EventArgs e) 
+        private void checkIfTheAnswerIsCorrect(object sender, EventArgs e) 
         {
             Invoke(new Action(() =>
             {

@@ -11,9 +11,9 @@ namespace ApplicationLogic.Stretegy
         public ISeasoneFilter SeasoneFilter { get; set; }
         private readonly List<FictionUsers> r_ListOfUserThatMatchTheSeason = new List<FictionUsers> { };
 
-        public List<FictionUsers> FilterByMonth(List<FictionUsers> friendsList)
+        public List<FictionUsers> FilterByMonth(List<FictionUsers> i_FriendsList)
         {
-            foreach(FictionUsers friend in friendsList)
+            foreach(FictionUsers friend in i_FriendsList)
             {
                 if(SeasoneFilter.CheckIfMonthMatch(friend.BirthMonth))
                 {

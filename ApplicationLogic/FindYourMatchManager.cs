@@ -91,7 +91,7 @@ namespace ApplicationLogic
             return isMatch;
         }
 
-        internal FictionUsers GetPotentionalMatch()
+        internal FictionUsers getPotentionalMatch()
         {
             return m_PotentionalMatch;
         }

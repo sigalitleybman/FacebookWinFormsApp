@@ -194,7 +194,7 @@
             this.Controls.Add(this.labelTitle);
             this.Name = "FindYourMatchForm";
             this.Text = "Find Your Match";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FindYourMatchForm_Close);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.findYourMatchForm_Close);
             this.ResumeLayout(false);
             this.PerformLayout();
 

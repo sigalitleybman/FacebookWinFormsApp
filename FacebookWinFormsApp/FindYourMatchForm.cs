@@ -151,7 +151,7 @@ namespace BasicFacebookFeatures
             }
         }
 
-        private void FindYourMatchForm_Close(object sender, FormClosedEventArgs e)
+        private void findYourMatchForm_Close(object sender, FormClosedEventArgs e)
         {
             backToMainForm();
         }

@@ -31,7 +31,7 @@ namespace ApplicationLogic
             r_ListOfFictionUsers.Add(friend5);
         }
 
-        internal List<FictionUsers> GetListOfFictionUsersToMainForm()
+        internal List<FictionUsers> getListOfFictionUsersToMainForm()
         {
             return r_ListOfFictionUsers;
         }
