@@ -139,11 +139,11 @@
             // 
             this.labelInstructionsFirstSection.AutoSize = true;
             this.labelInstructionsFirstSection.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.labelInstructionsFirstSection.Location = new System.Drawing.Point(620, 202);
+            this.labelInstructionsFirstSection.Location = new System.Drawing.Point(597, 202);
             this.labelInstructionsFirstSection.Name = "labelInstructionsFirstSection";
-            this.labelInstructionsFirstSection.Size = new System.Drawing.Size(144, 18);
+            this.labelInstructionsFirstSection.Size = new System.Drawing.Size(221, 18);
             this.labelInstructionsFirstSection.TabIndex = 30;
-            this.labelInstructionsFirstSection.Text = "Use only characters ";
+            this.labelInstructionsFirstSection.Text = "Use only lower-case characters ";
             // 
             // labelCity
             // 
